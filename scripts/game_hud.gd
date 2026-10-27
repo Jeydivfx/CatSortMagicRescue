@@ -18,9 +18,16 @@ var pending: Array[int] = []
 var cue_delay := 0.0
 var detail: Label
 var rule: Label
-var mascot: Texture2D = preload("res://assets/branding/magic_rescue_icon.png")
+var mascot: AtlasTexture
+func make_mascot() -> void:
+	# Reuse the actual transparent silver kitten, without the app-icon backdrop.
+	var cat=preload("res://scripts/cat_actor.gd").new();cat.setup(null,1,0)
+	mascot=AtlasTexture.new();mascot.atlas=cat.sprite.texture
+	mascot.region=cat.frame_rects[Vector2i(1,0)];mascot.filter_clip=true
+	cat.free()
 
 func _ready() -> void:
+	make_mascot()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	size = Vector2(696,110)
 	detail = small_label(Vector2(578,12),Vector2(110,42),25,Color("fff0cf"))
@@ -105,7 +112,9 @@ func _draw() -> void:
 	draw_circle(Vector2(81,32),16,Color("b67d26"))
 	draw_circle(Vector2(81,30),14,Color("ffcf63"))
 	draw_line(Vector2(81,21),Vector2(81,39),Color("ad7424"),2,true)
-	draw_texture_rect(mascot,Rect2(524,7,48,48),false)
+	if mascot:
+		var icon_size:=mascot.get_size()*(48.0/maxf(mascot.get_width(),mascot.get_height()))
+		draw_texture_rect(mascot,Rect2(Vector2(548,31)-icon_size*.5,icon_size),false)
 	rounded_box(Rect2(220,12,286,40),Color("0c192a"),19,Color("f8e6bd"))
 	if displayed_fraction>0.001:
 		rounded_box(Rect2(225,17,maxf(10,276*displayed_fraction),30),Color("efc44f"),14,Color("ffe7a0"))

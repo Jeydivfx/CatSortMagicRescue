@@ -42,7 +42,7 @@ static func gameplay(g) -> void:
 	g.hud.position=Vector2(12,g.content_rect().position.y+12)
 	for button in [g.undo_button,g.hint_button,g.tube_button]:button.position.y=footer
 	var speech=g.game_ui.get_node("WitchSpeech")
-	speech.position.y=footer-110
+	speech.position=Vector2(206,footer-110)
 	g.status.position.y=speech.position.y+11
 	if not g.entering:g.wizard.position=Vector2(8,g.wizard_home_y())
 	var reservation=g.game_ui.get_node_or_null("BannerReservation")

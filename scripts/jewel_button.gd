@@ -45,7 +45,6 @@ func _draw() -> void:
 	elif is_hovered(): c=c.lightened(.08)
 	var r := Rect2(Vector2(2,2),size-Vector2(4,7))
 	var radius := int(r.size.y*.39) if menu_hero else int(minf(28,r.size.y*.32))
-	if menu_hero and symbol in ["play","paw"]: draw_foliage()
 	box(Rect2(0,4,size.x,size.y-4),Color("090e28"),radius+4,Color("313e72"),2)
 	box(r,c.darkened(.43),radius,Color("ccdf57") if menu_hero and symbol in ["play","paw"] else c.lightened(.5),3 if menu_hero else 2)
 	var inner := r.grow(-8 if menu_hero else -5)
@@ -139,16 +138,6 @@ func draw_symbol(kind: String, p: Vector2, radius: float) -> void:
 		"story":
 			box(Rect2(p-Vector2(17,13),Vector2(34,26)),Color.TRANSPARENT,4,white,3)
 			draw_line(p-Vector2(0,12),p+Vector2(0,12),white,2,true)
-
-func draw_foliage() -> void:
-	for side in [-1,1]:
-		for i in range(7):
-			var origin := Vector2(10 if side<0 else size.x-10,15+i*(size.y-25)/7)
-			var direction := Vector2(side*(16+sin(i*1.8)*7),-12 if i%2==0 else 11)
-			var normal := direction.orthogonal().normalized()*7
-			var leaf := PackedVector2Array([origin,origin+direction*.4+normal,origin+direction,origin+direction*.4-normal])
-			draw_colored_polygon(leaf,Color("84a52c") if i%2==0 else Color("3e7e26"))
-			draw_line(origin,origin+direction*.84,Color("bdcb54"),1.2,true)
 
 func paw_shape(center: Vector2, radius: float, tint: Color) -> void:
 	var s:=radius/27.0

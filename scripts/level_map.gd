@@ -13,6 +13,7 @@ var scroll: ScrollContainer
 var canvas: Control
 var buttons: Dictionary = {}
 var content_height := 0.0
+var backdrop: Texture2D = preload("res://assets/environments/journey_forest.png")
 var heading: Label
 var focus_button: Button
 
@@ -54,7 +55,7 @@ func configure(total: int, unlocked: int, saved: Dictionary, hard_levels: Array 
 	canvas.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	scroll.add_child(canvas)
 	canvas.draw.connect(draw_path)
-	scroll.get_v_scroll_bar().value_changed.connect(func(_value): update_visible())
+	scroll.get_v_scroll_bar().value_changed.connect(func(_value): update_visible();queue_redraw())
 	focus_button = preload("res://scripts/jewel_button.gd").new()
 	focus_button.tint = Color("6258c8")
 	focus_button.title_size = 22
@@ -84,6 +85,7 @@ func layout_map() -> void:
 	for key in buttons: buttons[key].position = point(int(key))-Vector2(44,44)
 	update_visible()
 	L.restore_x(self)
+	queue_redraw()
 
 func point(index: int) -> Vector2:
 	return Vector2((size.x-14)*0.5+sin(index*0.78)*minf(140, size.x*0.22), content_height-100-index*132)
@@ -147,3 +149,29 @@ func draw_path() -> void:
 					vertices.append(center+Vector2(cos(angle),sin(angle))*(10 if tip%2==0 else 4.5))
 				canvas.draw_colored_polygon(vertices,Color("ffda72") if star<earned else Color("5f687a"))
 
+
+# Only visible strips are drawn. Overlapping feathered edges keep lanterns upright.
+func _draw() -> void:
+	if not backdrop or size.x<=0:return
+	var tile_height:=size.x*backdrop.get_height()/float(backdrop.get_width())
+	var overlap:=tile_height*.08
+	var stride:=tile_height-overlap
+	var offset:=float(scroll.scroll_vertical) if is_instance_valid(scroll) else 0.0
+	var first:=int(floor((offset-106)/stride))-1
+	var last:=int(ceil((offset-106+size.y)/stride))
+	for index in range(first,last+1):
+		var y:=106+index*stride-offset
+		if index==first:
+			draw_texture_rect(backdrop,Rect2(0,y,size.x,tile_height),false)
+		else:
+			for band in range(32):
+				var t:=band/32.0
+				draw_texture_rect_region(backdrop,Rect2(0,y+t*overlap,size.x,overlap/32.0+1),Rect2(0,t*backdrop.get_height()*.08,backdrop.get_width(),backdrop.get_height()*.08/32.0),Color(1,1,1,smoothstep(0.0,1.0,t)))
+			draw_texture_rect_region(backdrop,Rect2(0,y+overlap,size.x,tile_height-overlap),Rect2(0,backdrop.get_height()*.08,backdrop.get_width(),backdrop.get_height()*.92))
+	draw_rect(Rect2(Vector2.ZERO,size),Color(.015,.025,.06,.24))
+	draw_style_box(header_style(),Rect2(8,10,size.x-16,84))
+
+func header_style() -> StyleBoxFlat:
+	var style:=StyleBoxFlat.new();style.bg_color=Color(.025,.04,.12,.86)
+	style.set_corner_radius_all(24);style.border_color=Color("69739d");style.set_border_width_all(1)
+	return style

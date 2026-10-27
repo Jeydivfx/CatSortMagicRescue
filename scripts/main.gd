@@ -344,9 +344,21 @@ func show_menu(page: String = "menu") -> void:
 		button_at("<  Settings",Rect2(190,850,340,64),func(): show_menu("settings"))
 	elif page == "pause":
 		centered_text("Take a little break", 225, 39, Color("f8e5c5"))
-		button_at("Resume", Rect2(145, 380, 430, 84), resume_game, Color("5c9d73"))
-		button_at("Restart level", Rect2(145, 495, 430, 76), func(): start_game(level_index,true), Color("506686"))
-		button_at("Home", Rect2(145, 600, 430, 76), func(): show_menu(), Color("506686"))
+		button_at("Resume", Rect2(145, 350, 430, 84), resume_game, Color("5c9d73"))
+		var pause_music=button_at("Music  "+("ON" if music_enabled else "OFF"),Rect2(145,480,208,70),func():
+			music_enabled=not music_enabled
+			audio.set_music_enabled(music_enabled)
+			save_progress()
+			show_menu("pause"),Color("4f8275"))
+		pause_music.name="PauseMusic";pause_music.title_size=22
+		var pause_effects=button_at("Effects  "+("ON" if sound_enabled else "OFF"),Rect2(367,480,208,70),func():
+			sound_enabled=not sound_enabled
+			audio.set_enabled(sound_enabled)
+			save_progress()
+			show_menu("pause"),Color("477d96"))
+		pause_effects.name="PauseEffects";pause_effects.title_size=22
+		button_at("Restart level", Rect2(145, 600, 430, 76), func(): start_game(level_index,true), Color("506686"))
+		button_at("Home", Rect2(145, 705, 430, 76), func(): show_menu(), Color("506686"))
 	ui = game_ui
 	tint_environment_buttons(menu_ui)
 	L.restyle_tree(menu_ui)
@@ -539,6 +551,8 @@ func build_ui() -> void:
 	ui.add_child(magic_exchange)
 	var speech := Panel.new()
 	speech.name = "WitchSpeech"
+	speech.set_meta("l10n_x",206.0)
+	L.style(speech)
 	speech.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	speech.position = Vector2(206,789)
 	speech.size = Vector2(476,76)
