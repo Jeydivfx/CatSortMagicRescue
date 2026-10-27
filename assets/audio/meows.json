@@ -1,0 +1,100 @@
+[
+  {
+    "id": "recorded_00",
+    "file": "res://assets/audio/meows/recorded_00.wav",
+    "recording": "bsb_0098",
+    "seconds": 0.67
+  },
+  {
+    "id": "recorded_01",
+    "file": "res://assets/audio/meows/recorded_01.wav",
+    "recording": "bsb_0098",
+    "seconds": 0.71
+  },
+  {
+    "id": "recorded_02",
+    "file": "res://assets/audio/meows/recorded_02.wav",
+    "recording": "bsb_0098",
+    "seconds": 0.47
+  },
+  {
+    "id": "recorded_03",
+    "file": "res://assets/audio/meows/recorded_03.wav",
+    "recording": "bsb_0098",
+    "seconds": 0.57
+  },
+  {
+    "id": "recorded_04",
+    "file": "res://assets/audio/meows/recorded_04.wav",
+    "recording": "bsb_0494",
+    "seconds": 0.49
+  },
+  {
+    "id": "recorded_05",
+    "file": "res://assets/audio/meows/recorded_05.wav",
+    "recording": "bsb_1472",
+    "seconds": 0.79
+  },
+  {
+    "id": "recorded_06",
+    "file": "res://assets/audio/meows/recorded_06.wav",
+    "recording": "bsb_1473",
+    "seconds": 0.83
+  },
+  {
+    "id": "recorded_07",
+    "file": "res://assets/audio/meows/recorded_07.wav",
+    "recording": "bsb_1474",
+    "seconds": 0.75
+  },
+  {
+    "id": "recorded_08",
+    "file": "res://assets/audio/meows/recorded_08.wav",
+    "recording": "bsb_1475",
+    "seconds": 0.73
+  },
+  {
+    "id": "recorded_09",
+    "file": "res://assets/audio/meows/recorded_09.wav",
+    "recording": "bsb_1476",
+    "seconds": 0.59
+  },
+  {
+    "id": "recorded_10",
+    "file": "res://assets/audio/meows/recorded_10.wav",
+    "recording": "bsb_1477",
+    "seconds": 0.83
+  },
+  {
+    "id": "recorded_11",
+    "file": "res://assets/audio/meows/recorded_11.wav",
+    "recording": "bsb_1478",
+    "seconds": 0.67
+  },
+  {
+    "id": "recorded_12",
+    "file": "res://assets/audio/meows/recorded_12.wav",
+    "recording": "bsb_1481",
+    "seconds": 0.51
+  },
+  {
+    "id": "food",
+    "file": "res://assets/audio/real_food.wav",
+    "recording": "original_food"
+  },
+  {
+    "id": "soft",
+    "file": "res://assets/audio/real_soft.wav",
+    "recording": "original_soft"
+  },
+  {
+    "id": "chirp",
+    "file": "res://assets/audio/real_chirp.wav",
+    "recording": "original_chirp"
+  },
+  {
+    "id": "classic",
+    "file": "res://assets/audio/real_classic.wav",
+    "recording": "original_classic"
+  }
+]

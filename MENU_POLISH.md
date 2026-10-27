@@ -1,0 +1,5 @@
+# Menu and cat voice polish
+
+The menu now uses one constant cat body and silhouette. A shader blends only the authored facial oval between neutral, blink, smile and frown; expression changes never replace body geometry. Animation uses frame-time-independent exponential smoothing. Menu breathing is slow and subtle, paw baselines remain anchored, and each cat has an independent phase. Menu entry fades and slides with easing, without overshoot. Clicking a menu cat triggers its smile and its type-specific voice; idle cats no longer abruptly alternate whole-body expressions on a fixed nine-second timer.
+
+The active voice bank uses five separate CC0 recordings, seven type profiles, and two alternating recordings per profile. Changes include gentle filtering and noise reduction, trimming, short fades, gain normalization, a small fixed pitch identity per type and only ±1% incidental pitch variation. Music ducks during meows. See assets/audio/REAL_MEOW_CREDITS.md. Previous single-source kitten imitation variants are retained on disk but are not used for gameplay or menu cat vocals.

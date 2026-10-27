@@ -1,0 +1,10 @@
+{
+  "tap": "click_004",
+  "land": "drop_001",
+  "nope": "back_002",
+  "purchase": "confirmation_001",
+  "jump_0": "pluck_001",
+  "jump_1": "pluck_002",
+  "jump_2": "drop_002",
+  "win": "confirmation_002"
+}

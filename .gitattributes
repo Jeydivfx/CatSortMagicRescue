@@ -1,0 +1,13 @@
+* text=auto
+*.gd text eol=lf
+*.gdshader text eol=lf
+*.tscn text eol=lf
+*.tres text eol=lf
+*.json text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.png binary
+*.ogg binary
+*.ogv binary
+*.wav binary
+*.aar binary

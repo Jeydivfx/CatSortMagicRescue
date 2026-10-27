@@ -1,0 +1,278 @@
+{
+  "cozy_theme.wav": {
+    "seconds": 40.0,
+    "peak": 0.65,
+    "rms": 0.134,
+    "clipped_samples": 0
+  },
+  "win_fanfare.wav": {
+    "seconds": 2.3,
+    "peak": 0.72,
+    "rms": 0.14,
+    "clipped_samples": 0
+  },
+  "relaxing_theme.wav": {
+    "seconds": 120.0,
+    "peak": 0.404,
+    "rms": 0.1,
+    "clipped_samples": 0
+  },
+  "soft_victory.wav": {
+    "seconds": 2.1,
+    "peak": 0.4,
+    "rms": 0.077,
+    "clipped_samples": 0
+  },
+  "hint_purchase.wav": {
+    "seconds": 0.42,
+    "peak": 0.202,
+    "rms": 0.056,
+    "clipped_samples": 0
+  },
+  "real_chirp.wav": {
+    "seconds": 1.045,
+    "peak": 0.74,
+    "rms": 0.134,
+    "clipped_samples": 0
+  },
+  "real_classic.wav": {
+    "seconds": 0.435,
+    "peak": 0.74,
+    "rms": 0.134,
+    "clipped_samples": 0
+  },
+  "real_food.wav": {
+    "seconds": 0.287,
+    "peak": 0.74,
+    "rms": 0.143,
+    "clipped_samples": 0
+  },
+  "real_purr.wav": {
+    "seconds": 0.722,
+    "peak": 0.717,
+    "rms": 0.2,
+    "clipped_samples": 0
+  },
+  "real_soft.wav": {
+    "seconds": 1.019,
+    "peak": 0.74,
+    "rms": 0.102,
+    "clipped_samples": 0
+  },
+  "star_0.wav": {
+    "seconds": 0.65,
+    "peak": 0.337,
+    "rms": 0.12,
+    "clipped_samples": 0
+  },
+  "star_1.wav": {
+    "seconds": 0.65,
+    "peak": 0.337,
+    "rms": 0.12,
+    "clipped_samples": 0
+  },
+  "star_2.wav": {
+    "seconds": 0.65,
+    "peak": 0.336,
+    "rms": 0.12,
+    "clipped_samples": 0
+  },
+  "jump_0.wav": {
+    "seconds": 0.2,
+    "peak": 0.48,
+    "rms": 0.117,
+    "clipped_samples": 0
+  },
+  "jump_1.wav": {
+    "seconds": 0.218,
+    "peak": 0.48,
+    "rms": 0.114,
+    "clipped_samples": 0
+  },
+  "jump_2.wav": {
+    "seconds": 0.236,
+    "peak": 0.48,
+    "rms": 0.111,
+    "clipped_samples": 0
+  },
+  "happy_cats\\chirp.wav": {
+    "seconds": 1.165,
+    "peak": 0.567,
+    "rms": 0.098,
+    "clipped_samples": 0
+  },
+  "happy_cats\\classic.wav": {
+    "seconds": 0.95,
+    "peak": 0.57,
+    "rms": 0.071,
+    "clipped_samples": 0
+  },
+  "happy_cats\\food.wav": {
+    "seconds": 0.95,
+    "peak": 0.565,
+    "rms": 0.061,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_00.wav": {
+    "seconds": 0.95,
+    "peak": 0.576,
+    "rms": 0.106,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_01.wav": {
+    "seconds": 0.95,
+    "peak": 0.57,
+    "rms": 0.125,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_02.wav": {
+    "seconds": 0.95,
+    "peak": 0.591,
+    "rms": 0.077,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_03.wav": {
+    "seconds": 0.95,
+    "peak": 0.557,
+    "rms": 0.084,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_04.wav": {
+    "seconds": 0.95,
+    "peak": 0.573,
+    "rms": 0.063,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_05.wav": {
+    "seconds": 0.95,
+    "peak": 0.567,
+    "rms": 0.089,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_06.wav": {
+    "seconds": 0.95,
+    "peak": 0.573,
+    "rms": 0.115,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_07.wav": {
+    "seconds": 0.95,
+    "peak": 0.585,
+    "rms": 0.103,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_08.wav": {
+    "seconds": 0.95,
+    "peak": 0.579,
+    "rms": 0.069,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_09.wav": {
+    "seconds": 0.95,
+    "peak": 0.571,
+    "rms": 0.066,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_10.wav": {
+    "seconds": 0.95,
+    "peak": 0.563,
+    "rms": 0.12,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_11.wav": {
+    "seconds": 0.95,
+    "peak": 0.6,
+    "rms": 0.101,
+    "clipped_samples": 0
+  },
+  "happy_cats\\recorded_12.wav": {
+    "seconds": 0.95,
+    "peak": 0.592,
+    "rms": 0.093,
+    "clipped_samples": 0
+  },
+  "happy_cats\\soft.wav": {
+    "seconds": 1.139,
+    "peak": 0.574,
+    "rms": 0.075,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_00.wav": {
+    "seconds": 0.67,
+    "peak": 0.78,
+    "rms": 0.173,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_01.wav": {
+    "seconds": 0.71,
+    "peak": 0.71,
+    "rms": 0.18,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_02.wav": {
+    "seconds": 0.47,
+    "peak": 0.78,
+    "rms": 0.149,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_03.wav": {
+    "seconds": 0.57,
+    "peak": 0.78,
+    "rms": 0.147,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_04.wav": {
+    "seconds": 0.49,
+    "peak": 0.78,
+    "rms": 0.118,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_05.wav": {
+    "seconds": 0.79,
+    "peak": 0.78,
+    "rms": 0.133,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_06.wav": {
+    "seconds": 0.83,
+    "peak": 0.78,
+    "rms": 0.168,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_07.wav": {
+    "seconds": 0.75,
+    "peak": 0.78,
+    "rms": 0.158,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_08.wav": {
+    "seconds": 0.73,
+    "peak": 0.78,
+    "rms": 0.107,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_09.wav": {
+    "seconds": 0.59,
+    "peak": 0.78,
+    "rms": 0.113,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_10.wav": {
+    "seconds": 0.83,
+    "peak": 0.78,
+    "rms": 0.176,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_11.wav": {
+    "seconds": 0.67,
+    "peak": 0.78,
+    "rms": 0.165,
+    "clipped_samples": 0
+  },
+  "meows\\recorded_12.wav": {
+    "seconds": 0.51,
+    "peak": 0.78,
+    "rms": 0.173,
+    "clipped_samples": 0
+  }
+}

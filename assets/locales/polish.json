@@ -1,0 +1,332 @@
+{
+  "New keepsake!": [
+    "Nouveau souvenir !",
+    "¡Nuevo recuerdo!",
+    "Nuovo ricordo!",
+    "Nytt minne!",
+    "Nytt minne!",
+    "تذكار جديد!",
+    "Yeni hatıra!",
+    "یادگاری تازه!"
+  ],
+  "Rescue home": [
+    "Refuge des chats",
+    "Refugio de gatos",
+    "Rifugio dei gatti",
+    "Katthem",
+    "Kattehjem",
+    "ملجأ القطط",
+    "Kedi sığınağı",
+    "پناهگاه گربه‌ها"
+  ],
+  "%d kittens rescued": [
+    "%d chatons sauvés",
+    "%d gatitos rescatados",
+    "%d gattini salvati",
+    "%d kattungar räddade",
+    "%d kattunger reddet",
+    "تم إنقاذ %d قطط",
+    "%d yavru kedi kurtarıldı",
+    "%d گربه را نجات داده‌ای"
+  ],
+  "Unlocks at %d levels": [
+    "Après %d niveaux",
+    "Tras %d niveles",
+    "Dopo %d livelli",
+    "Efter %d nivåer",
+    "Etter %d nivåer",
+    "بعد %d مراحل",
+    "%d bölümden sonra",
+    "پس از %d مرحله"
+  ],
+  "Next keepsake in %d levels": [
+    "Prochain souvenir dans %d niveaux",
+    "Próximo recuerdo en %d niveles",
+    "Prossimo ricordo tra %d livelli",
+    "Nästa minne om %d nivåer",
+    "Neste minne om %d nivåer",
+    "التذكار التالي بعد %d مراحل",
+    "Sonraki hatıraya %d bölüm",
+    "یادگاری بعدی تا %d مرحله"
+  ],
+  "Cozy corner": [
+    "Coin douillet",
+    "Rincón acogedor",
+    "Angolo accogliente",
+    "Mysig hörna",
+    "Koselig krok",
+    "الركن الدافئ",
+    "Sıcak köşe",
+    "گوشهٔ دنج"
+  ],
+  "Window seat": [
+    "Près de la fenêtre",
+    "Junto a la ventana",
+    "Vicino alla finestra",
+    "Fönsterplats",
+    "Vindusplass",
+    "بجانب النافذة",
+    "Pencere kenarı",
+    "کنار پنجره"
+  ],
+  "Rescue garden": [
+    "Jardin des chats",
+    "Jardín de rescate",
+    "Giardino dei gatti",
+    "Katternas trädgård",
+    "Kattenes hage",
+    "حديقة القطط",
+    "Kedilerin bahçesi",
+    "باغ گربه‌ها"
+  ],
+  "Playroom": [
+    "Salle de jeux",
+    "Sala de juegos",
+    "Sala giochi",
+    "Lekrum",
+    "Lekerom",
+    "غرفة اللعب",
+    "Oyun odası",
+    "اتاق بازی"
+  ],
+  "Reading nook": [
+    "Coin lecture",
+    "Rincón de lectura",
+    "Angolo lettura",
+    "Läshörna",
+    "Lesekrok",
+    "ركن القراءة",
+    "Okuma köşesi",
+    "گوشهٔ کتاب‌خوانی"
+  ],
+  "Lantern terrace": [
+    "Terrasse aux lanternes",
+    "Terraza de faroles",
+    "Terrazza delle lanterne",
+    "Lyktterrass",
+    "Lykteterrasse",
+    "شرفة الفوانيس",
+    "Fenerli teras",
+    "ایوان فانوس‌ها"
+  ],
+  "The witch is aiming! Move this tube to stop her.": [
+    "La sorcière vise ! Déplace ce tube pour l'arrêter.",
+    "¡La bruja apunta! Mueve este tubo para detenerla.",
+    "La strega prende la mira! Muovi questa provetta per fermarla.",
+    "Häxan siktar! Flytta det här röret för att stoppa henne.",
+    "Heksa sikter! Flytt dette røret for å stoppe henne.",
+    "الساحرة تصوّب! حرّك هذا الأنبوب لإيقافها.",
+    "Cadı nişan alıyor! Onu durdurmak için bu tüpü kullan.",
+    "جادوگر نشانه گرفته! از این لوله حرکت کن تا جلوش را بگیری."
+  ],
+  "Two moves break the seal.": [
+    "Deux déplacements brisent le sceau.",
+    "Dos movimientos rompen el sello.",
+    "Due mosse spezzano il sigillo.",
+    "Två drag bryter förseglingen.",
+    "To trekk bryter forseglingen.",
+    "حركتان تكسران الختم.",
+    "İki hamle mührü bozar.",
+    "دو حرکت، قفل جادویی را می‌شکند."
+  ],
+  "You stopped her spell!": [
+    "Tu as arrêté son sort !",
+    "¡Has detenido su hechizo!",
+    "Hai fermato il suo incantesimo!",
+    "Du stoppade hennes trollformel!",
+    "Du stoppet trolldommen hennes!",
+    "أوقفت تعويذتها!",
+    "Büyüsünü durdurdun!",
+    "جلوی جادویش را گرفتی!"
+  ],
+  "This tube is full.": [
+    "Ce tube est plein.",
+    "Este tubo está lleno.",
+    "Questa provetta è piena.",
+    "Det här röret är fullt.",
+    "Dette røret er fullt.",
+    "هذا الأنبوب ممتلئ.",
+    "Bu tüp dolu.",
+    "این لوله پر است."
+  ],
+  "Video is loading. Try again shortly.": [
+    "La vidéo charge. Réessaie bientôt.",
+    "El vídeo se está cargando. Inténtalo en breve.",
+    "Il video si sta caricando. Riprova tra poco.",
+    "Videon laddas. Försök snart igen.",
+    "Videoen lastes. Prøv igjen snart.",
+    "يجري تحميل الفيديو. حاول بعد قليل.",
+    "Video yükleniyor. Birazdan tekrar dene.",
+    "ویدیو در حال بارگیری است؛ کمی بعد دوباره امتحان کن."
+  ],
+  "Video unavailable. Your game is unchanged.": [
+    "Vidéo indisponible. Ta partie est conservée.",
+    "Vídeo no disponible. Tu partida no ha cambiado.",
+    "Video non disponibile. La partita è invariata.",
+    "Videon är inte tillgänglig. Spelet är oförändrat.",
+    "Videoen er utilgjengelig. Spillet er uendret.",
+    "الفيديو غير متاح. لم تتغير لعبتك.",
+    "Video kullanılamıyor. Oyunun değişmedi.",
+    "ویدیو در دسترس نیست؛ وضعیت بازیت تغییری نکرد."
+  ],
+  "Video closed before the reward.": [
+    "Vidéo fermée avant la récompense.",
+    "Vídeo cerrado antes de recibir la recompensa.",
+    "Video chiuso prima della ricompensa.",
+    "Videon stängdes före belöningen.",
+    "Videoen ble lukket før belønningen.",
+    "أُغلق الفيديو قبل المكافأة.",
+    "Video ödül alınmadan kapatıldı.",
+    "ویدیو پیش از دریافت جایزه بسته شد."
+  ],
+  "Meow! Meow!": [
+    "Miaou ! Miaou !",
+    "¡Miau! ¡Miau!",
+    "Miao! Miao!",
+    "Mjau! Mjau!",
+    "Mjau! Mjau!",
+    "مياو! مياو!",
+    "Miyav! Miyav!",
+    "میو! میو!"
+  ],
+  "What's all this noise?!": [
+    "C'est quoi, tout ce bruit ?!",
+    "¡¿Qué es todo este ruido?!",
+    "Cos'è tutto questo rumore?!",
+    "Vad är det för oväsen?!",
+    "Hva er alt dette bråket?!",
+    "ما كل هذه الضوضاء؟!",
+    "Bütün bu gürültü de ne?!",
+    "این همه سروصدا برای چیه؟!"
+  ],
+  "Enough! You little troublemakers!": [
+    "Ça suffit, petites canailles !",
+    "¡Basta, pequeños traviesos!",
+    "Basta, piccoli combina guai!",
+    "Nu räcker det, små busfrön!",
+    "Nå er det nok, små bråkmakere!",
+    "كفى أيتها المشاغبات الصغيرات!",
+    "Yeter, küçük yaramazlar!",
+    "بسه دیگه، کوچولوهای دردسرساز!"
+  ],
+  "MEEOOW!": [
+    "MIAOU !",
+    "¡MIAUUU!",
+    "MIAOOO!",
+    "MJAAAU!",
+    "MJAAAU!",
+    "مياااو!",
+    "MİYAAAV!",
+    "میییوو!"
+  ],
+  "Meow... Help us!": [
+    "Miaou… Aidez-nous !",
+    "Miau… ¡Ayúdanos!",
+    "Miao… Aiutaci!",
+    "Mjau… Hjälp oss!",
+    "Mjau… Hjelp oss!",
+    "مياو… ساعدنا!",
+    "Miyav… Bize yardım et!",
+    "میو… کمکمون کن!"
+  ],
+  "You'll stay here until you learn to be quiet!": [
+    "Vous resterez ici jusqu'à savoir vous taire !",
+    "¡Os quedaréis aquí hasta que aprendáis a estar callados!",
+    "Resterete qui finché non imparerete a fare silenzio!",
+    "Ni stannar här tills ni lärt er vara tysta!",
+    "Dere blir her til dere lærer å være stille!",
+    "ستبقين هنا حتى تتعلمن الهدوء!",
+    "Sessiz olmayı öğrenene kadar burada kalacaksınız!",
+    "تا یاد نگیرید ساکت باشید، همین‌جا می‌مونید!"
+  ],
+  "Please... set us free!": [
+    "S'il te plaît… libère-nous !",
+    "Por favor… ¡libéranos!",
+    "Ti prego… liberaci!",
+    "Snälla… släpp oss fria!",
+    "Vær så snill… slipp oss fri!",
+    "أرجوك… حررنا!",
+    "Lütfen… bizi özgür bırak!",
+    "خواهش می‌کنیم… آزادمون کن!"
+  ],
+  "Meow! We're free!": [
+    "Miaou ! Nous sommes libres !",
+    "¡Miau! ¡Somos libres!",
+    "Miao! Siamo liberi!",
+    "Mjau! Vi är fria!",
+    "Mjau! Vi er frie!",
+    "مياو! نحن أحرار!",
+    "Miyav! Özgürüz!",
+    "میو! آزاد شدیم!"
+  ],
+  "A gentle round. Plan your next rescue.": [
+    "Un niveau doux. Prépare ton prochain sauvetage.",
+    "Una ronda tranquila. Prepara tu próximo rescate.",
+    "Un livello tranquillo. Prepara il prossimo salvataggio.",
+    "En lugn nivå. Planera nästa räddning.",
+    "En rolig runde. Planlegg neste redning.",
+    "جولة هادئة. خطط للإنقاذ التالي.",
+    "Sakin bir bölüm. Sonraki kurtarmayı planla.",
+    "یک مرحلهٔ آرام؛ برای نجات بعدی آماده شو."
+  ],
+  "Cat sanctuary": [
+    "Refuge des chats",
+    "Refugio de gatos",
+    "Rifugio dei gatti",
+    "Katthem",
+    "Kattehjem",
+    "ملجأ القطط",
+    "Kedi sığınağı",
+    "پناهگاه گربه‌ها"
+  ],
+  "Safe, at last.": [
+    "Enfin en sécurité.",
+    "Por fin, a salvo.",
+    "Finalmente al sicuro.",
+    "Äntligen trygga.",
+    "Endelig trygge.",
+    "أخيرًا، بأمان.",
+    "Sonunda güvendeler.",
+    "اینجا دیگر در امان‌اند."
+  ],
+  "Continue rescuing": [
+    "Continuer le sauvetage",
+    "Seguir rescatando",
+    "Continua a salvare",
+    "Fortsätt rädda",
+    "Fortsett å redde",
+    "واصل الإنقاذ",
+    "Kurtarmaya devam et",
+    "ادامهٔ نجات"
+  ],
+  "A cozy place for every rescue.": [
+    "Un refuge pour chaque chat.",
+    "Un hogar para cada gato.",
+    "Un rifugio per ogni gatto.",
+    "Ett hem för varje katt.",
+    "Et hjem for hver katt.",
+    "بيت دافئ لكل قطة.",
+    "Her kediye sıcak bir yuva.",
+    "جایی دنج برای گربه‌های نجات‌یافته."
+  ],
+  "A new comfort in %d levels": [
+    "Une surprise dans %d niveaux",
+    "Una sorpresa en %d niveles",
+    "Una sorpresa fra %d livelli",
+    "En överraskning om %d nivåer",
+    "En overraskelse om %d nivåer",
+    "إضافة دافئة بعد %d مراحل",
+    "%d bölüm sonra yeni bir sürpriz",
+    "تا تغییر بعدی پناهگاه: %d مرحله"
+  ],
+  "Every kitten deserves a home.": [
+    "Chaque chat mérite un foyer.",
+    "Cada gato merece un hogar.",
+    "Ogni gatto merita una casa.",
+    "Varje katt förtjänar ett hem.",
+    "Alle katter fortjener et hjem.",
+    "كل قطة تستحق بيتًا.",
+    "Her kedi bir yuvayı hak eder.",
+    "هر گربه سزاوار یک خانه است."
+  ]
+}

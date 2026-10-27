@@ -1,0 +1,13 @@
+{
+  "count": 1000,
+  "accepted_layouts": 1000,
+  "distinct_graph_hash_buckets": 998,
+  "all_solution_paths_replayed": true,
+  "color_range": [
+    2,
+    11
+  ],
+  "duplicates_checked_with_color_and_tube_invariant_graph_hash": true,
+  "first_100_levels_preserved": true,
+  "note": "Certificate lengths prove solvability, not shortest solutions or human difficulty."
+}

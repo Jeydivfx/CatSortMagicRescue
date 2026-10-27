@@ -1,0 +1,52 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[admob]
+
+general/android/app_id="ca-app-pub-8683775581688444~2374561987"
+general/ios/enabled=false
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Cat Sort: Magic Rescue"
+run/main_scene="res://main.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="JavadGames/Cat Sort Magic Rescue"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://assets/branding/magic_rescue_icon.png"
+config/custom_user_dir_name.windows="Godot/app_userdata/Cat Sort Lab"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1120
+window/size/window_width_override=540
+window/size/window_height_override=840
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/admob/plugin.cfg")
+
+[gui]
+
+theme/custom="res://assets/fonts/game_theme.tres"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.055, 0.075, 0.14, 1)

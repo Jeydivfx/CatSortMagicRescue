@@ -1,0 +1,111 @@
+# English|French|Spanish|Italian|Swedish|Norwegian Bokmal|Arabic|Turkish|Persian
+Music: Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0|Musique : Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0|Música: Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0|Musica: Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0|Musik: Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0|Musikk: Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0|الموسيقى: Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0|Müzik: Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0|موسیقی: Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0
+Effects: Kenney Interface Sounds (CC0)\nCat recordings: Joseph SARDIN,\nKerzoven and IgnasD (CC0)|Effets : Kenney Interface Sounds (CC0)\nVoix : Joseph SARDIN,\nKerzoven et IgnasD (CC0)|Efectos: Kenney Interface Sounds (CC0)\nVoces: Joseph SARDIN,\nKerzoven e IgnasD (CC0)|Effetti: Kenney Interface Sounds (CC0)\nVoci: Joseph SARDIN,\nKerzoven e IgnasD (CC0)|Effekter: Kenney Interface Sounds (CC0)\nKattljud: Joseph SARDIN,\nKerzoven och IgnasD (CC0)|Effekter: Kenney Interface Sounds (CC0)\nKattelyder: Joseph SARDIN,\nKerzoven og IgnasD (CC0)|المؤثرات: Kenney Interface Sounds (CC0)\nأصوات القطط: Joseph SARDIN,\nKerzoven وIgnasD (CC0)|Efektler: Kenney Interface Sounds (CC0)\nKedi sesleri: Joseph SARDIN,\nKerzoven ve IgnasD (CC0)|افکت‌ها: Kenney Interface Sounds (CC0)\nصدای گربه‌ها: Joseph SARDIN,\nKerzoven و IgnasD (CC0)
+Settings|Réglages|Ajustes|Impostazioni|Inställningar|Innstillinger|الإعدادات|Ayarlar|تنظیمات
+Language|Langue|Idioma|Lingua|Språk|Språk|اللغة|Dil|زبان
+Levels|Niveaux|Niveles|Livelli|Banor|Nivåer|المراحل|Bölümler|مرحله‌ها
+Home|Accueil|Inicio|Home|Hem|Hjem|الرئيسية|Ana menü|خانه
+Done|Terminé|Listo|Fatto|Klart|Ferdig|تم|Tamam|تمام
+Cancel|Annuler|Cancelar|Annulla|Avbryt|Avbryt|إلغاء|İptal|لغو
+Resume|Reprendre|Continuar|Riprendi|Fortsätt|Fortsett|متابعة|Devam et|ادامه
+Restart level|Recommencer|Reiniciar nivel|Ricomincia|Starta om|Start på nytt|إعادة المرحلة|Yeniden başlat|شروع دوباره
+Try again|Réessayer|Reintentar|Riprova|Försök igen|Prøv igjen|حاول مجددًا|Tekrar dene|تلاش دوباره
+Next Level|Niveau suivant|Siguiente nivel|Livello successivo|Nästa bana|Neste nivå|المرحلة التالية|Sonraki bölüm|مرحله بعد
+Back to Home|Retour à l’accueil|Volver al inicio|Torna alla home|Till hem|Til hjem|العودة للرئيسية|Ana menüye dön|بازگشت به خانه
+Next level  >|Niveau suivant  >|Siguiente nivel  >|Livello successivo  >|Nästa bana  >|Neste nivå  >|المرحلة التالية  >|Sonraki bölüm  >|مرحله بعد  >
+Next  >|Suite  >|Siguiente  >|Avanti  >|Nästa  >|Neste  >|التالي  >|İleri  >|بعدی  >
+Let's go!  >|C’est parti !  >|¡Vamos!  >|Andiamo!  >|Nu kör vi!  >|Kom igjen!  >|هيا بنا!  >|Haydi!  >|بزن بریم!  >
+Play  •  Level %d|Jouer  •  Niveau %d|Jugar  •  Nivel %d|Gioca  •  Livello %d|Spela  •  Bana %d|Spill  •  Nivå %d|العب  •  المرحلة %d|Oyna  •  Bölüm %d|بازی  •  مرحله %d
+Level %d|Niveau %d|Nivel %d|Livello %d|Bana %d|Nivå %d|المرحلة %d|Bölüm %d|مرحله %d
+%d coins|%d pièces|%d monedas|%d monete|%d mynt|%d mynter|%d عملة|%d altın|%d سکه
++%d coins|+%d pièces|+%d monedas|+%d monete|+%d mynt|+%d mynter|+%d عملة|+%d altın|+%d سکه
+Score %d|Score %d|Puntos %d|Punti %d|Poäng %d|Poeng %d|النقاط %d|Puan %d|امتیاز %d
+Your journey|Votre aventure|Tu aventura|La tua avventura|Ditt äventyr|Ditt eventyr|رحلتك|Yolculuğun|ماجراجویی تو
+%d / %d levels complete|%d / %d niveaux terminés|%d / %d niveles completados|%d / %d livelli completati|%d / %d banor klara|%d / %d nivåer fullført|%d / %d مراحل مكتملة|%d / %d bölüm tamamlandı|%d از %d مرحله کامل شده
+Your journey  •  %d / %d|Votre aventure  •  %d / %d|Tu aventura  •  %d / %d|La tua avventura  •  %d / %d|Ditt äventyr  •  %d / %d|Ditt eventyr  •  %d / %d|رحلتك  •  %d / %d|Yolculuğun  •  %d / %d|ماجراجویی تو  •  %d از %d
+Back to level %d|Retour au niveau %d|Volver al nivel %d|Torna al livello %d|Till bana %d|Til nivå %d|العودة للمرحلة %d|%d. bölüme dön|بازگشت به مرحله %d
+Break the spell. Bring them home.|Brisez le sort. Sauvez les chatons.|Rompe el hechizo. Llévalos a casa.|Spezza l’incantesimo. Salvali.|Bryt förtrollningen. Rädda dem.|Bryt trolldommen. Redd dem.|اكسر التعويذة وأنقذ القطط.|Büyüyü boz. Onları kurtar.|طلسم را بشکن و نجاتشان بده.
+Make this little world yours|Personnalisez ce petit monde|Haz tuyo este pequeño mundo|Personalizza questo piccolo mondo|Gör den lilla världen till din|Gjør denne verden til din|اجعل هذا العالم الصغير لك|Bu küçük dünyayı kişiselleştir|این دنیای کوچک را برای خودت بساز
+SOUND|SON|SONIDO|AUDIO|LJUD|LYD|الصوت|SES|صدا
+ANIMATION|ANIMATION|ANIMACIÓN|ANIMAZIONE|ANIMATION|ANIMASJON|الحركة|ANİMASYON|انیمیشن
+YOUR WORLD|VOTRE MONDE|TU MUNDO|IL TUO MONDO|DIN VÄRLD|DIN VERDEN|عالمك|DÜNYAN|دنیای تو
+ON|OUI|SÍ|SÌ|PÅ|PÅ|تشغيل|AÇIK|روشن
+OFF|NON|NO|NO|AV|AV|إيقاف|KAPALI|خاموش
+Effects  %s|Effets  %s|Efectos  %s|Effetti  %s|Effekter  %s|Effekter  %s|المؤثرات  %s|Efektler  %s|افکت‌ها  %s
+Music  %s|Musique  %s|Música  %s|Musica  %s|Musik  %s|Musikk  %s|الموسيقى  %s|Müzik  %s|موسیقی  %s
+Effects volume|Volume des effets|Volumen de efectos|Volume effetti|Effektvolym|Effektvolum|مستوى المؤثرات|Efekt sesi|بلندی افکت‌ها
+Music volume|Volume musical|Volumen de música|Volume musica|Musikvolym|Musikkvolum|مستوى الموسيقى|Müzik sesi|بلندی موسیقی
+Gentle motion|Mouvements doux|Movimiento suave|Movimenti delicati|Lugna rörelser|Rolige bevegelser|حركة هادئة|Yumuşak hareket|حرکت ملایم
+Full animation|Animation complète|Animación completa|Animazione completa|Full animation|Full animasjon|حركة كاملة|Tam animasyon|انیمیشن کامل
+Auto|Auto|Auto|Auto|Auto|Auto|تلقائي|Otomatik|خودکار
+%s  ›|%s  ›|%s  ›|%s  ›|%s  ›|%s  ›|‹  %s|%s  ›|‹  %s
+Moonlit Lab|Laboratoire lunaire|Laboratorio lunar|Laboratorio lunare|Månlaboratoriet|Månelaboratoriet|مختبر القمر|Ay ışığı laboratuvarı|آزمایشگاه مهتابی
+Cozy Cafe|Café douillet|Cafetería acogedora|Caffè accogliente|Mysigt kafé|Koselig kafé|مقهى دافئ|Sıcak kafe|کافهٔ دنج
+Blossom Garden|Jardin fleuri|Jardín florido|Giardino fiorito|Blomsterträdgården|Blomsterhagen|حديقة الزهور|Çiçek bahçesi|باغ شکوفه‌ها
+Audio credits|Crédits audio|Créditos de audio|Crediti audio|Ljudkällor|Lydkilder|مصادر الصوت|Ses kaynakları|منابع صدا
+Music source|Source musicale|Fuente de música|Fonte musicale|Musikkälla|Musikkilde|مصدر الموسيقى|Müzik kaynağı|منبع موسیقی
+CC BY 4.0 license|Licence CC BY 4.0|Licencia CC BY 4.0|Licenza CC BY 4.0|CC BY 4.0-licens|CC BY 4.0-lisens|ترخيص CC BY 4.0|CC BY 4.0 lisansı|مجوز CC BY 4.0
+Kenney sound pack|Sons Kenney|Sonidos Kenney|Suoni Kenney|Kenney-ljudpaket|Kenney-lydpakke|حزمة أصوات Kenney|Kenney ses paketi|بستهٔ صدای Kenney
+Converted to Ogg Vorbis; loudness normalized.|Conversion Ogg Vorbis ; volume normalisé.|Conversión a Ogg Vorbis; volumen normalizado.|Convertito in Ogg Vorbis; volume normalizzato.|Ogg Vorbis; normaliserad volym.|Ogg Vorbis; normalisert volum.|تحويل إلى Ogg Vorbis مع ضبط المستوى.|Ogg Vorbis; ses düzeyi dengelendi.|تبدیل به Ogg Vorbis؛ بلندی صدا یکسان‌سازی شده.
+<  Settings|<  Réglages|<  Ajustes|<  Impostazioni|<  Inställningar|<  Innstillinger|الإعدادات  >|<  Ayarlar|تنظیمات  >
+<  Home|<  Accueil|<  Inicio|<  Home|<  Hem|<  Hjem|الرئيسية  >|<  Ana menü|خانه  >
+Take a little break|Une petite pause|Tómate un descanso|Fai una pausa|Ta en liten paus|Ta en liten pause|خذ استراحة قصيرة|Kısa bir mola ver|کمی استراحت کن
+Moves left  %d|Coups restants  %d|Movimientos  %d|Mosse rimaste  %d|Drag kvar  %d|Trekk igjen  %d|الحركات المتبقية  %d|Kalan hamle  %d|حرکت باقی‌مانده  %d
+Moves: %d|Coups : %d|Movimientos: %d|Mosse: %d|Drag: %d|Trekk: %d|الحركات: %d|Hamle: %d|حرکت‌ها: %d
+Best: %d|Record : %d|Récord: %d|Record: %d|Bäst: %d|Best: %d|الأفضل: %d|En iyi: %d|بهترین: %d
+Level Complete!|Niveau terminé !|¡Nivel completado!|Livello completato!|Banan klar!|Nivå fullført!|اكتملت المرحلة!|Bölüm tamamlandı!|مرحله کامل شد!
+Out of moves!|Plus de coups !|¡Sin movimientos!|Mosse esaurite!|Slut på drag!|Ingen trekk igjen!|نفدت الحركات!|Hamleler bitti!|حرکت‌ها تمام شد!
+The witch wins this round.\nYour kittens are waiting for you.|La sorcière gagne cette fois.\nLes chatons vous attendent.|La bruja gana esta vez.\nTus gatitos te esperan.|La strega vince stavolta.\nI gattini ti aspettano.|Häxan vann denna gång.\nKattungarna väntar på dig.|Heksen vant denne gangen.\nKattungene venter på deg.|فازت الساحرة هذه المرة.\nقططك تنتظرك.|Bu turu cadı kazandı.\nYavru kediler seni bekliyor.|این بار جادوگر برنده شد.\nگربه‌ها منتظرت هستند.
+Undo %d|Annuler %d|Deshacer %d|Annulla %d|Ångra %d|Angre %d|تراجع %d|Geri al %d|برگشت %d
+Undo  %d|Annuler  %d|Deshacer  %d|Annulla  %d|Ångra  %d|Angre  %d|تراجع  %d|Geri al  %d|برگشت  %d
+Undo VIDEO|Annuler VIDÉO|Deshacer VÍDEO|Annulla VIDEO|Ångra VIDEO|Angre VIDEO|تراجع بفيديو|VİDEO ile geri al|برگشت با ویدیو
+Undo  VIDEO|Annuler VIDÉO|Deshacer VÍDEO|Annulla VIDEO|Ångra VIDEO|Angre VIDEO|تراجع بفيديو|VİDEO ile geri al|برگشت با ویدیو
+Hint  %d|Indice  %d|Pista  %d|Aiuto  %d|Ledtråd  %d|Hint  %d|تلميح  %d|İpucu  %d|راهنما  %d
++ Tube  >|+ Tube  >|+ Tubo  >|+ Tubo  >|+ Rör  >|+ Rør  >|+ أنبوب  >|+ Tüp  >|+ لوله  >
+VIDEO|VIDÉO|VÍDEO|VIDEO|VIDEO|VIDEO|فيديو|VİDEO|ویدیو
+ADVERTISEMENT|PUBLICITÉ|PUBLICIDAD|PUBBLICITÀ|ANNONS|ANNONSE|إعلان|REKLAM|تبلیغات
+Sort every kitten to break the witch's spell|Triez les chatons pour briser le sort|Ordena los gatitos y rompe el hechizo|Ordina i gattini per spezzare il sortilegio|Sortera kattungarna och bryt förtrollningen|Sorter kattungene og bryt trolldommen|رتّب القطط لكسر تعويذة الساحرة|Kedileri eşleştir, cadının büyüsünü boz|گربه‌ها را مرتب کن تا طلسم جادوگر بشکند
+Tap a tube, then its destination|Touchez un tube, puis sa destination|Toca un tubo y luego su destino|Tocca un tubo, poi la destinazione|Tryck på ett rör och sedan målet|Trykk på et rør og deretter målet|المس أنبوبًا ثم وجهته|Bir tüpe, sonra hedefine dokun|یک لوله و سپس مقصدش را لمس کن
+Spell weakened  %d / %d|Sort affaibli  %d / %d|Hechizo debilitado  %d / %d|Sortilegio indebolito  %d / %d|Förtrollningen försvagas  %d / %d|Trolldommen svekkes  %d / %d|ضعفت التعويذة  %d / %d|Büyü zayıfladı  %d / %d|طلسم ضعیف شده  %d از %d
+All %d kittens are free!|Les %d chatons sont libres !|¡Los %d gatitos son libres!|Tutti i %d gattini sono liberi!|Alla %d kattungar är fria!|Alle %d kattungene er fri!|تحررت القطط الـ%d!|%d yavru kedi özgür!|هر %d گربه آزاد شدند!
+The spell is broken! Run, kittens!|Le sort est brisé ! Fuyez, chatons !|¡Hechizo roto! ¡Corran, gatitos!|Sortilegio spezzato! Correte, gattini!|Förtrollningen är bruten! Spring!|Trolldommen er brutt! Løp!|انكسرت التعويذة! اهربوا يا قطط!|Büyü bozuldu! Kaçın kedicikler!|طلسم شکست! فرار کنید گربه‌ها!
+Out of moves. Try again or rewind.|Plus de coups. Réessayez ou annulez.|Sin movimientos. Reintenta o deshaz.|Mosse finite. Riprova o annulla.|Slut på drag. Försök igen eller ångra.|Ingen trekk. Prøv igjen eller angre.|نفدت الحركات. أعد المحاولة أو تراجع.|Hamle bitti. Tekrar dene ya da geri al.|حرکت تمام شد؛ دوباره تلاش کن یا برگرد.
+New friend: %s!|Nouvel ami : %s !|¡Nuevo amigo: %s!|Nuovo amico: %s!|Ny vän: %s!|Ny venn: %s!|صديق جديد: %s!|Yeni dost: %s!|دوست تازه: %s!
+Drag %d matching kittens together|Déplacez %d chatons identiques ensemble|Mueve %d gatitos iguales juntos|Sposta insieme %d gattini uguali|Flytta %d lika kattungar tillsammans|Flytt %d like kattunger sammen|اسحب %d قطط متشابهة معًا|%d aynı kediyi birlikte taşı|%d گربهٔ هم‌نوع را با هم جابه‌جا کن
+Drop on an empty or matching tube|Choisissez un tube vide ou identique|Elige un tubo vacío o del mismo tipo|Scegli un tubo vuoto o dello stesso tipo|Släpp i ett tomt eller matchande rör|Slipp i et tomt eller matchende rør|اختر أنبوبًا فارغًا أو مطابقًا|Boş veya eşleşen bir tüpe bırak|روی لولهٔ خالی یا هم‌نوع رها کن
+Match the top cat, or choose an empty tube|Même chat au sommet, ou tube vide|Mismo gato arriba o un tubo vacío|Stesso gatto in cima o tubo vuoto|Matcha översta katten eller välj tomt rör|Match katten øverst eller velg tomt rør|طابق القطة العلوية أو اختر أنبوبًا فارغًا|Üstteki kediyi eşleştir veya boş tüp seç|گربهٔ بالایی باید هم‌نوع باشد یا لوله خالی باشد
+Lovely! Keep the kittens together.|Super ! Rassemblez les chatons.|¡Genial! Agrupa a los gatitos.|Bene! Riunisci i gattini.|Fint! Samla kattungarna.|Flott! Samle kattungene.|رائع! اجمع القطط المتشابهة.|Harika! Kedileri bir araya getir.|عالیه! گربه‌های هم‌نوع را کنار هم بگذار.
+The spell is weaker! Keep sorting.|Le sort faiblit ! Continuez.|¡El hechizo se debilita! Sigue.|Il sortilegio si indebolisce! Continua.|Förtrollningen försvagas! Fortsätt.|Trolldommen svekkes! Fortsett.|ضعفت التعويذة! واصل الترتيب.|Büyü zayıflıyor! Devam et.|طلسم ضعیف‌تر شد! ادامه بده.
+Purrfect! All kittens are home.|Parfait ! Les chatons sont sauvés.|¡Perfecto! Los gatitos están a salvo.|Perfetto! I gattini sono salvi.|Perfekt! Alla kattungar är hemma.|Perfekt! Alle kattungene er hjemme.|ممتاز! عادت كل القطط إلى البيت.|Mükemmel! Tüm kediler evde.|عالی شد! همهٔ گربه‌ها نجات پیدا کردند.
+One small step back.|Un petit retour en arrière.|Un pequeño paso atrás.|Un piccolo passo indietro.|Ett litet steg tillbaka.|Et lite steg tilbake.|خطوة صغيرة للخلف.|Küçük bir adım geri.|یک قدم کوچک به عقب.
+Video reward: an extra tube!|Récompense vidéo : un tube en plus !|¡Recompensa: un tubo extra!|Premio video: un tubo extra!|Videobelöning: ett extra rör!|Videobelønning: et ekstra rør!|مكافأة الفيديو: أنبوب إضافي!|Video ödülü: ek tüp!|جایزهٔ ویدیو: یک لولهٔ اضافه!
+Need %d coins. Complete a new level to earn more!|Il faut %d pièces. Terminez un nouveau niveau !|Necesitas %d monedas. ¡Completa otro nivel!|Servono %d monete. Completa un nuovo livello!|Du behöver %d mynt. Klara en ny bana!|Du trenger %d mynter. Fullfør et nytt nivå!|تحتاج %d عملة. أكمل مرحلة جديدة!|%d altın gerekli. Yeni bölüm tamamla!|%d سکه لازم داری؛ یک مرحله تازه را کامل کن!
+Follow the highlighted tubes first.|Suivez d’abord les tubes indiqués.|Sigue primero los tubos resaltados.|Segui prima i tubi evidenziati.|Följ först de markerade rören.|Følg de markerte rørene først.|اتبع الأنابيب المضيئة أولًا.|Önce işaretli tüpleri izle.|اول لوله‌های مشخص‌شده را دنبال کن.
+Video unavailable. Please try again later.|Vidéo indisponible. Réessayez plus tard.|Vídeo no disponible. Inténtalo luego.|Video non disponibile. Riprova più tardi.|Videon är inte tillgänglig. Försök senare.|Video utilgjengelig. Prøv senere.|الفيديو غير متاح. حاول لاحقًا.|Video yok. Daha sonra tekrar dene.|ویدیو در دسترس نیست؛ بعداً تلاش کن.
+Three extra undos|Trois retours supplémentaires|Tres deshacer extra|Tre annullamenti extra|Tre extra ångringar|Tre ekstra angremuligheter|ثلاث فرص تراجع إضافية|Üç ek geri alma|سه برگشت اضافه
+An extra little space|Un peu de place en plus|Un poco de espacio extra|Un po’ di spazio in più|Lite extra utrymme|Litt ekstra plass|مساحة صغيرة إضافية|Biraz daha yer|کمی فضای بیشتر
+Video: rewind now and keep 2 more undos.|Vidéo : annulez et gardez 2 retours.|Vídeo: deshaz y conserva 2 intentos.|Video: annulla e tieni altri 2 tentativi.|Video: ångra nu och spara 2 till.|Video: angre nå og behold 2 til.|فيديو: تراجع الآن واحتفظ بفرصتين.|Video: geri al ve 2 hakkın daha kalsın.|ویدیو ببین، یک بار برگرد و ۲ برگشت نگه دار.
+Watch a video to unlock one extra tube.|Une vidéo pour un tube supplémentaire.|Mira un vídeo para obtener otro tubo.|Guarda un video per un tubo extra.|Se en video för ett extra rör.|Se en video for et ekstra rør.|شاهد فيديو لفتح أنبوب إضافي.|Ek tüp için video izle.|برای یک لولهٔ اضافه ویدیو ببین.
+Desktop ad preview — no real advertisement|Aperçu PC — aucune publicité réelle|Vista previa PC — sin anuncio real|Anteprima PC — nessuna pubblicità reale|PC-förhandsvisning — ingen riktig annons|PC-forhåndsvisning — ingen ekte annonse|معاينة الحاسوب — ليس إعلانًا حقيقيًا|Masaüstü önizlemesi — gerçek reklam değil|پیش‌نمایش رایانه؛ تبلیغ واقعی نیست
+Preview  %d|Aperçu  %d|Vista previa  %d|Anteprima  %d|Förhandsvisning  %d|Forhåndsvisning  %d|معاينة  %d|Önizleme  %d|پیش‌نمایش  %d
+Complete test video|Terminer la vidéo test|Completar vídeo de prueba|Completa il video di prova|Slutför testvideon|Fullfør testvideo|إنهاء الفيديو التجريبي|Test videosunu tamamla|تکمیل ویدیوی آزمایشی
+Tube %d  >  Tube %d|Tube %d  >  Tube %d|Tubo %d  >  Tubo %d|Tubo %d  >  Tubo %d|Rör %d  >  Rör %d|Rør %d  >  Rør %d|أنبوب %d  >  أنبوب %d|Tüp %d  >  Tüp %d|لولهٔ %d  >  لولهٔ %d
+Finding a little help…|Recherche d’un indice…|Buscando una pista…|Cerco un aiuto…|Letar efter en ledtråd…|Finner et hint…|جارٍ البحث عن تلميح…|İpucu aranıyor…|در حال پیدا کردن راهنما…
+Try Undo or Reset to find a fresh path.|Annulez ou recommencez pour une autre voie.|Deshaz o reinicia para buscar otro camino.|Annulla o ricomincia per trovare una via.|Ångra eller börja om för en ny väg.|Angre eller start på nytt for en ny vei.|تراجع أو أعد البدء لإيجاد طريق جديد.|Yeni yol için geri al ya da yeniden başlat.|برای پیدا کردن راه تازه برگرد یا دوباره شروع کن.
+3 stars: %d  •  2 stars: %d  •  Limit: %d|3 étoiles : %d  •  2 étoiles : %d  •  Limite : %d|3 estrellas: %d  •  2 estrellas: %d  •  Límite: %d|3 stelle: %d  •  2 stelle: %d  •  Limite: %d|3 stjärnor: %d  •  2 stjärnor: %d  •  Gräns: %d|3 stjerner: %d  •  2 stjerner: %d  •  Grense: %d|3 نجوم: %d  •  نجمتان: %d  •  الحد: %d|3 yıldız: %d  •  2 yıldız: %d  •  Sınır: %d|۳ ستاره: %d  •  ۲ ستاره: %d  •  سقف: %d
+3 stars: %d moves, no help|3 étoiles : %d coups sans aide|3 estrellas: %d movimientos sin ayuda|3 stelle: %d mosse senza aiuti|3 stjärnor: %d drag utan hjälp|3 stjerner: %d trekk uten hjelp|3 نجوم: %d حركات دون مساعدة|3 yıldız: %d hamle, yardımsız|۳ ستاره: %d حرکت بدون کمک
+%d stars available|%d étoiles possibles|%d estrellas disponibles|%d stelle disponibili|%d stjärnor möjliga|%d stjerner tilgjengelig|%d نجوم متاحة|%d yıldız alınabilir|%d ستاره در دسترس
+%s. Fill matching tubes to light stars.|%s. Remplissez les tubes pour les étoiles.|%s. Llena los tubos para ganar estrellas.|%s. Riempi i tubi per ottenere stelle.|%s. Fyll matchande rör för stjärnor.|%s. Fyll like rør for stjerner.|%s. املأ الأنابيب المتشابهة لإضاءة النجوم.|%s. Yıldızlar için eşleşen tüpleri doldur.|%s. لوله‌های هم‌نوع را پر کن تا ستاره‌ها روشن شوند.
+Ginger Tabby|Tigré roux|Atigrado naranja|Soriano rosso|Röd tabby|Rød tabby|قط برتقالي مخطط|Sarman|گربهٔ نارنجی راه‌راه
+Silver Tabby|Tigré argenté|Atigrado plateado|Soriano argentato|Silvertabby|Sølvtabby|قط فضي مخطط|Gümüş tekir|گربهٔ نقره‌ای راه‌راه
+Calico Bobtail|Calico|Calicó|Calico|Trefärgad|Trefarget|قط ثلاثي الألوان|Üç renkli|گربهٔ سه‌رنگ
+Tuxedo|Tuxedo|Esmoquin|Smoking|Smokingkatt|Smokingkatt|قط أسود وأبيض|Smokin kedi|گربهٔ سیاه‌وسفید
+Bombay|Bombay|Bombay|Bombay|Bombay|Bombay|بومباي|Bombay|بمبئی
+White Persian|Persan blanc|Persa blanco|Persiano bianco|Vit perser|Hvit perser|قط فارسي أبيض|Beyaz İran kedisi|پرشین سفید
+Siamese|Siamois|Siamés|Siamese|Siames|Siameser|قط سيامي|Siyam|سیامی
+Ragdoll|Ragdoll|Ragdoll|Ragdoll|Ragdoll|Ragdoll|راغدول|Ragdoll|رگدال
+Russian Blue|Bleu russe|Azul ruso|Blu di Russia|Russian blue|Russisk blå|أزرق روسي|Rus mavisi|آبی روسی
+
+Witch Tower|Tour de sorcière|Torre de bruja|Torre della strega|Häxtornet|Heksetårnet|برج الساحرة|Cadı Kulesi|برج جادوگر
+Crystal Cave|Grotte de cristal|Cueva de cristal|Grotta di cristallo|Kristallgrottan|Krystallhulen|كهف البلورات|Kristal Mağarası|غار کریستالی
+Forest Cottage|Chalet forestier|Cabaña del bosque|Casetta nel bosco|Skogsstugan|Skogshytta|كوخ الغابة|Orman Kulübesi|کلبه جنگلی

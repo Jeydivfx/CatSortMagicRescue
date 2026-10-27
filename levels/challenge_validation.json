@@ -1,0 +1,1596 @@
+{
+  "count": 198,
+  "levels": [
+    {
+      "level": 11,
+      "colors": 4,
+      "group_moves": 10,
+      "single_moves": 14,
+      "states": 42,
+      "attempts": 1
+    },
+    {
+      "level": 16,
+      "colors": 4,
+      "group_moves": 14,
+      "single_moves": 17,
+      "states": 53,
+      "attempts": 1
+    },
+    {
+      "level": 26,
+      "colors": 5,
+      "group_moves": 18,
+      "single_moves": 25,
+      "states": 91,
+      "attempts": 1
+    },
+    {
+      "level": 22,
+      "colors": 4,
+      "group_moves": 13,
+      "single_moves": 17,
+      "states": 58,
+      "attempts": 1
+    },
+    {
+      "level": 32,
+      "colors": 5,
+      "group_moves": 14,
+      "single_moves": 16,
+      "states": 45,
+      "attempts": 1
+    },
+    {
+      "level": 35,
+      "colors": 5,
+      "group_moves": 17,
+      "single_moves": 24,
+      "states": 75,
+      "attempts": 1
+    },
+    {
+      "level": 49,
+      "colors": 6,
+      "group_moves": 19,
+      "single_moves": 27,
+      "states": 116,
+      "attempts": 1
+    },
+    {
+      "level": 41,
+      "colors": 5,
+      "group_moves": 16,
+      "single_moves": 24,
+      "states": 76,
+      "attempts": 1
+    },
+    {
+      "level": 55,
+      "colors": 6,
+      "group_moves": 20,
+      "single_moves": 29,
+      "states": 134,
+      "attempts": 1
+    },
+    {
+      "level": 52,
+      "colors": 6,
+      "group_moves": 20,
+      "single_moves": 29,
+      "states": 116,
+      "attempts": 1
+    },
+    {
+      "level": 67,
+      "colors": 6,
+      "group_moves": 21,
+      "single_moves": 25,
+      "states": 93,
+      "attempts": 1
+    },
+    {
+      "level": 65,
+      "colors": 6,
+      "group_moves": 19,
+      "single_moves": 23,
+      "states": 64,
+      "attempts": 1
+    },
+    {
+      "level": 76,
+      "colors": 7,
+      "group_moves": 26,
+      "single_moves": 34,
+      "states": 85,
+      "attempts": 1
+    },
+    {
+      "level": 71,
+      "colors": 6,
+      "group_moves": 21,
+      "single_moves": 29,
+      "states": 129,
+      "attempts": 1
+    },
+    {
+      "level": 87,
+      "colors": 7,
+      "group_moves": 27,
+      "single_moves": 36,
+      "states": 118,
+      "attempts": 1
+    },
+    {
+      "level": 83,
+      "colors": 7,
+      "group_moves": 19,
+      "single_moves": 27,
+      "states": 92,
+      "attempts": 1
+    },
+    {
+      "level": 97,
+      "colors": 7,
+      "group_moves": 18,
+      "single_moves": 29,
+      "states": 85,
+      "attempts": 1
+    },
+    {
+      "level": 93,
+      "colors": 7,
+      "group_moves": 22,
+      "single_moves": 29,
+      "states": 115,
+      "attempts": 1
+    },
+    {
+      "level": 107,
+      "colors": 7,
+      "group_moves": 24,
+      "single_moves": 32,
+      "states": 89,
+      "attempts": 1
+    },
+    {
+      "level": 101,
+      "colors": 7,
+      "group_moves": 24,
+      "single_moves": 31,
+      "states": 156,
+      "attempts": 1
+    },
+    {
+      "level": 113,
+      "colors": 7,
+      "group_moves": 20,
+      "single_moves": 24,
+      "states": 101,
+      "attempts": 1
+    },
+    {
+      "level": 117,
+      "colors": 7,
+      "group_moves": 23,
+      "single_moves": 31,
+      "states": 77,
+      "attempts": 1
+    },
+    {
+      "level": 125,
+      "colors": 7,
+      "group_moves": 24,
+      "single_moves": 29,
+      "states": 86,
+      "attempts": 1
+    },
+    {
+      "level": 126,
+      "colors": 8,
+      "group_moves": 27,
+      "single_moves": 38,
+      "states": 137,
+      "attempts": 1
+    },
+    {
+      "level": 138,
+      "colors": 8,
+      "group_moves": 29,
+      "single_moves": 39,
+      "states": 162,
+      "attempts": 1
+    },
+    {
+      "level": 136,
+      "colors": 8,
+      "group_moves": 27,
+      "single_moves": 38,
+      "states": 147,
+      "attempts": 1
+    },
+    {
+      "level": 141,
+      "colors": 8,
+      "group_moves": 24,
+      "single_moves": 33,
+      "states": 117,
+      "attempts": 1
+    },
+    {
+      "level": 142,
+      "colors": 8,
+      "group_moves": 25,
+      "single_moves": 39,
+      "states": 145,
+      "attempts": 1
+    },
+    {
+      "level": 153,
+      "colors": 8,
+      "group_moves": 28,
+      "single_moves": 35,
+      "states": 89,
+      "attempts": 1
+    },
+    {
+      "level": 154,
+      "colors": 8,
+      "group_moves": 29,
+      "single_moves": 39,
+      "states": 129,
+      "attempts": 1
+    },
+    {
+      "level": 161,
+      "colors": 8,
+      "group_moves": 29,
+      "single_moves": 37,
+      "states": 178,
+      "attempts": 1
+    },
+    {
+      "level": 168,
+      "colors": 8,
+      "group_moves": 25,
+      "single_moves": 35,
+      "states": 112,
+      "attempts": 1
+    },
+    {
+      "level": 175,
+      "colors": 8,
+      "group_moves": 25,
+      "single_moves": 32,
+      "states": 119,
+      "attempts": 1
+    },
+    {
+      "level": 178,
+      "colors": 8,
+      "group_moves": 25,
+      "single_moves": 32,
+      "states": 114,
+      "attempts": 1
+    },
+    {
+      "level": 184,
+      "colors": 8,
+      "group_moves": 26,
+      "single_moves": 41,
+      "states": 134,
+      "attempts": 1
+    },
+    {
+      "level": 181,
+      "colors": 8,
+      "group_moves": 24,
+      "single_moves": 32,
+      "states": 103,
+      "attempts": 1
+    },
+    {
+      "level": 192,
+      "colors": 8,
+      "group_moves": 22,
+      "single_moves": 33,
+      "states": 134,
+      "attempts": 1
+    },
+    {
+      "level": 196,
+      "colors": 8,
+      "group_moves": 28,
+      "single_moves": 39,
+      "states": 123,
+      "attempts": 1
+    },
+    {
+      "level": 206,
+      "colors": 8,
+      "group_moves": 28,
+      "single_moves": 45,
+      "states": 140,
+      "attempts": 1
+    },
+    {
+      "level": 208,
+      "colors": 8,
+      "group_moves": 26,
+      "single_moves": 34,
+      "states": 89,
+      "attempts": 1
+    },
+    {
+      "level": 218,
+      "colors": 8,
+      "group_moves": 22,
+      "single_moves": 32,
+      "states": 171,
+      "attempts": 1
+    },
+    {
+      "level": 212,
+      "colors": 8,
+      "group_moves": 27,
+      "single_moves": 36,
+      "states": 123,
+      "attempts": 1
+    },
+    {
+      "level": 226,
+      "colors": 8,
+      "group_moves": 28,
+      "single_moves": 37,
+      "states": 94,
+      "attempts": 1
+    },
+    {
+      "level": 229,
+      "colors": 8,
+      "group_moves": 22,
+      "single_moves": 31,
+      "states": 129,
+      "attempts": 1
+    },
+    {
+      "level": 233,
+      "colors": 8,
+      "group_moves": 25,
+      "single_moves": 34,
+      "states": 92,
+      "attempts": 1
+    },
+    {
+      "level": 234,
+      "colors": 8,
+      "group_moves": 27,
+      "single_moves": 41,
+      "states": 159,
+      "attempts": 1
+    },
+    {
+      "level": 246,
+      "colors": 8,
+      "group_moves": 25,
+      "single_moves": 38,
+      "states": 136,
+      "attempts": 1
+    },
+    {
+      "level": 244,
+      "colors": 8,
+      "group_moves": 29,
+      "single_moves": 41,
+      "states": 118,
+      "attempts": 1
+    },
+    {
+      "level": 251,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 43,
+      "states": 205,
+      "attempts": 1
+    },
+    {
+      "level": 258,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 43,
+      "states": 131,
+      "attempts": 1
+    },
+    {
+      "level": 263,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 41,
+      "states": 159,
+      "attempts": 1
+    },
+    {
+      "level": 267,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 37,
+      "states": 141,
+      "attempts": 1
+    },
+    {
+      "level": 279,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 48,
+      "states": 163,
+      "attempts": 1
+    },
+    {
+      "level": 271,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 39,
+      "states": 111,
+      "attempts": 1
+    },
+    {
+      "level": 289,
+      "colors": 9,
+      "group_moves": 27,
+      "single_moves": 39,
+      "states": 186,
+      "attempts": 1
+    },
+    {
+      "level": 288,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 43,
+      "states": 146,
+      "attempts": 1
+    },
+    {
+      "level": 291,
+      "colors": 9,
+      "group_moves": 34,
+      "single_moves": 45,
+      "states": 203,
+      "attempts": 1
+    },
+    {
+      "level": 293,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 40,
+      "states": 128,
+      "attempts": 1
+    },
+    {
+      "level": 301,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 38,
+      "states": 186,
+      "attempts": 1
+    },
+    {
+      "level": 304,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 40,
+      "states": 110,
+      "attempts": 1
+    },
+    {
+      "level": 312,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 44,
+      "states": 87,
+      "attempts": 1
+    },
+    {
+      "level": 311,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 42,
+      "states": 113,
+      "attempts": 1
+    },
+    {
+      "level": 324,
+      "colors": 9,
+      "group_moves": 26,
+      "single_moves": 36,
+      "states": 99,
+      "attempts": 1
+    },
+    {
+      "level": 328,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 38,
+      "states": 155,
+      "attempts": 1
+    },
+    {
+      "level": 332,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 39,
+      "states": 159,
+      "attempts": 1
+    },
+    {
+      "level": 334,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 38,
+      "states": 125,
+      "attempts": 1
+    },
+    {
+      "level": 348,
+      "colors": 9,
+      "group_moves": 27,
+      "single_moves": 34,
+      "states": 168,
+      "attempts": 1
+    },
+    {
+      "level": 349,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 42,
+      "states": 175,
+      "attempts": 1
+    },
+    {
+      "level": 351,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 46,
+      "states": 164,
+      "attempts": 1
+    },
+    {
+      "level": 353,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 47,
+      "states": 196,
+      "attempts": 1
+    },
+    {
+      "level": 368,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 42,
+      "states": 182,
+      "attempts": 1
+    },
+    {
+      "level": 361,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 42,
+      "states": 129,
+      "attempts": 1
+    },
+    {
+      "level": 374,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 38,
+      "states": 137,
+      "attempts": 1
+    },
+    {
+      "level": 376,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 39,
+      "states": 130,
+      "attempts": 1
+    },
+    {
+      "level": 384,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 49,
+      "states": 204,
+      "attempts": 1
+    },
+    {
+      "level": 389,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 47,
+      "states": 152,
+      "attempts": 1
+    },
+    {
+      "level": 391,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 50,
+      "states": 182,
+      "attempts": 1
+    },
+    {
+      "level": 398,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 41,
+      "states": 173,
+      "attempts": 1
+    },
+    {
+      "level": 403,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 41,
+      "states": 122,
+      "attempts": 1
+    },
+    {
+      "level": 409,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 42,
+      "states": 128,
+      "attempts": 1
+    },
+    {
+      "level": 414,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 39,
+      "states": 157,
+      "attempts": 1
+    },
+    {
+      "level": 419,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 43,
+      "states": 224,
+      "attempts": 1
+    },
+    {
+      "level": 423,
+      "colors": 9,
+      "group_moves": 34,
+      "single_moves": 46,
+      "states": 144,
+      "attempts": 1
+    },
+    {
+      "level": 428,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 39,
+      "states": 129,
+      "attempts": 1
+    },
+    {
+      "level": 432,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 43,
+      "states": 119,
+      "attempts": 1
+    },
+    {
+      "level": 434,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 41,
+      "states": 186,
+      "attempts": 1
+    },
+    {
+      "level": 445,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 44,
+      "states": 118,
+      "attempts": 1
+    },
+    {
+      "level": 444,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 43,
+      "states": 187,
+      "attempts": 1
+    },
+    {
+      "level": 454,
+      "colors": 9,
+      "group_moves": 26,
+      "single_moves": 35,
+      "states": 125,
+      "attempts": 1
+    },
+    {
+      "level": 456,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 47,
+      "states": 156,
+      "attempts": 1
+    },
+    {
+      "level": 466,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 42,
+      "states": 146,
+      "attempts": 1
+    },
+    {
+      "level": 464,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 44,
+      "states": 146,
+      "attempts": 1
+    },
+    {
+      "level": 471,
+      "colors": 9,
+      "group_moves": 34,
+      "single_moves": 47,
+      "states": 148,
+      "attempts": 1
+    },
+    {
+      "level": 472,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 41,
+      "states": 124,
+      "attempts": 1
+    },
+    {
+      "level": 489,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 41,
+      "states": 165,
+      "attempts": 1
+    },
+    {
+      "level": 481,
+      "colors": 9,
+      "group_moves": 34,
+      "single_moves": 48,
+      "states": 156,
+      "attempts": 1
+    },
+    {
+      "level": 497,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 40,
+      "states": 191,
+      "attempts": 1
+    },
+    {
+      "level": 498,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 38,
+      "states": 113,
+      "attempts": 1
+    },
+    {
+      "level": 508,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 40,
+      "states": 170,
+      "attempts": 1
+    },
+    {
+      "level": 502,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 46,
+      "states": 148,
+      "attempts": 1
+    },
+    {
+      "level": 518,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 48,
+      "states": 150,
+      "attempts": 1
+    },
+    {
+      "level": 517,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 35,
+      "states": 89,
+      "attempts": 1
+    },
+    {
+      "level": 529,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 43,
+      "states": 135,
+      "attempts": 1
+    },
+    {
+      "level": 522,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 41,
+      "states": 171,
+      "attempts": 1
+    },
+    {
+      "level": 538,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 40,
+      "states": 156,
+      "attempts": 1
+    },
+    {
+      "level": 539,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 38,
+      "states": 127,
+      "attempts": 1
+    },
+    {
+      "level": 549,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 41,
+      "states": 105,
+      "attempts": 1
+    },
+    {
+      "level": 543,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 44,
+      "states": 131,
+      "attempts": 2
+    },
+    {
+      "level": 558,
+      "colors": 9,
+      "group_moves": 27,
+      "single_moves": 40,
+      "states": 137,
+      "attempts": 1
+    },
+    {
+      "level": 551,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 39,
+      "states": 147,
+      "attempts": 1
+    },
+    {
+      "level": 566,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 42,
+      "states": 144,
+      "attempts": 1
+    },
+    {
+      "level": 563,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 40,
+      "states": 134,
+      "attempts": 1
+    },
+    {
+      "level": 573,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 46,
+      "states": 158,
+      "attempts": 1
+    },
+    {
+      "level": 577,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 42,
+      "states": 115,
+      "attempts": 1
+    },
+    {
+      "level": 586,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 41,
+      "states": 361,
+      "attempts": 1
+    },
+    {
+      "level": 582,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 39,
+      "states": 156,
+      "attempts": 1
+    },
+    {
+      "level": 591,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 38,
+      "states": 117,
+      "attempts": 1
+    },
+    {
+      "level": 597,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 42,
+      "states": 289,
+      "attempts": 1
+    },
+    {
+      "level": 603,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 41,
+      "states": 125,
+      "attempts": 1
+    },
+    {
+      "level": 602,
+      "colors": 9,
+      "group_moves": 25,
+      "single_moves": 38,
+      "states": 194,
+      "attempts": 1
+    },
+    {
+      "level": 611,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 44,
+      "states": 268,
+      "attempts": 1
+    },
+    {
+      "level": 612,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 41,
+      "states": 144,
+      "attempts": 1
+    },
+    {
+      "level": 627,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 36,
+      "states": 162,
+      "attempts": 1
+    },
+    {
+      "level": 625,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 41,
+      "states": 114,
+      "attempts": 1
+    },
+    {
+      "level": 634,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 42,
+      "states": 227,
+      "attempts": 1
+    },
+    {
+      "level": 635,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 34,
+      "states": 117,
+      "attempts": 1
+    },
+    {
+      "level": 643,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 45,
+      "states": 151,
+      "attempts": 1
+    },
+    {
+      "level": 642,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 41,
+      "states": 130,
+      "attempts": 1
+    },
+    {
+      "level": 652,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 39,
+      "states": 131,
+      "attempts": 1
+    },
+    {
+      "level": 651,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 41,
+      "states": 151,
+      "attempts": 1
+    },
+    {
+      "level": 661,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 42,
+      "states": 144,
+      "attempts": 1
+    },
+    {
+      "level": 668,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 48,
+      "states": 139,
+      "attempts": 1
+    },
+    {
+      "level": 679,
+      "colors": 9,
+      "group_moves": 34,
+      "single_moves": 48,
+      "states": 213,
+      "attempts": 1
+    },
+    {
+      "level": 678,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 46,
+      "states": 130,
+      "attempts": 1
+    },
+    {
+      "level": 686,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 44,
+      "states": 215,
+      "attempts": 1
+    },
+    {
+      "level": 684,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 41,
+      "states": 166,
+      "attempts": 1
+    },
+    {
+      "level": 695,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 42,
+      "states": 98,
+      "attempts": 1
+    },
+    {
+      "level": 691,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 48,
+      "states": 134,
+      "attempts": 1
+    },
+    {
+      "level": 709,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 39,
+      "states": 156,
+      "attempts": 1
+    },
+    {
+      "level": 701,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 40,
+      "states": 150,
+      "attempts": 1
+    },
+    {
+      "level": 715,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 36,
+      "states": 155,
+      "attempts": 1
+    },
+    {
+      "level": 713,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 42,
+      "states": 166,
+      "attempts": 1
+    },
+    {
+      "level": 721,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 43,
+      "states": 159,
+      "attempts": 1
+    },
+    {
+      "level": 727,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 42,
+      "states": 175,
+      "attempts": 1
+    },
+    {
+      "level": 737,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 36,
+      "states": 102,
+      "attempts": 1
+    },
+    {
+      "level": 734,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 48,
+      "states": 166,
+      "attempts": 1
+    },
+    {
+      "level": 745,
+      "colors": 9,
+      "group_moves": 26,
+      "single_moves": 36,
+      "states": 99,
+      "attempts": 1
+    },
+    {
+      "level": 743,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 43,
+      "states": 126,
+      "attempts": 1
+    },
+    {
+      "level": 753,
+      "colors": 9,
+      "group_moves": 35,
+      "single_moves": 50,
+      "states": 240,
+      "attempts": 1
+    },
+    {
+      "level": 757,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 35,
+      "states": 134,
+      "attempts": 1
+    },
+    {
+      "level": 767,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 41,
+      "states": 286,
+      "attempts": 1
+    },
+    {
+      "level": 766,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 46,
+      "states": 334,
+      "attempts": 1
+    },
+    {
+      "level": 774,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 43,
+      "states": 174,
+      "attempts": 1
+    },
+    {
+      "level": 773,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 44,
+      "states": 151,
+      "attempts": 1
+    },
+    {
+      "level": 788,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 38,
+      "states": 147,
+      "attempts": 1
+    },
+    {
+      "level": 786,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 48,
+      "states": 249,
+      "attempts": 1
+    },
+    {
+      "level": 794,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 40,
+      "states": 227,
+      "attempts": 1
+    },
+    {
+      "level": 793,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 43,
+      "states": 160,
+      "attempts": 1
+    },
+    {
+      "level": 804,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 39,
+      "states": 124,
+      "attempts": 1
+    },
+    {
+      "level": 806,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 45,
+      "states": 193,
+      "attempts": 1
+    },
+    {
+      "level": 812,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 40,
+      "states": 211,
+      "attempts": 1
+    },
+    {
+      "level": 813,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 40,
+      "states": 114,
+      "attempts": 1
+    },
+    {
+      "level": 826,
+      "colors": 9,
+      "group_moves": 26,
+      "single_moves": 35,
+      "states": 176,
+      "attempts": 1
+    },
+    {
+      "level": 823,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 43,
+      "states": 232,
+      "attempts": 1
+    },
+    {
+      "level": 835,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 42,
+      "states": 113,
+      "attempts": 1
+    },
+    {
+      "level": 833,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 42,
+      "states": 135,
+      "attempts": 1
+    },
+    {
+      "level": 849,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 44,
+      "states": 152,
+      "attempts": 1
+    },
+    {
+      "level": 842,
+      "colors": 9,
+      "group_moves": 25,
+      "single_moves": 32,
+      "states": 96,
+      "attempts": 1
+    },
+    {
+      "level": 854,
+      "colors": 9,
+      "group_moves": 26,
+      "single_moves": 34,
+      "states": 174,
+      "attempts": 1
+    },
+    {
+      "level": 857,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 42,
+      "states": 177,
+      "attempts": 1
+    },
+    {
+      "level": 868,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 42,
+      "states": 144,
+      "attempts": 1
+    },
+    {
+      "level": 865,
+      "colors": 9,
+      "group_moves": 27,
+      "single_moves": 37,
+      "states": 137,
+      "attempts": 1
+    },
+    {
+      "level": 876,
+      "colors": 9,
+      "group_moves": 24,
+      "single_moves": 34,
+      "states": 169,
+      "attempts": 1
+    },
+    {
+      "level": 873,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 43,
+      "states": 198,
+      "attempts": 1
+    },
+    {
+      "level": 889,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 48,
+      "states": 190,
+      "attempts": 1
+    },
+    {
+      "level": 885,
+      "colors": 9,
+      "group_moves": 26,
+      "single_moves": 34,
+      "states": 85,
+      "attempts": 1
+    },
+    {
+      "level": 894,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 41,
+      "states": 171,
+      "attempts": 1
+    },
+    {
+      "level": 896,
+      "colors": 9,
+      "group_moves": 27,
+      "single_moves": 39,
+      "states": 185,
+      "attempts": 1
+    },
+    {
+      "level": 907,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 49,
+      "states": 197,
+      "attempts": 1
+    },
+    {
+      "level": 903,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 42,
+      "states": 162,
+      "attempts": 1
+    },
+    {
+      "level": 918,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 38,
+      "states": 174,
+      "attempts": 1
+    },
+    {
+      "level": 912,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 40,
+      "states": 130,
+      "attempts": 1
+    },
+    {
+      "level": 925,
+      "colors": 9,
+      "group_moves": 28,
+      "single_moves": 39,
+      "states": 126,
+      "attempts": 1
+    },
+    {
+      "level": 927,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 46,
+      "states": 203,
+      "attempts": 1
+    },
+    {
+      "level": 931,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 45,
+      "states": 201,
+      "attempts": 1
+    },
+    {
+      "level": 932,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 45,
+      "states": 274,
+      "attempts": 1
+    },
+    {
+      "level": 949,
+      "colors": 9,
+      "group_moves": 33,
+      "single_moves": 47,
+      "states": 170,
+      "attempts": 1
+    },
+    {
+      "level": 943,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 41,
+      "states": 152,
+      "attempts": 1
+    },
+    {
+      "level": 957,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 45,
+      "states": 151,
+      "attempts": 1
+    },
+    {
+      "level": 955,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 41,
+      "states": 176,
+      "attempts": 1
+    },
+    {
+      "level": 967,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 41,
+      "states": 104,
+      "attempts": 1
+    },
+    {
+      "level": 965,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 46,
+      "states": 100,
+      "attempts": 1
+    },
+    {
+      "level": 973,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 44,
+      "states": 213,
+      "attempts": 1
+    },
+    {
+      "level": 976,
+      "colors": 9,
+      "group_moves": 34,
+      "single_moves": 47,
+      "states": 210,
+      "attempts": 1
+    },
+    {
+      "level": 986,
+      "colors": 9,
+      "group_moves": 32,
+      "single_moves": 44,
+      "states": 108,
+      "attempts": 1
+    },
+    {
+      "level": 982,
+      "colors": 9,
+      "group_moves": 29,
+      "single_moves": 39,
+      "states": 140,
+      "attempts": 1
+    },
+    {
+      "level": 996,
+      "colors": 9,
+      "group_moves": 30,
+      "single_moves": 42,
+      "states": 271,
+      "attempts": 1
+    },
+    {
+      "level": 993,
+      "colors": 9,
+      "group_moves": 31,
+      "single_moves": 43,
+      "states": 154,
+      "attempts": 1
+    }
+  ],
+  "seed": 26001000,
+  "all_grouped_and_single_certificates_replayed": true,
+  "first_ten_unchanged": true,
+  "no_new_breeds": true,
+  "mean_boundaries_before": 14.59,
+  "mean_boundaries_after": 23.3,
+  "mean_certified_group_moves": 28.38
+}

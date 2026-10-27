@@ -1,0 +1,20 @@
+extends SceneTree
+func _initialize() -> void:call_deferred("run")
+func run() -> void:
+	assert(ProjectSettings.get_setting("application/config/name")=="Cat Sort: Magic Rescue")
+	assert(ProjectSettings.get_setting("application/config/icon")=="res://assets/branding/magic_rescue_icon.png")
+	var preset:=ConfigFile.new();assert(preset.load("res://export_presets.cfg")==OK)
+	assert(preset.get_value("preset.0.options","package/unique_name")=="com.javadgames.catsortmagicrescue")
+	assert(preset.get_value("preset.0.options","package/name")=="Cat Sort: Magic Rescue")
+	assert(preset.get_value("preset.0.options","launcher_icons/main_192x192")=="res://assets/branding/magic_rescue_icon.png")
+	var g=load("res://main.tscn").instantiate();root.add_child(g)
+	g.persistence_enabled=false;g.audio.set_enabled(false);g.audio.set_music_enabled(false)
+	assert(g.menu_ui.get_node("HomeLogo").texture.resource_path.ends_with("magic_rescue_logo.png"))
+	assert(g.hud.mascot.resource_path.ends_with("magic_rescue_icon.png"))
+	var icon: Image=g.hud.mascot.get_image()
+	assert(icon.get_width()==icon.get_height())
+	assert(icon.get_pixel(0,0).a>.99 and icon.get_pixel(icon.get_width()-1,icon.get_height()-1).a>.99)
+	assert(OS.get_user_data_dir().replace("\\","/").ends_with("/Godot/app_userdata/Cat Sort Lab"))
+	g.free();await process_frame
+	print("PASS display name, package identifier, launcher/project/HUD icon, new menu logo, opaque square source and preserved Windows save directory")
+	quit()

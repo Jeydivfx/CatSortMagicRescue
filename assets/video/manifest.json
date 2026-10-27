@@ -1,0 +1,329 @@
+{
+  "duration": 41.5,
+  "width": 720,
+  "height": 1280,
+  "fps": 24,
+  "shots": [
+    {
+      "shot": 1,
+      "start": 0.0,
+      "duration": 4.041667,
+      "source": "01.mp4"
+    },
+    {
+      "shot": 2,
+      "start": 4.041667,
+      "duration": 3.041667,
+      "source": "02-extra.mp4"
+    },
+    {
+      "shot": 3,
+      "start": 7.083333,
+      "duration": 3.041667,
+      "source": "03.mp4"
+    },
+    {
+      "shot": 4,
+      "start": 10.125,
+      "duration": 3.041667,
+      "source": "04.mp4"
+    },
+    {
+      "shot": 5,
+      "start": 13.166667,
+      "duration": 3.041667,
+      "source": "05.mp4"
+    },
+    {
+      "shot": 6,
+      "start": 16.208333,
+      "duration": 3.041667,
+      "source": "06.mp4"
+    },
+    {
+      "shot": 7,
+      "start": 19.25,
+      "duration": 3.041667,
+      "source": "07.mp4"
+    },
+    {
+      "shot": 8,
+      "start": 22.291667,
+      "duration": 3.041667,
+      "source": "08.mp4"
+    },
+    {
+      "shot": 9,
+      "start": 25.333333,
+      "duration": 3.041667,
+      "source": "09.mp4"
+    },
+    {
+      "shot": 10,
+      "start": 28.375,
+      "duration": 5.041667,
+      "source": "10.mp4"
+    },
+    {
+      "shot": 11,
+      "start": 33.416667,
+      "duration": 4.041667,
+      "source": "11.mp4"
+    },
+    {
+      "shot": 12,
+      "start": 37.458333,
+      "duration": 4.041667,
+      "source": "12.mp4"
+    }
+  ],
+  "video": "magic_rescue_intro.ogv",
+  "music": "intro_music.ogg",
+  "music_credit": "Fairytale Waltz \u2014 Kevin MacLeod (incompetech.com), CC BY 4.0",
+  "first_shot_original_audio_muted": true,
+  "original_audio_intact_shots": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    12
+  ],
+  "edited_source_audio_shots": [
+    2,
+    3,
+    4,
+    11
+  ],
+  "sound_design_version": 4,
+  "added_effects": [
+    {
+      "name": "black_kitten_wake_meow",
+      "shot": 2,
+      "time": 6.461667,
+      "source": "assets/audio/sfx_v2/cat_recorded_04.wav",
+      "gain": 0.35,
+      "pitch": 1.0,
+      "filter": "anull"
+    },
+    {
+      "name": "playful_ginger_meow",
+      "shot": 3,
+      "time": 7.203333,
+      "source": "assets/audio/sfx_v2/cat_recorded_05.wav",
+      "gain": 0.6,
+      "pitch": 1.0,
+      "filter": "anull"
+    },
+    {
+      "name": "playful_silver_meow",
+      "shot": 3,
+      "time": 8.183333,
+      "source": "assets/audio/sfx_v2/cat_recorded_04.wav",
+      "gain": 0.52,
+      "pitch": 1.0,
+      "filter": "anull"
+    },
+    {
+      "name": "playful_purple_meow",
+      "shot": 3,
+      "time": 9.203333,
+      "source": "assets/audio/sfx_v2/cat_recorded_03.wav",
+      "gain": 0.55,
+      "pitch": 1.0,
+      "filter": "anull"
+    },
+    {
+      "name": "kitten_play_hop",
+      "shot": 3,
+      "time": 8.463333,
+      "source": "assets/audio/sfx_v2/jump_0.wav",
+      "gain": 0.22,
+      "pitch": 1.08,
+      "filter": "anull"
+    },
+    {
+      "name": "kitten_play_pounce",
+      "shot": 3,
+      "time": 8.963333,
+      "source": "assets/audio/sfx_v2/jump_1.wav",
+      "gain": 0.18,
+      "pitch": 1.02,
+      "filter": "anull"
+    },
+    {
+      "name": "kitten_play_landing",
+      "shot": 3,
+      "time": 9.783333,
+      "source": "assets/audio/sfx_v2/land.wav",
+      "gain": 0.24,
+      "pitch": 1.0,
+      "filter": "anull"
+    },
+    {
+      "name": "staff_charge",
+      "shot": 5,
+      "time": 13.246667,
+      "source": "assets/audio/sfx_v2/witch_entry_spell.wav",
+      "gain": 0.72,
+      "pitch": 0.78,
+      "filter": "aecho=0.8:0.9:65:0.10"
+    },
+    {
+      "name": "purple_magic_swirl",
+      "shot": 5,
+      "time": 14.586667,
+      "source": "assets/audio/sfx_v2/witch_entry_broom.wav",
+      "gain": 0.62,
+      "pitch": 0.85,
+      "filter": "aecho=0.8:0.9:110:0.08"
+    },
+    {
+      "name": "staff_spell_release",
+      "shot": 5,
+      "time": 15.646667,
+      "source": "assets/audio/sfx_v2/witch_entry_spell.wav",
+      "gain": 0.78,
+      "pitch": 1.16,
+      "filter": "anull"
+    },
+    {
+      "name": "capture_air_sweep",
+      "shot": 6,
+      "time": 16.248333,
+      "source": "assets/audio/sfx_v2/witch_entry_broom.wav",
+      "gain": 0.7,
+      "pitch": 0.72,
+      "filter": "anull"
+    },
+    {
+      "name": "capture_glass_settle",
+      "shot": 6,
+      "time": 18.328333,
+      "source": "assets/audio/sfx_v2/land.wav",
+      "gain": 0.27,
+      "pitch": 1.42,
+      "filter": "aecho=0.8:0.9:40:0.08"
+    },
+    {
+      "name": "witch_departure_step_1",
+      "shot": 8,
+      "time": 24.051667,
+      "source": "assets/audio/sfx_v2/staff_thud.wav",
+      "gain": 0.16,
+      "pitch": 1.3,
+      "filter": "highpass=f=170,lowpass=f=2400"
+    },
+    {
+      "name": "witch_departure_step_2",
+      "shot": 8,
+      "time": 24.451667,
+      "source": "assets/audio/sfx_v2/staff_thud.wav",
+      "gain": 0.16,
+      "pitch": 1.34,
+      "filter": "highpass=f=170,lowpass=f=2400"
+    },
+    {
+      "name": "witch_departure_step_3",
+      "shot": 8,
+      "time": 24.871667,
+      "source": "assets/audio/sfx_v2/staff_thud.wav",
+      "gain": 0.16,
+      "pitch": 1.3800000000000001,
+      "filter": "highpass=f=170,lowpass=f=2400"
+    },
+    {
+      "name": "paw_on_glass",
+      "shot": 9,
+      "time": 25.493333,
+      "source": "assets/audio/sfx_v2/tap.wav",
+      "gain": 0.2,
+      "pitch": 1.2,
+      "filter": "aecho=0.8:0.9:45:0.09"
+    },
+    {
+      "name": "guide_golden_ribbon",
+      "shot": 10,
+      "time": 29.655,
+      "source": "assets/audio/sfx_v2/witch_entry_spell.wav",
+      "gain": 0.28,
+      "pitch": 1.42,
+      "filter": "anull"
+    },
+    {
+      "name": "fourth_kitten_hop",
+      "shot": 11,
+      "time": 33.496667,
+      "source": "assets/audio/sfx_v2/jump_2.wav",
+      "gain": 0.26,
+      "pitch": 1.08,
+      "filter": "anull"
+    },
+    {
+      "name": "fourth_kitten_landing",
+      "shot": 11,
+      "time": 34.996667,
+      "source": "assets/audio/sfx_v2/land.wav",
+      "gain": 0.32,
+      "pitch": 1.1,
+      "filter": "anull"
+    },
+    {
+      "name": "FOUR_KITTEN_RESCUE_CHORUS",
+      "shot": 11,
+      "time": 36.416667,
+      "source": "video_work/sound_design_v4/four_kitten_chorus.wav",
+      "gain": 1.0,
+      "pitch": 1.0,
+      "filter": "anull"
+    },
+    {
+      "name": "spell_glass_break",
+      "shot": 12,
+      "time": 37.518333,
+      "source": "assets/audio/sfx_v2/spell_break.wav",
+      "gain": 0.38,
+      "pitch": 1.0,
+      "filter": "anull"
+    },
+    {
+      "name": "golden_release_sweep",
+      "shot": 12,
+      "time": 38.278333,
+      "source": "assets/audio/sfx_v2/escape.wav",
+      "gain": 0.42,
+      "pitch": 1.12,
+      "filter": "anull"
+    },
+    {
+      "name": "freed_kitten_landing_1",
+      "shot": 12,
+      "time": 39.458333,
+      "source": "assets/audio/sfx_v2/land.wav",
+      "gain": 0.2,
+      "pitch": 1.0,
+      "filter": "anull"
+    },
+    {
+      "name": "freed_kitten_landing_2",
+      "shot": 12,
+      "time": 39.958333,
+      "source": "assets/audio/sfx_v2/land.wav",
+      "gain": 0.2,
+      "pitch": 1.06,
+      "filter": "anull"
+    },
+    {
+      "name": "freed_kitten_landing_3",
+      "shot": 12,
+      "time": 40.678333,
+      "source": "assets/audio/sfx_v2/land.wav",
+      "gain": 0.2,
+      "pitch": 1.12,
+      "filter": "anull"
+    }
+  ],
+  "rescue_chorus_time": 36.416667,
+  "credit_placement": "Settings > Audio credits only; no video overlay"
+}

@@ -1,0 +1,44 @@
+# Generated Godot and local editor state
+.godot/
+.import/
+**/__pycache__/
+*.pyc
+# Build outputs and downloaded Godot export libraries
+/android/build/.gradle/
+/android/build/build/
+/android/build/assetPackInstallTime/build/
+/android/build/libs/
+/android/build/local.properties
+*.apk
+*.aab
+*.pck
+*.log
+# Local creative source/editing work; archived beside this checkout
+/audio_work/
+/video_work/
+/motion_preview/
+/Cat sort video intro/
+/store_assets/
+/poing-godot-admob/
+/*.png
+/*.png.import
+/*.gif
+/*.wav
+/*.wav.import
+/*.ogg
+/*.ogg.import
+/*.avi
+/*.mp4
+/*.zip
+# Private signing material and credentials
+.env
+.env.*
+*.jks
+*.keystore
+*.pem
+*.key
+export_credentials.cfg
+# Download caches
+/addons/admob/downloads/
+/android/build/src/main/assets/
+/android/build/assetPackInstallTime/src/main/assets/

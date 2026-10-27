@@ -1,0 +1,22 @@
+{
+  "tap": -0.09,
+  "land": -7.62,
+  "nope": -12.1,
+  "purchase": -11.71,
+  "win": -10.87,
+  "spell_break": -9.52,
+  "escape": -13.26,
+  "staff_thud": -13.26,
+  "witch_upset": -3.83,
+  "witch_laugh": -15.53,
+  "witch_laugh_entry": -14.53,
+  "witch_laugh_loss": -12.53,
+  "witch_entry_broom": -16.62,
+  "witch_entry_spell": -16.62,
+  "jump_0": -11.56,
+  "jump_1": -11.67,
+  "jump_2": -10.86,
+  "hud_star_1": -6.71,
+  "hud_star_2": -6.71,
+  "hud_star_3": -6.71
+}
