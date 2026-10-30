@@ -12,3 +12,6 @@ This project, including its source code, artwork, assets, and other original con
 
 ## Development
 Developed and maintained by Jeydivfx.
+
+## Project setup
+Open `project.godot` in Godot 4.7.2 (GL Compatibility). See [DEVELOPMENT.md](DEVELOPMENT.md) for the current regression checks, asset handling and Supabase migrations.

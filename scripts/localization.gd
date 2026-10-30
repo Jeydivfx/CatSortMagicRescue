@@ -57,7 +57,12 @@ static func t(value: String) -> String:
 
 static func direction_fix(value: String) -> String:
 	if rtl() and value.contains("/") and not value.contains("\u2066"):
-		return ratio_regex.sub(value,"\u2066$0\u2069",true)
+		value=ratio_regex.sub(value,"\u2066$0\u2069",true)
+	return digits(value)
+
+static func digits(value: String) -> String:
+	if locale=="fa":
+		for i in range(10):value=value.replace(str(i),"۰۱۲۳۴۵۶۷۸۹"[i])
 	return value
 
 static func style(control: Control) -> void:

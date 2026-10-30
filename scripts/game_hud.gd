@@ -152,7 +152,7 @@ func draw_footprints(p: Vector2) -> void:
 		oval_icon(q,Vector2(3.3,5.2),gold,.4)
 		oval_icon(q+Vector2(2,-5.5),Vector2(3,2.7),gold,.4)
 func draw_world_icon(p: Vector2) -> void:
-	match world_index:
+	match [0,2,4,5,8,5][clampi(world_index,0,5)]:
 		0:
 			draw_circle(p,11,Color("d5e9ff"))
 			draw_circle(p+Vector2(4,-4),9,Color("101d3e"))
@@ -173,6 +173,16 @@ func draw_world_icon(p: Vector2) -> void:
 			draw_colored_polygon(PackedVector2Array([p+Vector2(-12,-1),p+Vector2(0,-12),p+Vector2(12,-1)]),Color("e8bc76"))
 			rounded_box(Rect2(p+Vector2(-8,-1),Vector2(16,13)),Color("ad825c"),2,Color("e8bc76"))
 			draw_rect(Rect2(p+Vector2(-2,5),Vector2(4,7)),Color("ffe1a1"))
+
+		8:
+			for side in [-1,1]:
+				var x: float=side*6
+				draw_line(p+Vector2(x,3),p+Vector2(x,12),Color("b78c59"),3,true)
+				draw_colored_polygon(PackedVector2Array([p+Vector2(x,-12),p+Vector2(x-8,6),p+Vector2(x+8,6)]),Color("8ed8b2") if side<0 else Color("53bca7"))
+		6:
+			rounded_box(Rect2(p+Vector2(-10,-8),Vector2(20,20)),Color("a77c57"),3,Color("edc68d"))
+			draw_colored_polygon(PackedVector2Array([p+Vector2(-4,8),p+Vector2(-6,1),p+Vector2(0,-5),p+Vector2(5,2),p+Vector2(3,8)]),Color("ffbd57"))
+			draw_line(p+Vector2(-7,9),p+Vector2(7,9),Color("ffe5ad"),2,true)
 
 func center_caption(label: Label, world: bool) -> void:
 	var chip:=Rect2(222,74,270,34) if world else Rect2(508,74,188,34)

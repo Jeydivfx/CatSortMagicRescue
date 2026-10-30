@@ -20,8 +20,11 @@ var mix_trims: Dictionary={}
 var last_cues: Dictionary={}
 var effects_gain := 0.80
 var suspension_reasons: Dictionary = {}
+var sleep_audio: Node
 var celebration: AudioStreamPlayer
 var celebrating := false
+var result_cheering := false
+var result_voice: AudioStreamPlayer
 const ENTRY_CUES = ["witch_laugh_entry", "witch_entry_broom", "witch_entry_spell"]
 
 func _ready() -> void:
@@ -47,7 +50,10 @@ func _ready() -> void:
 	for cue in ["witch_entry_broom", "witch_entry_spell"]:
 		sounds[cue] = load("res://assets/audio/sfx_v2/%s.wav" % cue)
 	sounds["witch_laugh_loss"] = load("res://assets/audio/sfx_v2/witch_laugh_loss.wav")
+	sounds["witch_cry"] = load("res://assets/audio/sfx_v2/witch_cry.wav")
 	sounds["witch_upset"] = load("res://assets/audio/sfx_v2/witch_upset.wav")
+	for cue in ["magic_contact","result_victory_jingle"]:
+		sounds[cue]=load("res://assets/audio/sfx_v2/%s.wav" % cue)
 	sounds["staff_thud"] = load("res://assets/audio/sfx_v2/staff_thud.wav")
 	for i in range(3):
 		sounds["star_%d" % i] = load("res://assets/audio/star_%d.wav" % i)
@@ -78,12 +84,20 @@ func _ready() -> void:
 	celebration.stream = load("res://assets/audio/victory_dance.wav")
 	add_child(celebration)
 	celebration.finished.connect(stop_celebration)
+	result_voice=AudioStreamPlayer.new()
+	result_voice.bus="Cat Effects"
+	result_voice.stream=sounds["result_victory_jingle"]
+	add_child(result_voice)
+	result_voice.finished.connect(stop_result_joy)
 	set_enabled(enabled)
+	sleep_audio=preload("res://scripts/cat_sleep_audio.gd").new();add_child(sleep_audio)
 	# The owning scene restores saved audio preferences before starting music.
 
 func set_enabled(value: bool) -> void:
 	enabled = value
 	if not enabled:
+		if is_instance_valid(sleep_audio):sleep_audio.stop_immediately()
+		stop_result_joy()
 		stop_celebration()
 		for voice in voices:
 			voice.stop()
@@ -95,7 +109,7 @@ func set_music_enabled(value: bool) -> void:
 	if value and DisplayServer.get_name() != "headless":
 		if not music.playing:
 			music.play()
-		music.stream_paused = celebrating or not suspension_reasons.is_empty()
+		music.stream_paused = celebrating or result_cheering or not suspension_reasons.is_empty()
 	else:
 		music.stop()
 
@@ -113,18 +127,21 @@ func set_levels(music_level: float, effects_level: float) -> void:
 		voice.volume_db = float(voice.get_meta("base_db",-12.0))+linear_to_db(maxf(0.0001,effects_gain))
 	if is_instance_valid(celebration):
 		celebration.volume_db = -6.0+linear_to_db(maxf(0.0001,effects_gain))
+	if is_instance_valid(result_voice):result_voice.volume_db=-10.0+linear_to_db(maxf(.0001,effects_gain))
 
 func set_suspended(reason: String, value: bool) -> void:
 	if value:
+		if is_instance_valid(sleep_audio):sleep_audio.stop_immediately()
 		suspension_reasons[reason] = true
 		for voice in voices:
 			voice.stop()
 	else:
 		suspension_reasons.erase(reason)
 	if is_instance_valid(music):
-		music.stream_paused = celebrating or not suspension_reasons.is_empty()
+		music.stream_paused = celebrating or result_cheering or not suspension_reasons.is_empty()
 	if is_instance_valid(celebration):
 		celebration.stream_paused = not suspension_reasons.is_empty()
+	if is_instance_valid(result_voice):result_voice.stream_paused=not suspension_reasons.is_empty()
 
 func start_celebration() -> void:
 	if not enabled or celebrating:
@@ -142,6 +159,7 @@ func start_celebration() -> void:
 	cue_played.emit("victory_dance")
 
 func stop_cue(name: String) -> void:
+	if name=="result_victory_jingle":stop_result_joy()
 	for voice in voices:
 		if voice.get_meta("cue_name","")==name: voice.stop()
 
@@ -157,10 +175,10 @@ func stop_celebration() -> void:
 	if is_instance_valid(celebration): celebration.stop()
 	if is_instance_valid(music):
 		music.volume_db = music_base_db()
-		music.stream_paused = not suspension_reasons.is_empty()
+		music.stream_paused = result_cheering or not suspension_reasons.is_empty()
 
 func duck_music(depth: float, hold: float) -> void:
-	if not music.playing:
+	if result_cheering or not music.playing:
 		return
 	if is_instance_valid(duck_tween):
 		duck_tween.kill()
@@ -169,7 +187,30 @@ func duck_music(depth: float, hold: float) -> void:
 	duck_tween.tween_interval(hold)
 	duck_tween.tween_property(music,"volume_db",music_base_db(),0.8).set_trans(Tween.TRANS_SINE)
 
+func start_result_joy() -> void:
+	if not enabled or result_cheering or not suspension_reasons.is_empty():return
+	if is_instance_valid(duck_tween):duck_tween.kill()
+	result_cheering=true
+	music.stream_paused=true
+	result_voice.volume_db=-10.0+linear_to_db(maxf(.0001,effects_gain))
+	result_voice.play()
+	cue_played.emit("result_victory_jingle")
+
+func stop_result_joy() -> void:
+	if not result_cheering:return
+	result_cheering=false
+	if is_instance_valid(result_voice):result_voice.stop()
+	if is_instance_valid(music):
+		music.stream_paused=celebrating or not suspension_reasons.is_empty()
+		if is_instance_valid(duck_tween):duck_tween.kill()
+		music.volume_db=music_base_db()-18.0
+		duck_tween=create_tween()
+		duck_tween.tween_property(music,"volume_db",music_base_db(),.65).set_trans(Tween.TRANS_SINE)
+
 func play(name: String) -> void:
+	if name=="result_victory_jingle":
+		start_result_joy()
+		return
 	if name == "jump":
 		last_jump = (last_jump+randi_range(1,2))%3
 		name = "jump_%d" % last_jump
@@ -194,8 +235,14 @@ func play(name: String) -> void:
 		base_db = -5.0
 	elif name=="escape":
 		base_db = -7.0
+	elif name=="witch_cry":
+		base_db = -7.0
 	elif name=="witch_upset":
 		base_db = -6.0
+	elif name=="magic_contact":
+		base_db=-11.0
+	elif name=="result_victory_jingle":
+		base_db=-10.0
 	elif name=="staff_thud":
 		base_db = -8.0
 	elif name=="witch_laugh_entry":

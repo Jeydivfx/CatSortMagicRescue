@@ -7,7 +7,7 @@ func run() -> void:
 	var unlocked_before: int=g.unlocked
 	for index in [0,1]:
 		g.start_game(index)
-		assert(g.board_scale()<=1.101 and g.undo_button.symbol_scale==.82)
+		assert(g.board_scale()<=1.401 and g.undo_button.symbol_scale==.82)
 		assert(g.undo_button.size.y>=80)
 	g.start_game(127)
 	assert(g.tubes.size()==11 and g.board_columns()==6)
@@ -19,7 +19,7 @@ func run() -> void:
 		g.change_language(code);g.show_menu("rescue_home")
 		var home=g.menu_ui.get_child(0)
 		assert(home.completed==maxi(g.unlocked-1,g.wallet.records.size()))
-		assert(home.residents.size()<=5)
+		assert(home.residents.size()==home.rescue_counts.size())
 		assert(home.milestone_bar.max_value==10)
 		await process_frame
 		for node in home.content.get_children():
@@ -53,7 +53,7 @@ func run() -> void:
 	g.start_game(0);g.best_moves["0"]=3
 	g.level_reward={"score":250,"stars":3,"coins":30,"keepsake":true}
 	g.show_win()
-	assert(g.win_ui.home_button.text==g.L.t("New keepsake!"))
+	assert(g.win_ui.home_button.text==g.L.t("Home"))
 	g.win_ui.home_pressed.emit();assert(g.screen=="rescue_home")
 	await process_frame
 	g.free();await process_frame

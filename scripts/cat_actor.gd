@@ -23,6 +23,9 @@ var stack_target := 0.0
 var stack_weight := 0.0
 var victory_mesh: MeshInstance2D
 var menu_ears_enabled := false
+var pose_motion: Node2D
+var orange_pose: Node2D:
+	get:return pose_motion
 
 func setup(atlas: Texture2D, cat_kind: int, offset: float) -> void:
 	phase = offset
@@ -100,6 +103,7 @@ func setup(atlas: Texture2D, cat_kind: int, offset: float) -> void:
 	for i in range(4):
 		var part: Rect2 = frame_rects[Vector2i(art_kind, i)]
 		face_material.set_shader_parameter(["neutral_rect", "blink_rect", "happy_rect", "grumpy_rect"][i], Vector4(part.position.x / atlas_size.x, part.position.y / atlas_size.y, part.size.x / atlas_size.x, part.size.y / atlas_size.y))
+	if kind in preload("res://scripts/cat_breeds.gd").ACTIVE_IDS:preload("res://scripts/cat_motion_catalog.gd").configure_face(self)
 	sprite.material = face_material
 	set_face(0)
 
@@ -258,3 +262,17 @@ func victory_head_anchor(age: float, gentle: bool) -> Vector2:
 	# Match the head's lateral deformation in cat_face.gdshader as well as parent motion.
 	anchor.x+=sin(age*2.5)*1.4*(.2 if gentle else 1.0)
 	return anchor
+
+func ensure_pose_motion() -> void:
+	if kind not in preload("res://scripts/cat_breeds.gd").ACTIVE_IDS or is_instance_valid(pose_motion):return
+	pose_motion=preload("res://scripts/cat_pose_motion.gd").new();add_child(pose_motion);pose_motion.configure(kind)
+func animate_sleep(age: float,idle: float,eligible: bool,gentle: bool=false) -> void:
+	if kind not in preload("res://scripts/cat_breeds.gd").ACTIVE_IDS:return
+	ensure_pose_motion();pose_motion.update_sleep(self,age,idle,eligible,gentle)
+func animate_air(t: float,airborne: bool) -> void:
+	if kind not in preload("res://scripts/cat_breeds.gd").ACTIVE_IDS:return
+	ensure_pose_motion();pose_motion.update_air(self,t,airborne)
+# Compatibility with saved orange-only preview scenes.
+func ensure_orange_pose() -> void:ensure_pose_motion()
+func orange_sleep(age: float,idle: float,eligible: bool,gentle: bool=false) -> void:animate_sleep(age,idle,eligible,gentle)
+func orange_air(t: float,airborne: bool) -> void:animate_air(t,airborne)

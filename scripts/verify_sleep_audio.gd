@@ -1,0 +1,22 @@
+extends SceneTree
+func _initialize() -> void:call_deferred("run")
+func run() -> void:
+	AudioServer.set_bus_volume_db(0,-80)
+	var bank=preload("res://scripts/sound_bank.gd").new();root.add_child(bank);bank.set_music_enabled(false)
+	var layer=bank.sleep_audio;layer.set_process(false)
+	var events:=[0];bank.cue_played.connect(func(cue):
+		if cue=="sleep_purr":events[0]+=1)
+	layer._process(1);assert(not layer.player.playing)
+	var a:=Node2D.new();root.add_child(a);a.add_to_group("sleeping_cat_audio")
+	var b:=Node2D.new();root.add_child(b);b.add_to_group("sleeping_cat_audio")
+	layer._process(1);assert(layer.visible_sleepers==2 and layer.player.playing and events[0]==1)
+	assert(layer.player.volume_db<=-22,"Bedtime cue stays quiet")
+	layer._process(.2);assert(events[0]==1,"Multiple cats must not stack purrs")
+	a.hide();b.hide();layer._process(.3);assert(not layer.player.playing)
+	a.show();layer.next_purr=0;layer._process(1);assert(layer.player.playing)
+	bank.set_enabled(false);assert(not layer.player.playing)
+	bank.set_enabled(true);layer.next_purr=0;layer._process(1);assert(layer.player.playing)
+	bank.set_suspended("focus",true);assert(not layer.player.playing)
+	bank.set_suspended("focus",false);layer.next_purr=0;layer._process(1);assert(layer.player.playing)
+	bank.effects_gain=0;layer._process(.3);assert(not layer.player.playing)
+	bank.set_enabled(false);a.free();b.free();bank.queue_free();await process_frame;await create_timer(.12).timeout;print("PASS single quiet sleep-purr player, visible-only sleepers, no stacked voices, fade on wake, effects mute/volume and focus suspension");quit()

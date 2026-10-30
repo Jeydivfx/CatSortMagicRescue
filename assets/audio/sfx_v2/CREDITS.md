@@ -15,3 +15,17 @@ These are a new mix for user evaluation, not a claim that subjective sound
 quality is validated by automated checks.
 
 SFX preview order: tap, landing, unavailable/back, purchase, jump, victory.
+
+Witch crying: excerpt of Cry of woman by AlucardsBride (CC0 1.0).
+https://commons.wikimedia.org/wiki/File:Cry_of_woman.ogg
+Trimmed, filtered, normalized, and faded for the defeat reaction.
+
+Sleep purr/breath cue: source_purr.wav from Cat Purr & Meow by Kerzoven, CC0 1.0.
+Filtered to a soft low rumble, gently slowed, normalized and faded to 1.8 seconds.
+Played quietly from one shared player, with 6.5–9.5 second gaps; no stacking per cat.
+https://opengameart.org/content/cat-purr-meow
+
+Magic contact: original synthesized soft glass/pop and sparkle, no external samples.
+Result kitten joy: 3.2-second edit of real_chirp.wav and real_purr.wav; original cat recording credits and licenses remain in assets/audio/REAL_MEOW_CREDITS.md. Faded and mixed without music.
+
+Results victory jingle: original 3.2-second composition and synthesis by scripts/create_result_jingle.py. Celesta-like melody, plucked chord cadence, subtle stereo reflections. No third-party music or cat recordings. Replaces the prior result kitten joy mix.

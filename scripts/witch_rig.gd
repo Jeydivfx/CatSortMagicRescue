@@ -2,7 +2,9 @@ extends Control
 
 signal laugh_started
 signal irritation_started
+signal cry_started
 signal defeat_started
+signal magic_impact
 signal staff_impact
 signal loss_laugh_started
 signal entry_laugh_started
@@ -25,11 +27,13 @@ var laugh_duration := 1.8
 var angry_age := 0.0
 var irritation_left := 0.0
 var defeated := false
+var cry_emitted := false
 var defeat_age := 0.0
 var impact_played := false
 var allow_idle := true
 var last_activity := 0.0
 var near_win := false
+var progress_tension:=0.0
 var player_lost := false
 var reaction := ""
 var reaction_left := 0.0
@@ -50,6 +54,9 @@ var anger := 0.0
 var laughter := 0.0
 var blink := 0.0
 var sleeping := false
+var idle_sleeping:=false
+var sleep_fx:Node2D
+var snore:AudioStreamPlayer
 var vocal_open := 0.0
 var reclining := false
 var story_walk := 0.0
@@ -62,7 +69,12 @@ var left_arm: Node2D
 var right_arm: Node2D
 var rig_root: Node2D
 var feet: Node2D
+var frames
+var frame_state:=""
+var frame_started:=0.0
+var near_win_since:=0.0
 var effects_layer: Node2D
+var queued_sort:=false
 
 func part(parent: Node, painter: Callable) -> Node2D:
 	var node := Node2D.new()
@@ -71,9 +83,25 @@ func part(parent: Node, painter: Callable) -> Node2D:
 	return node
 
 func _ready() -> void:
+	sleep_fx=Node2D.new();sleep_fx.z_index=20;add_child(sleep_fx);sleep_fx.draw.connect(draw_sleep_marks)
+	snore=AudioStreamPlayer.new();snore.bus="Cat Effects";snore.stream=preload("res://assets/audio/sfx_v2/witch_snore.wav");add_child(snore)
+	snore.stream=snore.stream.duplicate();snore.stream.loop_mode=AudioStreamWAV.LOOP_FORWARD;snore.stream.loop_end=int(snore.stream.get_length()*snore.stream.mix_rate)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var ground_shadow=part(self,func(n):
+		# Cast shadow and foot contact share a fixed ground anchor. Equal z
+		# with the character keeps it above the parent's painted backdrop.
+		for i in range(20,0,-1):
+			var f: float=i/20.0
+			n.draw_set_transform(Vector2(110,210),-.10,Vector2(1,.25))
+			n.draw_circle(Vector2.ZERO,62*f,Color(.018,.012,.033,.025*(1.25-f*.4)))
+			n.draw_set_transform(Vector2.ZERO)
+		for i in range(10,0,-1):
+			n.draw_set_transform(Vector2(100.8,209),0,Vector2(1,.15))
+			n.draw_circle(Vector2.ZERO,i*3.6,Color(.012,.008,.025,.035))
+			n.draw_set_transform(Vector2.ZERO))
+	ground_shadow.z_index=0
 	rig_root = Node2D.new()
-	rig_root.scale = Vector2.ONE*1.2
+	rig_root.scale = Vector2.ONE*1.58
 	add_child(rig_root)
 	feet = part(rig_root,draw_feet)
 	left_arm = part(rig_root,func(n): draw_arm(n,false))
@@ -82,12 +110,19 @@ func _ready() -> void:
 	head = part(rig_root,draw_head)
 	hat = part(head,draw_hat)
 	effects_layer = part(rig_root,draw_effects)
+	effects_layer.z_index=2
+	frames=preload("res://scripts/witch_animator_v2.gd").new();add_child(frames)
+	frames.nominal_height=230;frames.foot=Vector2(100.8,208.8)
+	if not frames.configure("witch"):frames.free();frames=null
 	pose()
 
 func reset() -> void:
+	queued_sort=false
+	frame_state="";frame_started=age;near_win_since=age
 	gesture_age=10
 	gesture_envelope=0
-	next_gesture=age+3.5
+	next_gesture=age+randf_range(6,9)
+	if is_instance_valid(frames):frames.reset()
 	sleeping = false
 	vocal_open = 0
 	reclining = false
@@ -106,9 +141,11 @@ func reset() -> void:
 	irritation_left = 0
 	defeated = false
 	defeat_age = 0
+	cry_emitted = false
 	impact_played = false
 	allow_idle = true
 	near_win = false
+	progress_tension=0
 	player_lost = false
 	reaction = ""
 	reaction_left = 0
@@ -140,6 +177,7 @@ func story_laugh(duration: float) -> void:
 	vocal_open = 0
 	laugh_duration = maxf(.2,duration)
 	laugh_left = laugh_duration
+	reaction_age = 0
 
 func begin_flight() -> void:
 	laugh_duration = 1.8
@@ -155,19 +193,28 @@ func finish_flight() -> void:
 	feet.visible = true
 
 func is_staff_dropped() -> bool:
-	return defeated and defeat_age>.65
+	return defeated and defeat_age>1.08
+
+func staff_position() -> Vector2:
+	if is_instance_valid(frames):
+		render_authored_frames()
+		return frames.staff_anchor
+	return Vector2(122,173)
 
 func cast_obstacle() -> void:
 	reaction = "curse"
-	reaction_left = .9
+	reaction_left = 2.8
 	reaction_age = 0
 	sort_impact_played = false
 	laugh_left = 0
 
 func react_to_sort() -> void:
+	if reaction=="curse" and reaction_left>0:
+		queued_sort=true
+		return
 	irritation_left = 1.0
 	reaction = "sort"
-	reaction_left = .9
+	reaction_left = 2.8
 	reaction_age = 0
 	sort_impact_played = false
 	laugh_left = 0
@@ -176,6 +223,8 @@ func react_to_sort() -> void:
 	irritation_started.emit()
 
 func note_move() -> void:
+	idle_sleeping=false;sleeping=false
+	if is_instance_valid(snore):snore.stop()
 	last_activity = age
 	next_laugh = maxf(next_laugh,age+8)
 	if reaction=="idle":
@@ -184,12 +233,13 @@ func note_move() -> void:
 		irritation_started.emit()
 
 func set_near_win(value: bool) -> void:
+	if value and not near_win:near_win_since=age
 	near_win = value
 
 func react_good_move() -> void:
-	if defeated or player_lost or age<reaction_cooldown: return
+	if defeated or player_lost or age<reaction_cooldown or reaction in ["sort","curse"] and reaction_left>0: return
 	reaction = "surprise"
-	reaction_left = .85
+	reaction_left = 2.2
 	reaction_age = 0
 	reaction_cooldown = age+3
 	laugh_left = 0
@@ -197,7 +247,7 @@ func react_good_move() -> void:
 func react_mistake() -> void:
 	if defeated or player_lost or reaction=="sort" and reaction_left>0 or age<reaction_cooldown: return
 	reaction = "mistake"
-	reaction_left = .8
+	reaction_left = 2.6
 	reaction_age = 0
 	reaction_cooldown = age+3
 	throw_magic(.6)
@@ -222,6 +272,7 @@ func defeat() -> void:
 	defeated = true
 	angry = true
 	defeat_age = 0
+	cry_emitted = false
 	laugh_left = 0
 	reaction = "defeat"
 	reaction_left = 0
@@ -230,12 +281,27 @@ func defeat() -> void:
 func begin_gesture(kind: int) -> void:
 	gesture_kind=kind%3
 	gesture_age=0
-	gesture_duration=[1.8,1.55,1.65][gesture_kind]
-	next_gesture=age+3.8+gesture_kind*.65
+	gesture_duration=[2.6,2.4,2.6][gesture_kind]
+	next_gesture=age+gesture_duration+randf_range(6,9)
 
 func _process(delta: float) -> void:
-	if not is_visible_in_tree(): return
+	if not is_visible_in_tree():
+		if is_instance_valid(snore):snore.stop()
+		return
 	age += delta
+	var g=get_parent()
+	while g!=null and not g.has_method("content_rect"):g=g.get_parent()
+	var active_game= g.screen=="game" if g!=null else false
+	idle_sleeping=active_game and allow_idle and not defeated and not player_lost and not entry_flying and age-last_activity>18.0 and reaction==""
+	if idle_sleeping:sleeping=true;laugh_left=0
+	elif not player_lost:sleeping=false
+	var bank=g.get("audio") if g!=null else null
+	var audible=idle_sleeping and bank!=null and bank.enabled and bank.suspension_reasons.is_empty()
+	if audible:
+		snore.volume_db=-26+linear_to_db(maxf(.0001,bank.effects_gain))
+		if not snore.playing:snore.play()
+	else:snore.stop()
+	sleep_fx.queue_redraw()
 	gaze = gaze.lerp(gaze_target,1-exp(-delta*7))
 	gesture_age+=delta
 	var can_gesture:=allow_idle and reaction=="" and not sleeping and not entry_flying and not defeated and not player_lost and not near_win and not angry
@@ -243,30 +309,41 @@ func _process(delta: float) -> void:
 	var gesture_target: float=pow(sin(clampf(gesture_age/gesture_duration,0,1)*PI),2) if can_gesture and gesture_age<gesture_duration else 0.0
 	gesture_envelope=lerpf(gesture_envelope,gesture_target,1-exp(-delta*12))
 	casting_age += delta
-	for spell in spells: spell.age += delta
+	for spell in spells:
+		var previous_age:float=spell.age
+		spell.age += delta
+		if previous_age<spell.duration and spell.age>=spell.duration:magic_impact.emit()
 	spells = spells.filter(func(spell): return spell.age<spell.duration+.5)
 	if (player_lost and not sleeping or near_win) and age>=next_magic:
 		throw_magic(1.0 if player_lost else .45)
 		next_magic = age+(1.4 if player_lost else 3.2)
 	reaction_age += delta
 	reaction_left = maxf(0,reaction_left-delta)
-	if reaction in ["sort","taunt","curse"] and reaction_age>=.32 and not sort_impact_played:
+	if reaction in ["sort","taunt","curse","mischief"] and reaction_age>=1.08 and not sort_impact_played:
 		sort_impact_played = true
 		staff_impact.emit()
 		throw_magic(.85)
-	if reaction_left<=0 and not defeated and not player_lost: reaction = ""
+	if reaction_left<=0 and not defeated and not player_lost:
+		reaction = ""
+		if queued_sort:
+			queued_sort=false
+			react_to_sort()
 	if defeated:
 		defeat_age += delta
-		if not impact_played and defeat_age>=.42:
+		if not cry_emitted and defeat_age>=2.1:
+			cry_emitted=true
+			cry_started.emit()
+		if not impact_played and defeat_age>=1.08:
 			impact_played = true
 			staff_impact.emit()
 			throw_magic(1.2)
 	irritation_left = maxf(0,irritation_left-delta)
 	var irritated := angry or irritation_left>0
-	if allow_idle and not irritated and not player_lost and not near_win and reaction=="" and age-last_activity>=8 and age>=next_laugh:
-		laugh_left = 1.8
+	if allow_idle and not sleeping and not irritated and not player_lost and not near_win and reaction=="" and age-last_activity>=8 and age>=next_laugh:
+		laugh_left = 2.8
+		laugh_duration = 2.8
 		reaction = "idle"
-		reaction_left = 1.8
+		reaction_left = 2.8
 		reaction_age = 0
 		next_laugh = age+randf_range(16,25)
 		idle_taunts += 1
@@ -312,7 +389,7 @@ func pose() -> void:
 	right_arm.rotation = (.08+laughter*.15-anger*.55+sin(angry_age*6)*anger*.12)*motion
 	right_arm.rotation += sin(age*26)*nervous*.045*motion+sin(reaction_age*9)*delight*.24*motion
 	if casting_age<.45: right_arm.rotation -= sin(casting_age/.45*PI)*.25*motion
-	if reaction in ["sort","taunt","curse"]:
+	if reaction in ["sort","taunt","curse","mischief"]:
 		var t := clampf(reaction_age/.32,0,1)
 		right_arm.rotation = lerpf(-.75,0,t*t)*motion if t<1 else 0.0
 	var g:=gesture_envelope*motion
@@ -376,6 +453,41 @@ func pose() -> void:
 			right_arm.rotation += sin(entry_progress*PI)*.3
 			hat.rotation += sin(entry_progress*TAU)*.08
 	for node in [body,head,hat,left_arm,right_arm,feet,effects_layer]: node.queue_redraw()
+	render_authored_frames()
+
+func render_authored_frames() -> void:
+	if not is_instance_valid(frames):return
+	for node in [body,head,left_arm,right_arm,feet]:node.hide()
+	var desired:="evil_idle"
+	var clip_time:=-1.0
+	if defeated:
+		if defeat_age<1.9:desired="defeated";clip_time=defeat_age
+		elif defeat_age<4.7:desired="fake_cry";clip_time=defeat_age-1.9
+		else:desired="defeated_idle";clip_time=defeat_age-4.7
+	elif idle_sleeping:desired="sleep"
+	elif entry_flying:desired="broom_entry"
+	elif player_lost:
+		desired="victory_laugh" if reaction_age<4.4 else "evil_idle"
+		clip_time=minf(reaction_age,3.2) if reaction_age<4.4 else reaction_age-4.4
+	elif reaction in ["sort","taunt"]:desired="angry";clip_time=reaction_age
+	elif reaction=="mischief":desired="mischief_spell";clip_time=reaction_age
+	elif reaction=="curse":desired="evil_spell";clip_time=reaction_age
+	elif reaction=="surprise":desired="shocked";clip_time=reaction_age
+	elif reaction=="mistake":desired="mock_player";clip_time=reaction_age
+	elif laugh_left>0:desired="evil_laugh";clip_time=(laugh_duration-laugh_left)*2.8/maxf(.2,laugh_duration)
+	elif near_win:
+		desired="panic" if age-near_win_since<2.4 else "nervous"
+		clip_time=age-near_win_since if desired=="panic" else age-near_win_since-2.4
+	elif gesture_age<gesture_duration and allow_idle:
+		desired="inspect_staff" if gesture_kind%2==0 else "taunt";clip_time=gesture_age
+	if frame_state!=desired:frame_state=desired;frame_started=age
+	frames.tension=progress_tension
+	frames.clock=age;frames.gaze=gaze
+	frames.sample(desired,clip_time if clip_time>=0 else age-frame_started)
+
+func staff_ground_position() -> Vector2:
+	if is_instance_valid(frames):return frames.staff_base_anchor
+	return Vector2(122,173)
 
 func poly(n: Node2D, points: Array, color: Color) -> void:
 	var p := PackedVector2Array(points)
@@ -475,10 +587,11 @@ func throw_magic(power: float) -> void:
 	if spells.size()>=4: spells.pop_front()
 	casting_age = 0
 	var origin := right_arm.position+Vector2(29,-39).rotated(right_arm.rotation)
+	if is_instance_valid(frames):origin=staff_position()/1.2
 	spells.append({"start":origin,"finish":Vector2(130+randf_range(-18,12),154),"age":0.0,"duration":.8,"power":power,"seed":randf()*TAU})
 
 func draw_effects(n: Node2D) -> void:
-	if entry_flying:
+	if entry_flying and not is_instance_valid(frames):
 		var airborne := 1-smoothstep(.78,1,entry_progress)
 		var color := Color(1,1,1,airborne)
 		var a := Vector2(22,151)
@@ -516,7 +629,7 @@ func draw_effects(n: Node2D) -> void:
 				var point := finish+direction*(5+fade*21)
 				n.draw_line(point-direction*3,point+direction*3,Color(color,1-fade),2,true)
 				n.draw_circle(point,1.8,Color(1,.9,1,1-fade))
-	var burst := reaction_age-.32 if reaction=="sort" else (defeat_age-.42 if defeated else 10.0)
+	var burst := reaction_age-1.08 if reaction in ["sort","curse","taunt","mischief"] else (defeat_age-1.08 if defeated else 10.0)
 	if burst>=0 and burst<.6:
 		var alpha := 1-burst/.6
 		oval(n,Vector2(122,173),Vector2(10+burst*55,3+burst*9),Color(.7,.35,1,alpha*.45))
@@ -537,7 +650,7 @@ func draw_effects(n: Node2D) -> void:
 			for i in range(3):
 				var rise := fposmod(defeat_age*30+i*9,28)
 				oval(n,head.position+Vector2(side*(32+sin(rise*.2)*3),-rise),Vector2(4+rise*.12,3+rise*.1),Color(.85,.83,.92,(1-rise/28)*.65))
-		if is_staff_dropped():
+		if is_staff_dropped() and not is_instance_valid(frames):
 			var t := clampf((defeat_age-.65)/.6,0,1)
 			var center := Vector2(112,142+t*24-sin(t*PI)*12)
 			var direction := Vector2.from_angle(lerpf(-1.4,.1,smoothstep(0,1,t)))
@@ -552,3 +665,13 @@ func draw_hat(n: Node2D) -> void:
 	oval(n,Vector2(0,-25),Vector2(43,9),INK)
 	oval(n,Vector2(0,-27),Vector2(42,8),Color("73448f"))
 	poly(n,[Vector2(4,-39),Vector2(11,-32),Vector2(4,-25),Vector2(-3,-32)],Color("f4ce75"))
+
+func cast_mischief() -> void:
+	angry=false;irritation_left=0;laugh_left=0;reaction="mischief";reaction_left=3.0;reaction_age=0;sort_impact_played=false
+
+func draw_sleep_marks()->void:
+	if not idle_sleeping:return
+	var font=preload("res://assets/fonts/game_font.tres")
+	for i in range(3):
+		var t=fposmod(age*.28+i*.33,1.0)
+		sleep_fx.draw_string(font,Vector2(130+t*30,38-t*48),"Z" if i==2 else "z",HORIZONTAL_ALIGNMENT_LEFT,-1,14+i*3,Color(.76,.86,1,sin(t*PI)*.85))

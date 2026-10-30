@@ -39,12 +39,13 @@ var witch_tap_until := -10.0
 var witch_reply := ""
 var magic_exchange: Node2D
 var curse = preload("res://scripts/witch_curse.gd").new()
+var mischief=preload("res://scripts/witch_mischief.gd").new()
 var level_label: Label
 var move_label: Label
 var next_button: Button
 var cat_atlas: Texture2D
 var advanced_cat_atlas: Texture2D
-var home_backdrop: Texture2D = preload("res://assets/environments/laboratory.png")
+var home_backdrop: Texture2D = preload("res://assets/environments/menu_royal_terrace_v1.png")
 var backdrop: Texture2D
 var cat_layer: Node2D
 var actors: Array = []
@@ -59,8 +60,13 @@ var screen := "menu"
 var menu_ui: Control
 var menu_cats: Node2D
 var reduced_motion := false
+var animation_off := false
 var reaction_tube := -1
 var reaction_until := -1.0
+const JumpMotion=preload("res://scripts/cat_jump_motion.gd")
+var cat_last_activity := 0.0
+var flight_from_drag := false
+var landing_count := 1
 var flight_squash := 0.0
 var flight_tween: Tween
 var audio: Node
@@ -93,6 +99,7 @@ var drag_anchor := Vector2.ZERO
 var drag_offset := Vector2.ZERO
 var drag_pointer := Vector2.ZERO
 var wallet = preload("res://scripts/score_wallet.gd").new()
+var leaderboard: Node
 var playtest=preload("res://scripts/playtest_metrics.gd").new()
 var coin_label: Label
 var score_label: Label
@@ -116,6 +123,7 @@ var previous_backdrop: Texture2D
 var environment_blend := 1.0
 
 func _ready() -> void:
+	get_tree().quit_on_go_back=false
 	if OS.get_name() == "Android":
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	get_viewport().size_changed.connect(fit_mobile_screen)
@@ -141,11 +149,12 @@ func _ready() -> void:
 	if FileAccess.file_exists("user://progress.json"):
 		var saved = JSON.parse_string(FileAccess.get_file_as_string("user://progress.json"))
 		if saved is Dictionary:
-			wallet.restore(saved)
+			wallet.restore(saved,levels)
 			if saved.get("story",{}) is Dictionary: story_progress.restore(saved.get("story",{}))
 			language = str(saved.get("language","en"))
 			unlocked = clampi(int(saved.get("unlocked", 1)), 1, levels.size())
 			reduced_motion = bool(saved.get("reduced_motion", false))
+			animation_off = false
 			sound_enabled = bool(saved.get("sound_enabled", true))
 			music_enabled = bool(saved.get("music_enabled", sound_enabled))
 			music_volume = clampf(float(saved.get("music_volume",0.6)),0,1)
@@ -158,11 +167,19 @@ func _ready() -> void:
 	audio.set_levels(music_volume,effects_volume)
 	audio.set_music_enabled(music_enabled)
 	level_page = (unlocked - 1) / 10
+	leaderboard = preload("res://scripts/supabase_client.gd").new()
+	add_child(leaderboard)
+	leaderboard.profile_ready.connect(func():
+		for k in wallet.records.keys():
+			leaderboard.queue_score(int(k),int(wallet.records[k].get("score",0)))
+	)
 	build_ui()
 	game_ui = ui
 	fit_mobile_screen()
 	load_level(unlocked - 1)
 	show_menu()
+	if leaderboard.player_name.is_empty() or "--preview-player-name" in OS.get_cmdline_user_args():
+		preload("res://scripts/leaderboard_ui.gd").name_prompt(self)
 	if "--capture" in OS.get_cmdline_user_args():
 		await RenderingServer.frame_post_draw
 		get_viewport().get_texture().get_image().save_png("res://preview.png")
@@ -182,6 +199,7 @@ func fit_mobile_screen() -> void:
 				item.position.y = spread_y(float(item.get_meta("base_y")))
 	preload("res://scripts/responsive_layout.gd").gameplay(self)
 	if screen=="menu":preload("res://scripts/responsive_layout.gd").home(self)
+	layout_navigation()
 	queue_redraw()
 
 func spread_y(y: float) -> float:
@@ -265,7 +283,7 @@ func save_progress() -> void:
 	file.store_string(JSON.stringify(progress_snapshot()))
 
 func progress_snapshot() -> Dictionary:
-	return {"story":story_progress.snapshot(),"language":language,"unlocked": unlocked, "reduced_motion": reduced_motion, "sound_enabled": sound_enabled, "music_enabled": music_enabled, "music_volume":music_volume,"effects_volume":effects_volume,"best_moves": best_moves, "coins":wallet.coins,"total_score":wallet.total_score,"score_records":wallet.records,"environment_override":environment_override}
+	return {"story":story_progress.snapshot(),"language":language,"unlocked": unlocked, "reduced_motion": reduced_motion, "animation_off":animation_off, "sound_enabled": sound_enabled, "music_enabled": music_enabled, "music_volume":music_volume,"effects_volume":effects_volume,"best_moves": best_moves, "coins":wallet.coins,"total_score":wallet.total_score,"score_version":wallet.SCORE_VERSION,"legacy_total_score":wallet.legacy_total_score,"score_records":wallet.records,"environment_override":environment_override}
 
 func change_language(code: String) -> void:
 	L.set_locale(code)
@@ -287,6 +305,7 @@ func volume_slider(y: float, value: float, action: Callable, description: String
 	ui.add_child(slider)
 
 func show_menu(page: String = "menu") -> void:
+	if is_instance_valid(audio):audio.stop_cue("witch_cry")
 	if busy:
 		return
 	cancel_story()
@@ -323,46 +342,104 @@ func show_menu(page: String = "menu") -> void:
 		var challenges: Array = []
 		for i in range(levels.size()):
 			if levels[i].get("difficulty","")=="hard": challenges.append(i)
+		level_map.game=self
 		level_map.configure(levels.size(),unlocked,wallet.records,challenges)
 		level_map.level_selected.connect(open_map_level)
 		level_map.home_pressed.connect(func(): show_menu())
 	elif page == "settings":
-		preload("res://scripts/menu_designer.gd").settings(self)
+		preload("res://scripts/settings_menu.gd").build(self)
+	elif page == "rankings":
+		preload("res://scripts/leaderboard_ui.gd").show(self)
 	elif page == "rescue_home":
 		var home=preload("res://scripts/rescue_home.gd").new()
 		menu_ui.add_child(home);home.configure(self)
 	elif page == "credits":
-		centered_text("Audio credits",155,38,Color("ffda79"))
-		centered_text("Music: Clear Air\nKevin MacLeod (incompetech.com)\nCreative Commons Attribution 4.0",260,23,Color("f8e5c5"))
-		centered_text("Converted to Ogg Vorbis; loudness normalized.",375,17,Color("b0bdd0"))
-		credit_link("Music source",435,"https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100626")
-		credit_link("CC BY 4.0 license",490,"https://creativecommons.org/licenses/by/4.0/")
-		centered_text("Effects: Kenney Interface Sounds (CC0)\nCat recordings: Joseph SARDIN,\nKerzoven and IgnasD (CC0)",585,21,Color("f8e5c5"))
-		credit_link("Kenney sound pack",720,"https://kenney.nl/assets/interface-sounds")
-		credit_link("Story film: Fairytale Waltz",760,"https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100232")
-		centered_text("Kevin MacLeod (incompetech.com) — CC BY 4.0\nEdited excerpt, fades and sound mix.",802,14,Color("b0bdd0"))
-		button_at("<  Settings",Rect2(190,850,340,64),func(): show_menu("settings"))
+		preload("res://scripts/audio_credits_menu.gd").build(self)
 	elif page == "pause":
-		centered_text("Take a little break", 225, 39, Color("f8e5c5"))
-		button_at("Resume", Rect2(145, 350, 430, 84), resume_game, Color("5c9d73"))
-		var pause_music=button_at("Music  "+("ON" if music_enabled else "OFF"),Rect2(145,480,208,70),func():
-			music_enabled=not music_enabled
-			audio.set_music_enabled(music_enabled)
-			save_progress()
-			show_menu("pause"),Color("4f8275"))
-		pause_music.name="PauseMusic";pause_music.title_size=22
-		var pause_effects=button_at("Effects  "+("ON" if sound_enabled else "OFF"),Rect2(367,480,208,70),func():
-			sound_enabled=not sound_enabled
-			audio.set_enabled(sound_enabled)
-			save_progress()
-			show_menu("pause"),Color("477d96"))
-		pause_effects.name="PauseEffects";pause_effects.title_size=22
-		button_at("Restart level", Rect2(145, 600, 430, 76), func(): start_game(level_index,true), Color("506686"))
-		button_at("Home", Rect2(145, 705, 430, 76), func(): show_menu(), Color("506686"))
+		preload("res://scripts/pause_menu.gd").build(self)
 	ui = game_ui
-	tint_environment_buttons(menu_ui)
+	if page not in ["pause","settings","rankings","credits","rescue_home","levels"]:tint_environment_buttons(menu_ui)
 	L.restyle_tree(menu_ui)
+	layout_navigation()
 	queue_redraw()
+
+func layout_navigation() -> void:
+	if not is_instance_valid(menu_ui) or screen in ["game","menu"]:return
+	if screen=="levels" and is_instance_valid(level_map):
+		level_map.layout_map()
+		return
+	if screen=="rescue_home":
+		var home=menu_ui.get_child(0)
+		if home.has_method("layout_home"):home.layout_home()
+		return
+	if screen=="credits":
+		var safe:=content_rect()
+		var factor:=minf(1.05,minf((safe.size.x-36)/600.0,(safe.size.y-36)/770.0))
+		menu_ui.scale=Vector2.ONE*factor
+		menu_ui.position=safe.get_center()-Vector2(360,535)*factor
+		return
+	if screen=="rankings":
+		var safe:=content_rect()
+		var factor:=minf(1.05,minf((safe.size.x-36)/600.0,(safe.size.y-36)/870.0))
+		menu_ui.scale=Vector2.ONE*factor
+		menu_ui.position=safe.get_center()-Vector2(360,535)*factor
+		return
+	if screen=="settings":
+		var safe:=content_rect()
+		var factor:=minf(1.0,minf((safe.size.x-36)/600.0,(safe.size.y-32)/1010.0))
+		menu_ui.scale=Vector2.ONE*factor
+		menu_ui.position=safe.get_center()-Vector2(360,545)*factor
+		return
+	if screen=="pause":
+		var safe:=content_rect()
+		var factor:=.86*minf(1.18,minf((safe.size.x-40)/550.0,(safe.size.y-40)/900.0))
+		menu_ui.scale=Vector2.ONE*factor
+		menu_ui.position=safe.get_center()-Vector2(360,512)*factor
+		return
+	if screen in ["settings","credits","pause"]:
+		var safe:=content_rect()
+		var factor:=minf(1.0,(safe.size.y-94)/950.0)
+		menu_ui.scale=Vector2.ONE*factor
+		menu_ui.position=Vector2(360-360*factor,safe.position.y+94-150*factor)
+		menu_ui.set_meta("l10n_x",menu_ui.position.x)
+	if screen=="levels" and is_instance_valid(level_map):level_map.layout_map()
+	var nav=menu_ui.get_node_or_null("NavigationBar")
+	if not nav:
+		nav=Control.new();nav.name="NavigationBar";nav.mouse_filter=Control.MOUSE_FILTER_IGNORE;menu_ui.add_child(nav)
+		var plate:=Panel.new();plate.size=Vector2(600,94);plate.mouse_filter=Control.MOUSE_FILTER_IGNORE
+		plate.add_theme_stylebox_override("panel",panel(Color(.035,.075,.15,.96),28,Color("8eaed6")));nav.add_child(plate)
+		var back=preload("res://scripts/jewel_button.gd").new();L.style(back)
+		back.name="Back";back.symbol="back";back.text=" ";back.caption_override=" ";back.compact=true;back.tint=Color("7951b1")
+		back.position=Vector2(3,3);back.size=Vector2(60,60);back.pressed.connect(navigate_back);nav.add_child(back)
+		var title:=Label.new();L.style(title);title.name="Title";title.position=Vector2(76,3);title.size=Vector2(444,66)
+		title.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;title.vertical_alignment=VERTICAL_ALIGNMENT_CENTER;title.add_theme_font_size_override("font_size",32)
+		title.mouse_filter=Control.MOUSE_FILTER_IGNORE;nav.add_child(title)
+		var captions:={"levels":"Your journey", "rescue_home":"Cat sanctuary", "settings":"Settings", "credits":"Audio credits", "pause":"Take a little break", "rankings":"Global Rankings"}
+		title.text=L.t(captions.get(screen,""))
+	var target:=Vector2(content_rect().get_center().x-300,content_rect().position.y+18)
+	# This zero-size overlay must never inherit RTL anchor mirroring from
+	# the locale; otherwise a 58px back control is shifted off the left edge.
+	nav.layout_direction=Control.LAYOUT_DIRECTION_LTR
+	nav.get_child(0).position=Vector2.ZERO
+	nav.get_node("Title").position=Vector2(78,14)
+	var back_control=nav.get_node("Back")
+	back_control.layout_direction=Control.LAYOUT_DIRECTION_LTR
+	back_control.text_direction=Control.TEXT_DIRECTION_LTR
+	back_control.position=Vector2(16,16)
+	back_control.set_meta("l10n_x",16.0)
+	nav.scale=Vector2.ONE/menu_ui.scale
+	nav.position=(target-menu_ui.position)/menu_ui.scale
+	nav.set_meta("l10n_x",nav.position.x)
+	menu_ui.move_child(nav,menu_ui.get_child_count()-1)
+
+func navigate_back() -> void:
+	if is_instance_valid(story_scene) or is_instance_valid(reward_ui) or pending_reward>=0:return
+	if drag_active:cancel_drag();return
+	if screen=="pause":resume_game()
+	elif screen=="game":
+		if not busy and not won and not lost and not entering:show_menu("pause")
+	elif screen=="credits":show_menu("settings")
+	elif screen in ["levels","rescue_home","settings","rankings"]:show_menu()
 
 func resume_game() -> void:
 	screen = "game"
@@ -535,8 +612,11 @@ func build_ui() -> void:
 	wizard.entry_laugh_started.connect(func(): audio.play_entry(wizard.flight_style))
 	wizard.loss_laugh_started.connect(func(): audio.play("witch_laugh_loss"))
 	wizard.irritation_started.connect(func(): audio.stop_cue("witch_laugh"))
+	wizard.cry_started.connect(func(): audio.play("witch_cry"))
 	wizard.defeat_started.connect(func(): audio.play("witch_upset"))
 	wizard.staff_impact.connect(on_witch_staff_impact)
+	wizard.magic_impact.connect(func():
+		if screen=="game" and not entering:audio.play("magic_contact"))
 	var touch_witch:=Button.new()
 	touch_witch.name="WitchTouch"
 	touch_witch.size=Vector2(190,216)
@@ -584,6 +664,8 @@ func build_ui() -> void:
 	banner.name = "BannerReservation"
 
 func load_level(index: int) -> void:
+	cat_last_activity=clock
+	audio.stop_cue("witch_cry")
 	if busy:
 		return
 	cancel_story()
@@ -617,6 +699,7 @@ func load_level(index: int) -> void:
 	ui.get_node("WitchSpeech").modulate.a = 0
 	magic_exchange.bursts.clear()
 	curse.reset()
+	mischief.reset()
 	actor_signature = ""
 	for actor in actors:
 		actor.free()
@@ -638,9 +721,8 @@ func load_level(index: int) -> void:
 	refresh()
 
 func refresh() -> void:
-	undo_button.text = L.t("Undo %d" % undo_left if undo_left>0 else "Undo VIDEO")
-	undo_button.disabled = busy or won or history.is_empty() or pending_reward>=0
-	undo_button.disabled = undo_button.disabled or entering
+	undo_button.text = L.t("Undo")
+	undo_button.disabled = entering or busy or won or history.is_empty() or pending_reward>=0
 	coin_label.text = L.t(str(wallet.coins))
 	score_label.text = L.t("Score %d" % wallet.total_score)
 	level_label.text = L.t(("Hard • Level %d" if levels[level_index].get("difficulty","")=="hard" else "Level %d") % [level_index+1])
@@ -656,6 +738,7 @@ func refresh() -> void:
 	hud.gentle = reduced_motion
 	wizard.gentle = reduced_motion
 	wizard.set_near_win(not won and not lost and complete_count==total-1)
+	wizard.progress_tension=maxf(wizard.progress_tension,clampf(float(complete_count)/maxi(1,total),0,1))
 	rescued_label.text = L.t("All %d kittens are free!" % (total*4) if won else "Spell weakened  %d / %d" % [complete_count,total])
 	hud.update_progress(float(complete_count)/maxi(1,total),wallet.star_rating(moves,target,hint_used or extra_used),complete_count,total,target)
 	status.text = L.t(message)
@@ -676,7 +759,7 @@ func refresh() -> void:
 	hint_button.disabled = hint_button.disabled or entering
 	tube_button.disabled = tube_button.disabled or entering
 	undo_button.caption_override = L.t("Undo")
-	undo_button.subtitle = "×%d" % undo_left if undo_left>0 else L.t("VIDEO")
+	undo_button.subtitle = L.digits("× %d" % undo_left) if undo_left>0 else L.t("VIDEO")
 	hint_button.caption_override = L.t("Hint")
 	hint_button.subtitle = "● %d" % wallet.hint_price(level_index)
 	tube_button.caption_override = L.t("+ Tube  >").replace("+", "").replace(">", "").strip_edges()
@@ -692,7 +775,7 @@ func move_target() -> int:
 	var reference: int = levels[level_index].get("solution_length",3)
 	# Use measured grouped-move goals where solved. Do not arbitrarily shrink a
 	# single-cat certificate; that made some three-star targets impossible.
-	return maxi(3,int(group_move_goals.get(str(level_index),reference)))
+	return maxi(3,int(group_move_goals.get(str(level_index),reference)))+mischief.extra_moves
 
 func move_limit() -> int:
 	return preload("res://scripts/move_budget.gd").limits(move_target()).z+(2 if levels[level_index].get("pace","")=="recovery" else 0)
@@ -726,7 +809,7 @@ func board_scale() -> float:
 	var area:=board_area()
 	var width_limit: float=(area.size.x-26*(cols-1))/(108*cols)
 	var height_limit: float=(area.size.y-44*(rows-1))/(250*rows)
-	return minf(1.10 if rows==1 else 1.40,minf(width_limit,height_limit))
+	return minf(1.40,minf(width_limit,height_limit))
 
 func footer_y() -> float:return get_banner_rect().position.y-108
 func wizard_home_y() -> float:return footer_y()-238
@@ -749,7 +832,7 @@ func cat_position(index: int, slot: int) -> Vector2:
 	return Vector2(rect.get_center().x, rect.end.y-(44+slot*57)*board_scale())
 
 func _process(delta: float) -> void:
-	clock += delta
+	if screen!="pause":clock += delta
 	if screen=="game" and not entering and not won and not lost and audio.suspension_reasons.is_empty():playtest.elapsed+=delta
 	environment_blend = minf(1,environment_blend+delta/0.5)
 	if environment_blend>=1:
@@ -760,9 +843,11 @@ func _process(delta: float) -> void:
 	if screen != "game":
 		if is_instance_valid(menu_cats):
 			for actor in menu_cats.get_children():
-				actor.animate_menu(clock, actor.get_meta("menu_origin"), float(actor.get_meta("menu_scale")), reduced_motion)
+				actor.animate_menu(0.0 if animation_off else clock, actor.get_meta("menu_origin"), float(actor.get_meta("menu_scale")), reduced_motion)
+				actor.animate_sleep(clock,clock-cat_last_activity,screen=="menu" and not animation_off,reduced_motion)
 		queue_redraw()
 		return
+	mischief.update(delta,self)
 	curse.update(delta,self)
 	update_speech(delta)
 	var watch: Vector2=drag_pointer if drag_active else (cat_position(selected,tubes[selected].size()-1) if selected>=0 and not tubes[selected].is_empty() else Vector2(360,board_area().get_center().y))
@@ -802,10 +887,12 @@ func provoke_witch() -> void:
 	if screen!="game" or entering or busy or won or lost or clock<witch_tap_until or pending_reward>=0 or wizard.reaction in ["sort","curse"]:return
 	witch_tap_until=clock+5
 	if wizard.near_win:
-		wizard.react_good_move()
-		witch_reply="Not the last tube! My spell!"
+		wizard.story_laugh(1.8)
+		wizard.throw_magic(.4)
+		audio.play("witch_laugh")
+		witch_reply="You haven't beaten me yet!"
 	else:
-		wizard.story_laugh(1.4)
+		wizard.story_laugh(1.8)
 		wizard.throw_magic(.55)
 		audio.play("witch_laugh")
 		var replies: Array=["Hehe! Can you outsmart my spell?","Those kittens are staying with me!","Let's see how clever you are!"]
@@ -816,10 +903,10 @@ func provoke_witch() -> void:
 
 func on_witch_staff_impact() -> void:
 	audio.play("staff_thud")
-	curse.impact(self)
+	if not mischief.impact(self):curse.impact(self)
 	if screen!="game" or entering or not is_instance_valid(magic_exchange): return
 	var protected: bool = wizard.reaction=="sort" and not won and reaction_tube>=0 and reaction_tube<tubes.size() and is_complete(tubes[reaction_tube])
-	var origin: Vector2 = wizard.position+Vector2(122,173)
+	var origin: Vector2 = wizard.position+wizard.staff_ground_position()
 	var target: Vector2 = tube_rect(reaction_tube).get_center() if protected else origin
 	magic_exchange.strike(origin,target,protected,tube_rect(reaction_tube).size if protected else Vector2.ZERO)
 
@@ -846,23 +933,32 @@ func update_actors() -> void:
 	for actor in actors:
 		var tube: int = actor.get_meta("tube")
 		var slot: int = actor.get_meta("slot")
+		if bool(actor.get_meta("witch_swapping",false)):continue
 		actor.set_stack_count(flight_cats.size() if tube<0 else tubes[tube].size(),slot<(flight_cats.size() if tube<0 else tubes[tube].size())-1)
 		if tube < 0:
 			actor.z_index = 20+slot*2
-			actor.position = fly_position+Vector2(0,-slot*57*board_scale())
-			actor.animate(clock, false, flight_squash, 2, reduced_motion)
+			var gap: float=57.0
+			gap+=22*(1.0 if flight_from_drag else smoothstep(.05,.28,flight_progress))*(1-smoothstep(.76,.98,flight_progress))
+			actor.position = fly_position+Vector2(0,-slot*gap*board_scale())
+			actor.animate(0.0 if animation_off else clock, false, flight_squash*.25, 2, reduced_motion)
 			actor.scale *= board_scale()
-			actor.rotation = sin(flight_progress * TAU) * 0.045 * flight_direction
+			var pose: Dictionary=JumpMotion.air_pose(flight_progress,flight_direction,reduced_motion)
+			actor.scale*=Vector2.ONE
+			actor.rotation=pose.angle
+			# Keep the contact point stable while the artwork stretches.
+			actor.position.y-=40*(actor.scale.y-board_scale())
+			actor.animate_air(.5 if flight_from_drag and flight_progress<.86 else flight_progress,flight_from_drag or flight_progress>0)
 		else:
 			if won:
 				animate_escape(actor,tube,slot)
 				continue
 			actor.modulate.a = 1.0
 			if drag_active and tube == drag_source and slot >= tubes[tube].size() - drag_count:
-				actor.position = drag_anchor+Vector2(0,-(slot-(tubes[tube].size()-drag_count))*57*board_scale())
+				actor.position = drag_anchor+Vector2(0,-(slot-(tubes[tube].size()-drag_count))*79*board_scale())
 				actor.z_index = 20+(slot-(tubes[tube].size()-drag_count))*2
-				actor.animate(clock, true, 0, 2, reduced_motion)
+				actor.animate(0.0 if animation_off else clock, true, 0, 2, reduced_motion)
 				actor.scale *= board_scale()
+				actor.animate_air(.5,true)
 				continue
 			actor.z_index = slot*2
 			var active: bool = selected == tube and slot >= tubes[tube].size()-top_group_count(tubes,tube)
@@ -871,17 +967,17 @@ func update_actors() -> void:
 				target.y -= 8 + sin(clock * 3.0) * 1.5
 			actor.position = actor.position.lerp(target, 1.0 - exp(-18.0 * get_process_delta_time()))
 			var squash := 0.0
-			if tube == landing_tube and slot == tubes[tube].size() - 1:
-				var elapsed := clock - landing_at
-				if elapsed < 0.26:
-					squash = sin(elapsed / 0.26 * PI) * 0.65
+			if tube == landing_tube and slot >= tubes[tube].size() - landing_count:
+				squash = JumpMotion.landing(clock-landing_at,reduced_motion)
 			if won:
 				actor.position.y -= absf(sin((clock - win_at) * 4.0 + slot * 0.4 + tube)) * 8
 			var mood := 2 if won or (tube == landing_tube and clock - landing_at < 0.85) else 0
 			if tube == reaction_tube and clock < reaction_until:
 				mood = 3
-			actor.animate(clock, active, squash, mood, reduced_motion)
+			actor.animate(0.0 if animation_off else clock, active, squash, mood, reduced_motion)
 			actor.scale *= board_scale()
+			actor.position.y+=40*board_scale()*squash*.09
+			actor.animate_sleep(clock,clock-cat_last_activity,not entering and not busy and not drag_active and not active and not lost and not won and slot==tubes[tube].size()-1,reduced_motion)
 			if tube==landing_tube and is_complete(tubes[tube]) and clock-landing_at<.9:
 				var cheer := clampf((clock-landing_at)/.55,0,1)
 				actor.position.y -= sin(cheer*PI)*(2 if reduced_motion else 8)
@@ -897,12 +993,13 @@ func make_actor(kind: int, tube: int, slot: int) -> void:
 	actors.append(actor)
 
 func animate_escape(actor: Node2D, tube: int, slot: int) -> void:
+	actor.animate_air(0,false)
 	actor.set_stack_count(1)
 	var elapsed := clock-win_at
 	var start := cat_position(tube,slot)
 	var launch := 0.62+tube*0.018+(3-slot)*0.065
 	var t := clampf((elapsed-launch)/1.15,0,1)
-	actor.animate(clock,false,0,2,reduced_motion)
+	actor.animate(0.0 if animation_off else clock,false,0,2,reduced_motion)
 	actor.scale *= board_scale()
 	actor.z_index = 4
 	var side := -1.0 if tube%2==0 else 1.0
@@ -916,7 +1013,9 @@ func draw_environment_texture(texture: Texture2D, target: Rect2, opacity: float)
 	var texture_size := texture.get_size()
 	var factor := maxf(target.size.x/texture_size.x,target.size.y/texture_size.y)
 	var crop := target.size/factor
-	draw_texture_rect_region(texture,target,Rect2((texture_size-crop)*0.5,crop),Color(1,1,1,opacity))
+	var source:=Rect2((texture_size-crop)*0.5,crop)
+	if texture.resource_path.ends_with("wooden_cabin.png"):source=preload("res://scripts/cabin_fire.gd").crop_rect(texture,target)
+	draw_texture_rect_region(texture,target,source,Color(1,1,1,opacity))
 
 func draw_environment_particles(area: Rect2) -> void:
 	var tint := Color(EnvironmentCatalog.WORLDS[maxi(0,environment_index)].particle)
@@ -935,15 +1034,37 @@ func draw_environment_particles(area: Rect2) -> void:
 func _draw() -> void:
 	var full_rect := Rect2(-position, get_viewport_rect().size)
 	if screen == "menu":
-		draw_environment_texture(home_backdrop,full_rect,1)
+		draw_texture_rect(home_backdrop,preload("res://scripts/royal_home_layout.gd").background_rect(self),false)
+	elif screen=="credits":
+		draw_environment_texture(preload("res://assets/environments/laboratory.png"),full_rect,1)
+	elif screen=="rankings":
+		draw_environment_texture(preload("res://assets/environments/cave.png"),full_rect,1)
 	elif backdrop:
 		if previous_backdrop:
 			draw_environment_texture(previous_backdrop,full_rect,1)
 		draw_environment_texture(backdrop,full_rect,environment_blend)
 	var world: Dictionary = EnvironmentCatalog.WORLDS[maxi(0,environment_index)]
 	var shade := Color(world.shade)
-	shade.a = 0.34 if screen == "game" else (0.12 if screen == "menu" else 0.32)
+	if screen=="menu":shade=Color("10172f")
+	shade.a = 0.34 if screen == "game" else (0.13 if screen == "menu" else 0.32)
 	draw_rect(full_rect, shade)
+	if screen=="menu":
+		# Darken the frame and foreground gradually, leaving the moonlit
+		# center readable. Draw beneath all kittens, controls and text.
+		for i in range(24):
+			var t: float=i/23.0
+			var edge: float=pow(1.0-t,2.0)*.17
+			var strip: float=full_rect.size.x*.22/24.0
+			draw_rect(Rect2(full_rect.position+Vector2(i*strip,0),Vector2(strip+1,full_rect.size.y)),Color(.025,.025,.07,edge))
+			draw_rect(Rect2(full_rect.end.x-(i+1)*strip,full_rect.position.y,strip+1,full_rect.size.y),Color(.025,.025,.07,edge))
+		for i in range(32):
+			var t: float=i/31.0
+			var strip: float=full_rect.size.y*.38/32.0
+			draw_rect(Rect2(full_rect.position.x,full_rect.end.y-(i+1)*strip,full_rect.size.x,strip+1),Color(.025,.02,.06,.28*pow(1.0-t,1.5)))
+	if screen!="menu" and backdrop and backdrop.resource_path.ends_with("wooden_cabin.png"):
+		preload("res://scripts/cabin_fire.gd").draw(self,backdrop,full_rect,clock,reduced_motion,environment_blend)
+	elif screen!="menu" and previous_backdrop and previous_backdrop.resource_path.ends_with("wooden_cabin.png"):
+		preload("res://scripts/cabin_fire.gd").draw(self,previous_backdrop,full_rect,clock,reduced_motion,1-environment_blend)
 	draw_environment_particles(full_rect)
 	for effect in effects:
 		var t: float = effect.age/0.8
@@ -954,7 +1075,7 @@ func _draw() -> void:
 			var point: Vector2 = effect.point+direction*(20+t*75)
 			draw_circle(point,maxf(1,5*(1-t)),tint)
 	if screen not in ["game","menu","levels"]:
-		draw_style_box(panel(Color(0.04, 0.06, 0.13, 0.55), 35, Color(0.82, 0.66, 0.42, 0.5)), Rect2(70, 80, 580, 952))
+		if screen not in ["pause","settings","rankings","credits","rescue_home"]:draw_style_box(panel(Color(0.04, 0.06, 0.13, 0.55), 35, Color(0.82, 0.66, 0.42, 0.5)), Rect2(70, 80, 580, 952))
 		return
 	if screen in ["menu","levels"]: return
 	draw_rect(get_banner_rect(), Color("101824"))
@@ -975,15 +1096,10 @@ func _draw() -> void:
 		if drag_active and i != drag_source and rect.grow(10).has_point(drag_pointer) and legal(tubes, drag_source, i):
 			tint = Color("a4e3bc")
 			draw_style_box(panel(Color(0.4, 0.9, 0.6, 0.12), 39, tint), rect.grow(7))
-		draw_style_box(panel(Color("393c79"),8,Color("777eae")),Rect2(rect.position+Vector2(-6*s,rect.size.y+4),Vector2(120*s,16*s)))
-		draw_line(rect.position+Vector2(-2*s,rect.size.y+7),rect.position+Vector2(110*s,rect.size.y+7),Color("a5b6ee"),1.5,true)
+		preload("res://scripts/tube_depth.gd").base(self,rect,s)
 		draw_style_box(panel(Color(0.48, 0.62, 0.82, 0.12), 35, tint), rect)
 		draw_line(rect.position+Vector2(9,15)*s,rect.position+Vector2(9,211)*s,Color(0.85,0.94,1,0.38),2.5*s,true)
-		var rim := PackedVector2Array()
-		for segment in range(49):
-			var angle := segment * TAU / 48.0
-			rim.append(rect.position+Vector2(54+cos(angle)*54,2+sin(angle)*9)*s)
-		draw_polyline(rim, Color("e3e7f4"), 2.5, true)
+		preload("res://scripts/tube_depth.gd").rim(self,rect,s,tint)
 		if complete:
 			var center := rect.get_center()
 			var edge := Vector2(rect.position.x+7*s,center.y)
@@ -1001,6 +1117,8 @@ func _draw() -> void:
 			var angle := i * 2.399
 			var radius := 80 + fmod(clock * 65 + i * 29, 230)
 			draw_circle(Vector2(360, 520) + Vector2(cos(angle), sin(angle)) * radius, 4, COLORS[i % 4])
+
+	if screen=="game":mischief.draw_magic(self)
 
 func draw_broken_jar(rect: Rect2,index: int) -> void:
 	var t := maxf(0,clock-win_at-.53-index*.018)
@@ -1036,8 +1154,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if screen == "menu" and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		for actor in menu_cats.get_children():
 			if Rect2(actor.global_position-Vector2(78,84),Vector2(156,166)).has_point(get_canvas_transform().affine_inverse()*event.position):
+				if actor.greet_until>clock+.8:return
 				actor.greet_until = clock + 1.5
-				audio.play("tap")
+				audio.play_soft_cat(actor.kind)
 				return
 	if entering or busy or won or lost or screen != "game" or is_instance_valid(reward_ui):
 		return
@@ -1051,6 +1170,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		pointer_source=source;pointer_start=point
 
 func _input(event: InputEvent) -> void:
+	if (event is InputEventScreenTouch and event.pressed) or (event is InputEventMouseButton and event.pressed) or (event is InputEventKey and event.pressed):
+		cat_last_activity=clock
+		if is_instance_valid(wizard):wizard.note_move()
 	if is_instance_valid(story_scene): return
 	# Capture native touch on the board; GUI buttons retain touch emulation.
 	if event is InputEventScreenTouch:
@@ -1075,8 +1197,8 @@ func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton or event is InputEventMouseMotion) and Time.get_ticks_msec() < touch_ignore_until:
 		get_viewport().set_input_as_handled()
 		return
-	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE and drag_active:
-		cancel_drag()
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+		navigate_back()
 		get_viewport().set_input_as_handled()
 		return
 	if pointer_source < 0:
@@ -1110,6 +1232,9 @@ func release_pointer(point: Vector2) -> void:
 		choose(source)
 
 func _notification(what: int) -> void:
+	if what==NOTIFICATION_WM_GO_BACK_REQUEST:
+		navigate_back()
+		return
 	if what in [NOTIFICATION_WM_WINDOW_FOCUS_OUT,NOTIFICATION_APPLICATION_FOCUS_OUT]:
 		cancel_drag()
 		if is_instance_valid(audio):
@@ -1207,12 +1332,14 @@ func choose(index: int) -> void:
 	refresh()
 
 func transfer(src: int, dst: int, amount: int = 1, from_drag: bool = false) -> void:
+	cat_last_activity=clock
 	if entering or busy or won or lost or not legal(tubes, src, dst):
 		return
 	if curse.blocked(src) or curse.blocked(dst):
 		curse.reject(self)
 		return
 	var count := mini(maxi(1, amount), mini(top_group_count(tubes, src), 4 - tubes[dst].size()))
+	flight_from_drag=from_drag
 	var base_slot: int = tubes[src].size() - count
 	var start := cat_position(src, base_slot)
 	for actor in actors:
@@ -1243,20 +1370,17 @@ func transfer(src: int, dst: int, amount: int = 1, from_drag: bool = false) -> v
 	var tween := create_tween()
 	flight_tween = tween
 	# One continuous cubic arc with vertical launch and landing tangents.
-	tween.tween_property(self, "flight_squash", 0.35 if from_drag else 0.65, 0.02 if from_drag else 0.07)
-	var control_y := maxf(194.0+(count-1)*57*board_scale()+40*board_scale(),minf(start.y,finish.y)-125.0)
-	var control_a := Vector2(start.x, control_y)
-	var control_b := Vector2(finish.x, control_y)
-	if from_drag:
-		tween.tween_method(func(t: float):
-			flight_progress = t
-			flight_squash = (1.0-t)*0.35
-			fly_position = start.lerp(finish,t),0.0,1.0,0.18).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	else:
-		tween.tween_method(func(t: float):
-			flight_progress = t
-			flight_squash = lerpf(0.65,0.0,minf(t*5,1.0))
-			fly_position = start.bezier_interpolate(control_a,control_b,finish,t),0.0,1.0,0.64 if not reduced_motion else 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "flight_squash", 0.0 if from_drag else 0.85, 0.01 if from_drag else 0.14)
+	var ceiling: float=content_rect().position.y+146+(count-1)*79*board_scale()+40*board_scale()
+	var travel_time: float=JumpMotion.duration(start.distance_to(finish),reduced_motion)
+	if from_drag:travel_time=.28 if reduced_motion else .38
+	tween.tween_method(func(t: float):
+		flight_progress=t
+		flight_squash=0.85*(1-smoothstep(0,.22,t)) if not from_drag else 0.0
+		if from_drag:
+			# A small finishing hop, preserving release position and destination exactly.
+			fly_position=start.lerp(finish,t)-Vector2(0,sin(PI*t)*(5 if reduced_motion else 22)*board_scale())
+		else:fly_position=JumpMotion.arc(start,finish,ceiling,t),0.0,1.0,travel_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 	for actor in actors:
 		if int(actor.get_meta("tube")) == -1:
@@ -1269,6 +1393,7 @@ func transfer(src: int, dst: int, amount: int = 1, from_drag: bool = false) -> v
 	flight_cats.clear()
 	flying = -1
 	landing_tube = dst
+	landing_count = count
 	landing_at = clock
 	moves += 1
 	busy = false
@@ -1298,7 +1423,9 @@ func transfer(src: int, dst: int, amount: int = 1, from_drag: bool = false) -> v
 		best_moves[key] = mini(int(best_moves.get(key, moves)), moves)
 		var target := move_target()
 		var new_rescue: bool=not wallet.records.has(key)
-		level_reward = wallet.award(level_index,moves,target,hint_used or extra_used)
+		level_reward = wallet.award(level_index,moves,target,hint_used or extra_used,str(levels[level_index].get("difficulty",""))=="hard")
+		if is_instance_valid(leaderboard):
+			leaderboard.queue_score(level_index,int(level_reward.get("score",0)))
 		level_reward["keepsake"]=new_rescue and (level_index+1)%10==0
 		playtest.result(true,moves)
 		save_progress()
@@ -1310,12 +1437,13 @@ func transfer(src: int, dst: int, amount: int = 1, from_drag: bool = false) -> v
 	if won or lost: curse.clear()
 	else:
 		curse.on_move(self,src,dst)
-		if not is_complete(tubes[dst]):curse.try_cast(self)
+		mischief.record_move(self)
+		if not mischief.due() and not is_complete(tubes[dst]):curse.try_cast(self)
 	update_actors()
 	refresh()
 	if won:
 		var finished_level := level_index
-		await get_tree().create_timer(2.4).timeout
+		await get_tree().create_timer(4.2).timeout
 		if won and screen=="game" and level_index==finished_level:
 			show_win()
 
@@ -1355,12 +1483,13 @@ func show_loss() -> void:
 	loss_story.size = Vector2(360,95)
 	loss_story.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button_at("Try again",Rect2(200,410,320,64),func(): start_game(level_index,true),Color("629967"))
-	button_at("Undo  %d" % undo_left if undo_left>0 else "Undo  VIDEO",Rect2(200,492,320,60),request_undo,Color("76648f"))
+	button_at(L.t("Undo")+"  "+(L.digits("× %d" % undo_left) if undo_left>0 else L.t("VIDEO")),Rect2(200,492,320,60),request_undo,Color("76648f"))
 	button_at("Home",Rect2(260,579,200,44),func(): show_menu(),Color("42566f"))
 	ui = previous
 	L.restyle_tree(loss_ui)
 
 func clear_win(stop_audio: bool = true) -> void:
+	audio.stop_cue("result_victory_jingle")
 	if stop_audio: audio.stop_celebration()
 	if is_instance_valid(win_ui):
 		ui.show()
@@ -1369,6 +1498,7 @@ func clear_win(stop_audio: bool = true) -> void:
 	win_ui = null
 
 func show_win() -> void:
+	audio.stop_cue("witch_cry")
 	clear_win()
 	ui.hide()
 	win_ui = preload("res://scripts/victory_screen.gd").new()
@@ -1396,12 +1526,15 @@ func solved(state: Array) -> bool:
 	return state.all(func(tube): return tube.is_empty() or is_complete(tube))
 
 func undo() -> void:
-	if entering or busy or won or history.is_empty() or undo_left<=0:
+	if entering or busy or won or history.is_empty():
 		return
-	undo_left -= 1
+	if undo_left<=0:
+		return
+	undo_left-=1
 	playtest.event("undos")
 	curse.clear()
 	tubes = history.pop_back()
+	mischief.on_undo(history.size())
 	moves = maxi(0, moves - 1)
 	selected = -1
 	won = false
@@ -1487,8 +1620,8 @@ func request_reward(kind: String) -> void:
 	reward_ui.add_child(shade)
 	var previous := ui
 	ui = reward_ui
-	centered_text("Three extra undos" if kind=="undo" else "An extra little space", 290, 35, Color("f3e2bd"))
-	centered_text("Video: rewind now and keep 2 more undos." if kind=="undo" else "Watch a video to unlock one extra tube.", 370, 22, Color("c3cedc"))
+	centered_text("One extra undo" if kind=="undo" else "An extra little space", 290, 35, Color("f3e2bd"))
+	centered_text("Watch a video to undo one move." if kind=="undo" else "Watch a video to unlock one extra tube.", 370, 22, Color("c3cedc"))
 	centered_text("Desktop ad preview — no real advertisement", 420, 16, Color("8e9caf"))
 	var complete := button_at("Preview  3", Rect2(150, 520, 420, 78), complete_preview_reward, Color("447c78"))
 	complete.disabled = true
@@ -1524,7 +1657,7 @@ func on_tube_reward(id: int) -> void:
 	if id != pending_reward or rewarded_level != level_index or screen != "game":
 		return
 	if pending_reward_kind=="undo":
-		undo_left += 3
+		undo_left += 1
 		undo()
 	else:
 		add_tube()
@@ -1630,4 +1763,3 @@ func build_solution_lookup() -> void:
 		var dst := int(step[1])
 		solution_lookup[ordered_key(state)] = [src, dst]
 		state[dst].append(state[src].pop_back())
-

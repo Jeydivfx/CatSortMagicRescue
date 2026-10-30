@@ -42,3 +42,9 @@ export_credentials.cfg
 /addons/admob/downloads/
 /android/build/src/main/assets/
 /android/build/assetPackInstallTime/src/main/assets/
+
+# Scratch backups and obsolete local repair copies
+*.bak
+*.backup_*
+/leaderboard_backup_*/
+/rankings_fix_backup_*/

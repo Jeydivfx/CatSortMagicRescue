@@ -328,5 +328,585 @@
     "كل قطة تستحق بيتًا.",
     "Her kedi bir yuvayı hak eder.",
     "هر گربه سزاوار یک خانه است."
+  ],
+  "The witch has another trick!": [
+    "La sorcière prépare un nouveau tour !",
+    "¡La bruja tiene otro truco!",
+    "La strega ha un altro trucco!",
+    "Häxan har ett nytt trick!",
+    "Heksen har et nytt triks!",
+    "لدى الساحرة خدعة أخرى!",
+    "Cadının yeni bir numarası var!",
+    "جادوگر یک کلک دیگر دارد!"
+  ],
+  "The witch swapped two kittens!  +3 moves": [
+    "La sorcière a échangé deux chatons !  +3 coups",
+    "¡La bruja intercambió dos gatitos!  +3 movimientos",
+    "La strega ha scambiato due gattini!  +3 mosse",
+    "Häxan bytte plats på två kattungar!  +3 drag",
+    "Heksen byttet to kattunger!  +3 trekk",
+    "بدّلت الساحرة قطتين!  +3 حركات",
+    "Cadı iki kedinin yerini değiştirdi!  +3 hamle",
+    "جادوگر جای دو گربه را عوض کرد!  ۳ حرکت اضافه"
+  ],
+  "Cozy Wooden Cabin": [
+    "Chalet douillet",
+    "Cabaña acogedora",
+    "Baita accogliente",
+    "Mysig trästuga",
+    "Koselig trehytte",
+    "كوخ خشبي دافئ",
+    "Sıcacık Ahşap Kulübe",
+    "کلبهٔ چوبی دنج"
+  ],
+  "Potion Workshop": [
+    "Atelier de potions",
+    "Taller de pociones",
+    "Laboratorio di pozioni",
+    "Trolldrycksverkstad",
+    "Eliksirverksted",
+    "ورشة الجرعات",
+    "İksir Atölyesi",
+    "کارگاه معجون‌ها"
+  ],
+  "Enchanted Forest": [
+    "Forêt enchantée",
+    "Bosque encantado",
+    "Foresta incantata",
+    "Förtrollad skog",
+    "Fortryllet skog",
+    "الغابة المسحورة",
+    "Büyülü Orman",
+    "جنگل جادویی"
+  ],
+  "Magic Forest": [
+    "Forêt magique",
+    "Bosque mágico",
+    "Foresta magica",
+    "Magisk skog",
+    "Magisk skog",
+    "الغابة السحرية",
+    "Sihirli Orman",
+    "جنگل جادویی"
+  ],
+  "Witch Cabin": [
+    "Cabane de la sorcière",
+    "Cabaña de la bruja",
+    "Capanna della strega",
+    "Häxans stuga",
+    "Heksas hytte",
+    "كوخ الساحرة",
+    "Cadının Kulübesi",
+    "کلبهٔ جادوگر"
+  ],
+  "Rank": [
+    "Classement",
+    "Clasificación",
+    "Classifica",
+    "Rankning",
+    "Rangering",
+    "الترتيب",
+    "Sıralama",
+    "رتبه‌بندی"
+  ],
+  "Global Rankings": [
+    "Classement mondial",
+    "Clasificación mundial",
+    "Classifica globale",
+    "Världsrankning",
+    "Verdensrangering",
+    "الترتيب العالمي",
+    "Dünya Sıralaması",
+    "رتبه‌بندی جهانی"
+  ],
+  "GLOBAL RANKINGS": [
+    "CLASSEMENT MONDIAL",
+    "CLASIFICACIÓN MUNDIAL",
+    "CLASSIFICA GLOBALE",
+    "VÄRLDSRANKNING",
+    "VERDENSRANGERING",
+    "الترتيب العالمي",
+    "DÜNYA SIRALAMASI",
+    "رتبه‌بندی جهانی"
+  ],
+  "Preview name entry": [
+    "Aperçu du nom",
+    "Probar nombre",
+    "Anteprima nome",
+    "Förhandsvisa namn",
+    "Forhåndsvis navn",
+    "معاينة إدخال الاسم",
+    "İsim girişini önizle",
+    "پیش‌نمایش ورود نام"
+  ],
+  "Your name": [
+    "Votre nom",
+    "Tu nombre",
+    "Il tuo nome",
+    "Ditt namn",
+    "Ditt navn",
+    "اسمك",
+    "Adınız",
+    "نام شما"
+  ],
+  "Start Adventure": [
+    "Commencer",
+    "Comenzar aventura",
+    "Inizia avventura",
+    "Börja äventyret",
+    "Start eventyret",
+    "ابدأ المغامرة",
+    "Maceraya başla",
+    "شروع ماجراجویی"
+  ],
+  "Welcome, little wizard!": [
+    "Bienvenue, petit mage !",
+    "¡Bienvenido, mago!",
+    "Benvenuto, maghetto!",
+    "Välkommen, lilla trollkarl!",
+    "Velkommen, lille trollmann!",
+    "أهلاً أيها الساحر الصغير!",
+    "Hoş geldin, küçük büyücü!",
+    "خوش آمدی، جادوگر کوچولو!"
+  ],
+  "Close preview": [
+    "Fermer",
+    "Cerrar vista previa",
+    "Chiudi anteprima",
+    "Stäng förhandsvisning",
+    "Lukk forhåndsvisning",
+    "إغلاق المعاينة",
+    "Önizlemeyi kapat",
+    "بستن پیش‌نمایش"
+  ],
+  "Preview — your account stays unchanged": [
+    "Aperçu — compte inchangé",
+    "Vista previa — cuenta sin cambios",
+    "Anteprima — account invariato",
+    "Förhandsvisning — kontot ändras inte",
+    "Forhåndsvisning — kontoen endres ikke",
+    "معاينة — لن يتغير حسابك",
+    "Önizleme — hesabınız değişmez",
+    "پیش‌نمایش؛ حساب شما تغییر نمی‌کند"
+  ],
+  "Choose your player name (only once)": [
+    "Choisissez votre nom (une fois)",
+    "Elige tu nombre (una vez)",
+    "Scegli il nome (una volta)",
+    "Välj ditt namn (en gång)",
+    "Velg navnet ditt (én gang)",
+    "اختر اسمك (مرة واحدة)",
+    "Oyuncu adını seç (bir kez)",
+    "نام بازیکن را انتخاب کن (فقط یک‌بار)"
+  ],
+  "Top 50 magic cat rescuers": [
+    "Les 50 meilleurs sauveteurs",
+    "Los 50 mejores rescatadores",
+    "I 50 migliori soccorritori",
+    "De 50 bästa katträddarna",
+    "De 50 beste katteredderne",
+    "أفضل ٥٠ منقذاً للقطط",
+    "En iyi 50 kedi kurtarıcısı",
+    "۵۰ نجات‌دهندهٔ برتر گربه‌ها"
+  ],
+  "Please enter at least 2 characters.": [
+    "Au moins 2 caractères.",
+    "Escribe al menos 2 caracteres.",
+    "Inserisci almeno 2 caratteri.",
+    "Ange minst 2 tecken.",
+    "Skriv minst 2 tegn.",
+    "أدخل حرفين على الأقل.",
+    "En az 2 karakter girin.",
+    "حداقل ۲ نویسه وارد کن."
+  ],
+  "Sound": [
+    "Son",
+    "Sonido",
+    "Suono",
+    "Ljud",
+    "Lyd",
+    "الصوت",
+    "Ses",
+    "صدا"
+  ],
+  "Music": [
+    "Musique",
+    "Música",
+    "Musica",
+    "Musik",
+    "Musikk",
+    "الموسيقى",
+    "Müzik",
+    "موسیقی"
+  ],
+  "Effects": [
+    "Effets",
+    "Efectos",
+    "Effetti",
+    "Effekter",
+    "Effekter",
+    "المؤثرات",
+    "Efektler",
+    "افکت‌ها"
+  ],
+  "Graphics": [
+    "Graphismes",
+    "Gráficos",
+    "Grafica",
+    "Grafik",
+    "Grafikk",
+    "الرسومات",
+    "Grafikler",
+    "گرافیک"
+  ],
+  "Animation": [
+    "Animation",
+    "Animación",
+    "Animazione",
+    "Animation",
+    "Animasjon",
+    "الحركة",
+    "Animasyon",
+    "انیمیشن"
+  ],
+  "Full": [
+    "Complète",
+    "Completa",
+    "Completa",
+    "Full",
+    "Full",
+    "كاملة",
+    "Tam",
+    "کامل"
+  ],
+  "Reduced": [
+    "Réduite",
+    "Reducida",
+    "Ridotta",
+    "Minskad",
+    "Redusert",
+    "مخففة",
+    "Azaltılmış",
+    "کمتر"
+  ],
+  "Off": [
+    "Arrêt",
+    "No",
+    "No",
+    "Av",
+    "Av",
+    "إيقاف",
+    "Kapalı",
+    "خاموش"
+  ],
+  "World": [
+    "Monde",
+    "Mundo",
+    "Mondo",
+    "Värld",
+    "Verden",
+    "العالم",
+    "Dünya",
+    "محیط"
+  ],
+  "Background theme": [
+    "Thème du décor",
+    "Tema del fondo",
+    "Tema dello sfondo",
+    "Bakgrundstema",
+    "Bakgrunnstema",
+    "سمة الخلفية",
+    "Arka plan teması",
+    "تم پس‌زمینه"
+  ],
+  "About": [
+    "À propos",
+    "Acerca de",
+    "Informazioni",
+    "Om",
+    "Om",
+    "حول",
+    "Hakkında",
+    "دربارهٔ بازی"
+  ],
+  "Choose your player name and your cat": [
+    "Choisissez votre nom et votre chat",
+    "Elige tu nombre y tu gato",
+    "Scegli il tuo nome e il tuo gatto",
+    "Välj ditt namn och din katt",
+    "Velg navnet ditt og katten din",
+    "اختر اسمك وقطتك",
+    "Oyuncu adını ve kedini seç",
+    "نام بازیکن و گربه‌ات را انتخاب کن"
+  ],
+  "Player name": [
+    "Nom du joueur",
+    "Nombre del jugador",
+    "Nome giocatore",
+    "Spelarnamn",
+    "Spillernavn",
+    "اسم اللاعب",
+    "Oyuncu adı",
+    "نام بازیکن"
+  ],
+  "Choose your cat": [
+    "Choisissez votre chat",
+    "Elige tu gato",
+    "Scegli il tuo gatto",
+    "Välj din katt",
+    "Velg katten din",
+    "اختر قطتك",
+    "Kedini seç",
+    "گربه‌ات را انتخاب کن"
+  ],
+  "Change name and avatar": [
+    "Modifier le nom et l’avatar",
+    "Cambiar nombre y avatar",
+    "Cambia nome e avatar",
+    "Ändra namn och avatar",
+    "Endre navn og avatar",
+    "تغيير الاسم والصورة",
+    "Adı ve avatarı değiştir",
+    "تغییر نام و آواتار"
+  ],
+  "Save changes": [
+    "Enregistrer",
+    "Guardar cambios",
+    "Salva modifiche",
+    "Spara ändringar",
+    "Lagre endringer",
+    "حفظ التغييرات",
+    "Değişiklikleri kaydet",
+    "ذخیرهٔ تغییرات"
+  ],
+  "Your score": [
+    "Votre score",
+    "Tu puntuación",
+    "Il tuo punteggio",
+    "Din poäng",
+    "Din poengsum",
+    "نقاطك",
+    "Puanın",
+    "امتیاز شما"
+  ],
+  "No rankings yet": [
+    "Aucun classement",
+    "Aún no hay resultados",
+    "Nessuna classifica",
+    "Inga resultat ännu",
+    "Ingen resultater ennå",
+    "لا يوجد ترتيب بعد",
+    "Henüz sıralama yok",
+    "هنوز رتبه‌ای ثبت نشده"
+  ],
+  "Refresh": [
+    "Actualiser",
+    "Actualizar",
+    "Aggiorna",
+    "Uppdatera",
+    "Oppdater",
+    "تحديث",
+    "Yenile",
+    "به‌روزرسانی"
+  ],
+  "Edited excerpt, fades and sound mix.": [
+    "Extrait monté, fondus et mixage sonore.",
+    "Fragmento editado, fundidos y mezcla de sonido.",
+    "Estratto montato, dissolvenze e mixaggio audio.",
+    "Redigerat utdrag, toningar och ljudmix.",
+    "Redigert utdrag, overganger og lydmiks.",
+    "مقطع محرر مع تلاشي ومزج صوتي.",
+    "Düzenlenmiş kesit, geçişler ve ses miksajı.",
+    "بخشی ویرایش‌شده، با محوشدن تدریجی و ترکیب صدا."
+  ],
+  "Moves:": [
+    "Coups :",
+    "Movimientos:",
+    "Mosse:",
+    "Drag:",
+    "Trekk:",
+    "الحركات:",
+    "Hamle:",
+    "حرکت‌ها:"
+  ],
+  "Best:": [
+    "Record :",
+    "Récord:",
+    "Record:",
+    "Bäst:",
+    "Beste:",
+    "الأفضل:",
+    "En iyi:",
+    "بهترین:"
+  ],
+  "Score:": [
+    "Score :",
+    "Puntos:",
+    "Punteggio:",
+    "Poäng:",
+    "Poeng:",
+    "النقاط:",
+    "Puan:",
+    "امتیاز:"
+  ],
+  "Journey": [
+    "Parcours",
+    "Viaje",
+    "Viaggio",
+    "Resan",
+    "Reisen",
+    "الرحلة",
+    "Yolculuk",
+    "مراحل"
+  ],
+  "Rankings": [
+    "Classement",
+    "Clasificación",
+    "Classifica",
+    "Rankning",
+    "Rangering",
+    "الترتيب",
+    "Sıralama",
+    "رتبه‌بندی"
+  ],
+  "Complete levels to earn coins.": [
+    "Terminez des niveaux pour gagner des pièces.",
+    "Completa niveles para ganar monedas.",
+    "Completa i livelli per ottenere monete.",
+    "Klara nivåer för att få mynt.",
+    "Fullfør nivåer for å tjene mynter.",
+    "أكمل المراحل لكسب العملات.",
+    "Para kazanmak için bölümleri tamamla.",
+    "با نجات گربه‌ها و تکمیل مراحل سکه بگیر."
+  ],
+  "Coins": [
+    "Pièces",
+    "Monedas",
+    "Monete",
+    "Mynt",
+    "Mynter",
+    "العملات",
+    "Paralar",
+    "سکه‌ها"
+  ],
+  "Rescue Home": [
+    "Refuge des chats",
+    "Refugio de gatos",
+    "Rifugio dei gatti",
+    "Katthem",
+    "Kattehjem",
+    "ملجأ القطط",
+    "Kedi sığınağı",
+    "پناهگاه گربه‌ها"
+  ],
+  "Kittens rescued": [
+    "Chatons sauvés",
+    "Gatitos rescatados",
+    "Gattini salvati",
+    "Räddade kattungar",
+    "Reddede kattunger",
+    "قطط تم إنقاذها",
+    "Kurtarılan kediler",
+    "گربه‌های نجات‌یافته"
+  ],
+  "Breeds found": [
+    "Races trouvées",
+    "Razas encontradas",
+    "Razze trovate",
+    "Hittade raser",
+    "Raser funnet",
+    "السلالات المكتشفة",
+    "Bulunan ırklar",
+    "نژادهای پیدا‌شده"
+  ],
+  "Not rescued yet": [
+    "Pas encore sauvé",
+    "Aún sin rescatar",
+    "Non ancora salvato",
+    "Inte räddad än",
+    "Ikke reddet ennå",
+    "لم تُنقذ بعد",
+    "Henüz kurtarılmadı",
+    "هنوز نجات نیافته"
+  ],
+  "Next sanctuary upgrade": [
+    "Prochaine amélioration",
+    "Próxima mejora del refugio",
+    "Prossimo miglioramento",
+    "Nästa förbättring",
+    "Neste oppgradering",
+    "تطوير الملجأ التالي",
+    "Sonraki barınak geliştirmesi",
+    "ارتقای بعدی پناهگاه"
+  ],
+  "Current level": [
+    "Niveau actuel",
+    "Nivel actual",
+    "Livello attuale",
+    "Aktuell nivå",
+    "Nåværende nivå",
+    "المرحلة الحالية",
+    "Mevcut bölüm",
+    "مرحلهٔ فعلی"
+  ],
+  "Ranking update requires server setup (score v2).": [
+    "Mise à jour SQL requise pour le classement.",
+    "El ranking necesita la actualización SQL.",
+    "La classifica richiede l’aggiornamento SQL.",
+    "Rankningen kräver SQL-uppdateringen.",
+    "Rangeringen krever SQL-oppdateringen.",
+    "يتطلب الترتيب تحديث SQL للخادم.",
+    "Sıralama için SQL güncellemesi gerekiyor.",
+    "برای رتبه‌بندی جدید، فایل SQL را در سرور اجرا کن."
+  ],
+  "One extra undo": [
+    "Une annulation supplémentaire",
+    "Un deshacer extra",
+    "Un annullamento extra",
+    "En extra ångring",
+    "Én ekstra angring",
+    "تراجع إضافي واحد",
+    "Bir ek geri alma",
+    "یک آندوی اضافه"
+  ],
+  "Watch a video to undo one move.": [
+    "Regardez une vidéo pour annuler un coup.",
+    "Mira un vídeo para deshacer un movimiento.",
+    "Guarda un video per annullare una mossa.",
+    "Titta på en video för att ångra ett drag.",
+    "Se en video for å angre ett trekk.",
+    "شاهد فيديو للتراجع عن حركة واحدة.",
+    "Bir hamleyi geri almak için video izle.",
+    "برای برگشتن یک حرکت، ویدیو ببین."
+  ],
+  "Chapter %d": [
+    "Chapitre %d",
+    "Capítulo %d",
+    "Capitolo %d",
+    "Kapitel %d",
+    "Kapittel %d",
+    "الفصل %d",
+    "Bölüm %d",
+    "فصل %d"
+  ],
+  "Levels %d–%d": [
+    "Niveaux %d–%d",
+    "Niveles %d–%d",
+    "Livelli %d–%d",
+    "Nivåer %d–%d",
+    "Nivåer %d–%d",
+    "المراحل %d–%d",
+    "Seviyeler %d–%d",
+    "مرحله‌های %d–%d"
+  ],
+  "%d / %d levels complete": [
+    "%d / %d niveaux terminés",
+    "%d / %d niveles completados",
+    "%d / %d livelli completati",
+    "%d / %d nivåer klara",
+    "%d / %d nivåer fullført",
+    "%d / %d مراحل مكتملة",
+    "%d / %d seviye tamamlandı",
+    "%d / %d مرحله کامل شده"
   ]
 }

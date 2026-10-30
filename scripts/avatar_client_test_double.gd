@@ -1,0 +1,9 @@
+extends "res://scripts/supabase_client.gd"
+var calls:Array=[]
+var response={"ok":true,"code":200,"data":"black"}
+var persisted:Dictionary={}
+func _ready()->void:pass
+func persist()->void:persisted={"name":player_name,"avatar_id":avatar_id,"pending":avatar_pending,"id":user_id}
+func connect_player()->void:pass
+func http(method:int,path:String,body:Dictionary={},authenticated:=true)->Dictionary:
+ calls.append({"method":method,"path":path,"body":body,"auth":authenticated});return response

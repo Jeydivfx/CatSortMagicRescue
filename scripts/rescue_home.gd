@@ -1,91 +1,73 @@
 extends Control
 const L=preload("res://scripts/localization.gd")
+const Breeds=preload("res://scripts/cat_breeds.gd")
 var game
 var completed:=0
 var rescued:=0
-var content: Control
-var residents: Array=[]
-var scenery: Node2D
+var content:Control
+var residents:Array=[]
+var scenery:Node2D
 var age:=0.0
-var milestone_bar: ProgressBar
-func configure(g) -> void:
-	game=g
-	completed=mini(g.levels.size(),maxi(g.unlocked-1,g.wallet.records.size()))
-	for i in range(completed):rescued+=int(g.levels[i].get("colors",2))*4
-	var bg:=TextureRect.new();bg.texture=load("res://assets/environments/cottage.png")
-	bg.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;bg.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(bg)
-	var shade:=ColorRect.new();shade.color=Color(.025,.045,.075,.30);shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(shade)
-	content=Control.new();content.layout_direction=Control.LAYOUT_DIRECTION_LTR;add_child(content)
-	var back=preload("res://scripts/jewel_button.gd").new()
-	L.style(back);back.set_meta("l10n_x",22.0)
-	back.text=" ";back.caption_override=" ";back.symbol="back";back.compact=true;back.tint=Color("6258c8")
-	back.position=Vector2(22,24);back.size=Vector2(58,58)
-	back.pressed.connect(func():game.show_menu());content.add_child(back)
-	label("Cat sanctuary",Rect2(98,24,490,58),32,Color("ffe6a0"))
-	label("Safe, at last.",Rect2(65,90,550,38),21,Color("fff1d3"))
-	var count_panel:=Panel.new();count_panel.position=Vector2(120,154);count_panel.size=Vector2(440,64)
-	count_panel.add_theme_stylebox_override("panel",game.panel(Color(.04,.09,.15,.84),28,Color("a99573")));content.add_child(count_panel)
-	label("%d kittens rescued"%rescued,Rect2(130,161,420,48),24,Color("ffe7a1"))
-	scenery=Node2D.new();content.add_child(scenery);scenery.draw.connect(draw_room)
-	var available: Array=[]
-	for i in range(completed):
-		for tube in game.levels[i].tubes:
-			for kind in tube:
-				if not available.has(int(kind)):available.append(int(kind))
-	var spots: Array=[Vector2(340,620),Vector2(153,617),Vector2(523,619),Vector2(480,416),Vector2(190,425)]
-	for i in range(mini(5,available.size())):
-		var cat=preload("res://scripts/cat_actor.gd").new();content.add_child(cat);cat.setup(null,available[i],i*.91)
-		cat.menu_ears_enabled=true;cat.set_meta("home_origin",spots[i]);cat.set_meta("home_scale",1.50 if i<3 else 1.10);residents.append(cat)
-	if residents.is_empty():label("A cozy place for every rescue.",Rect2(80,475,520,70),23,Color("fff0d4"))
-	var card:=Panel.new();card.position=Vector2(55,735);card.size=Vector2(570,112)
-	card.add_theme_stylebox_override("panel",game.panel(Color(.04,.09,.15,.90),24,Color("a99573")));content.add_child(card)
-	label("A new comfort in %d levels"%[10-completed%10] if completed<g.levels.size() else "Every kitten deserves a home.",Rect2(73,747,534,44),22,Color("ffedbe"))
-	milestone_bar=ProgressBar.new();milestone_bar.position=Vector2(89,808);milestone_bar.size=Vector2(502,14)
-	milestone_bar.max_value=10;milestone_bar.value=completed%10 if completed<g.levels.size() else 10;milestone_bar.show_percentage=false
-	milestone_bar.add_theme_stylebox_override("background",game.panel(Color("263747"),7,Color("74889a")))
-	milestone_bar.add_theme_stylebox_override("fill",game.panel(Color("eac76c"),7,Color("ffeab0")));content.add_child(milestone_bar)
-	var play=button("Continue rescuing",Rect2(105,887,470,72),func():game.start_game(game.unlocked-1,true))
-	play.add_theme_stylebox_override("normal",game.panel(Color("43835c"),28,Color("d6ec9d")));play.add_theme_font_size_override("font_size",26)
-	count_panel.set_meta("l10n_x",120.0);card.set_meta("l10n_x",55.0);milestone_bar.set_meta("l10n_x",89.0)
-	layout_home();get_viewport().size_changed.connect(layout_home)
-func label(text: String,rect: Rect2,font_size: int,color: Color) -> Label:
-	var node:=Label.new();L.style(node);node.text=L.t(text);node.position=rect.position;node.size=rect.size
-	node.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;node.vertical_alignment=VERTICAL_ALIGNMENT_CENTER
-	node.add_theme_color_override("font_color",color)
-	var font=node.get_theme_font("font")
-	while font_size>16 and font.get_string_size(node.text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size).x>rect.size.x-12:font_size-=1
-	node.add_theme_font_size_override("font_size",font_size);content.add_child(node);return node
-func button(text: String,rect: Rect2,action: Callable) -> Button:
-	var node:=Button.new();L.style(node);node.text=L.t(text);node.position=rect.position;node.size=rect.size
-	node.add_theme_stylebox_override("normal",game.panel(Color("354b68"),20,Color("a6b6cf")))
-	node.add_theme_stylebox_override("hover",game.panel(Color("527a75"),20,Color("ffe4a0")))
-	node.add_theme_stylebox_override("pressed",game.panel(Color("29463e"),20,Color("d6ec9d")))
-	node.set_meta("l10n_x",rect.position.x);node.pressed.connect(action);content.add_child(node);return node
-func layout_home() -> void:
-	if not is_instance_valid(game):return
-	size=get_viewport_rect().size;position=-game.position
-	var safe: Rect2=game.content_rect()
-	var s:=minf((size.x-24)/680.0,(safe.size.y-24)/980.0)
-	content.scale=Vector2.ONE*s;content.position=Vector2((size.x-680*s)*.5,safe.position.y+game.position.y+(safe.size.y-980*s)*.5)
-func _process(delta: float) -> void:
-	if not is_instance_valid(game) or game.screen!="rescue_home":return
-	L.restore_x(content)
-	age+=delta
-	for cat in residents:cat.animate_menu(age,cat.get_meta("home_origin"),cat.get_meta("home_scale"),game.reduced_motion)
-	scenery.queue_redraw()
-func draw_room() -> void:
-	scenery.draw_style_box(game.panel(Color(.11,.15,.14,.60),38,Color("a39272")),Rect2(58,567,564,118))
-	scenery.draw_style_box(game.panel(Color.from_hsv(.78+float(completed/10%6)*.018,.18,.46),36,Color("c0a5a0")),Rect2(74,649,532,28))
-	if residents.size()>3:scenery.draw_style_box(game.panel(Color("654939"),10,Color("c29a6a")),Rect2(117,456,432,19))
-	if completed>=10:scenery.draw_style_box(game.panel(Color("a889a2"),30,Color("e2c5bb")),Rect2(92,645,127,26))
-	if completed>=20:
-		var p:=Vector2(560,670)
-		scenery.draw_circle(p,17,Color("e7b270"));scenery.draw_arc(p,12,-1,2.4,24,Color("ffe0b0"),2,true)
-		scenery.draw_polyline(PackedVector2Array([p+Vector2(14,6),Vector2(591,686),Vector2(612,680)]),Color("e7b270"),2,true)
-	if completed>=40:
-		for x in [70,610]:
-			scenery.draw_line(Vector2(x,270),Vector2(x,305),Color("cdb282"),2,true)
-			scenery.draw_circle(Vector2(x,328),37,Color(1,.73,.25,.08+.025*sin(age*1.3)))
-			scenery.draw_style_box(game.panel(Color("a47940"),9,Color("e4bd6b")),Rect2(x-12,306,24,43))
-			scenery.draw_circle(Vector2(x,328),7,Color("ffecac"))
+var milestone_bar:ProgressBar
+var rescue_counts:Dictionary={}
+var breed_cards:Array=[]
+func configure(g)->void:
+ game=g;layout_direction=Control.LAYOUT_DIRECTION_LTR
+ var levels:Dictionary={}
+ for i in range(mini(g.levels.size(),maxi(0,g.unlocked-1))):levels[i]=true
+ for key in g.wallet.records:
+  if str(key).is_valid_int():
+   var index=int(str(key))
+   if index>=0 and index<g.levels.size():levels[index]=true
+ completed=levels.size()
+ for index in levels:
+  for tube in g.levels[index].tubes:
+   for kind in tube:rescue_counts[int(kind)]=int(rescue_counts.get(int(kind),0))+1;rescued+=1
+ var bg=TextureRect.new();bg.texture=load("res://assets/environments/sanctuary_cottage_v1.png");bg.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;bg.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED;bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(bg)
+ var shade=ColorRect.new();shade.color=Color(.02,.03,.06,.18);shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(shade)
+ content=Control.new();content.layout_direction=Control.LAYOUT_DIRECTION_LTR;add_child(content)
+ var shell=plate(Rect2(50,40,620,1040),Color(.025,.055,.10,.92),Color("c4ae81"),30);shell.name="SanctuaryPanel"
+ var back=preload("res://scripts/jewel_button.gd").new();L.style(back);back.name="SanctuaryBack";back.symbol="back";back.compact=true;back.tint=Color("7951b1");back.size=Vector2(60,60);back.pressed.connect(func():game.show_menu());content.add_child(back);back.position=Vector2(66,56);back.set_meta("l10n_x",66)
+ label("Cat sanctuary",Rect2(150,56,420,60),34,Color("fff0ca"))
+ plate(Rect2(70,132,580,90),Color("10283b"),Color("c6a66c"),23)
+ label(number(rescued),Rect2(146,141,204,41),34,Color("ffe0a0"))
+ label("Kittens rescued",Rect2(146,184,204,27),18,Color("ecedf2"))
+ label(str(rescue_counts.size())+" / "+str(Breeds.ACTIVE_IDS.size()),Rect2(421,141,191,41),32,Color("ffe0a0"))
+ label("Breeds found",Rect2(421,184,191,27),18,Color("ecedf2"))
+ var summary=Control.new();summary.size=Vector2(720,1120);summary.mouse_filter=Control.MOUSE_FILTER_IGNORE;summary.layout_direction=Control.LAYOUT_DIRECTION_LTR;content.add_child(summary);summary.position=Vector2.ZERO;summary.set_meta("l10n_x",0)
+ summary.draw.connect(func():
+  summary.draw_line(Vector2(389,150),Vector2(389,205),Color("b99b65"),1.5,true)
+  summary.draw_circle(Vector2(111,176),27,Color("aa772c"));summary.draw_circle(Vector2(111,175),24,Color("eab95c"));summary.draw_arc(Vector2(111,175),20,0,TAU,40,Color("ffe6a8"),1.5,true)
+  for p in [Vector2(100,169),Vector2(108,163),Vector2(118,165),Vector2(124,172)]:summary.draw_circle(p,3.5,Color("fff0c2"))
+  summary.draw_circle(Vector2(111,182),9,Color("fff0c2")))
+ scenery=Node2D.new();content.add_child(scenery)
+ for i in range(Breeds.ACTIVE_IDS.size()):
+  var kind=Breeds.ACTIVE_IDS[i];var card=preload("res://scripts/sanctuary_breed_card.gd").new();card.name="Breed_"+str(kind);card.kind=kind;card.count=int(rescue_counts.get(kind,0));card.game=game;content.add_child(card);card.position=Vector2(70+(i%3)*200,238+(i/3)*210);card.set_meta("l10n_x",card.position.x);breed_cards.append(card)
+  if card.count>0:residents.append(card.actor)
+ plate(Rect2(70,874,580,110),Color("10283b"),Color("c6a66c"),23)
+ var home=TextureRect.new();var atlas=AtlasTexture.new();atlas.atlas=preload("res://assets/branding/menu_navigation_cards_v1.png");atlas.region=Rect2(1490,48,580,480);home.texture=atlas;home.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;home.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED;home.mouse_filter=Control.MOUSE_FILTER_IGNORE;content.add_child(home);home.size=Vector2(100,87);home.position=Vector2(84,885);home.set_meta("l10n_x",84)
+ label("Next sanctuary upgrade",Rect2(197,883,425,32),23,Color("ffe4aa"),false)
+ label("A new comfort in %d levels"%[10-completed%10] if completed<game.levels.size() else "Every kitten deserves a home.",Rect2(197,917,425,26),17,Color("e9e3d7"),false)
+ milestone_bar=ProgressBar.new();milestone_bar.name="SanctuaryProgress";milestone_bar.size=Vector2(425,17);milestone_bar.max_value=10;milestone_bar.value=completed%10 if completed<game.levels.size() else 10;milestone_bar.show_percentage=false
+ milestone_bar.add_theme_stylebox_override("background",game.panel(Color("0b1927"),8,Color("c6a66c")));milestone_bar.add_theme_stylebox_override("fill",game.panel(Color("e8b74f"),8,Color("ffdfa0")));content.add_child(milestone_bar);milestone_bar.position=Vector2(197,952);milestone_bar.set_meta("l10n_x",197)
+ var play=preload("res://scripts/jewel_button.gd").new();L.style(play);play.name="SanctuaryContinue";play.tint=Color("43996d");play.symbol="paw";play.caption_override="\u200b";play.text=L.t("Continue rescuing");play.size=Vector2(500,65);content.add_child(play);play.position=Vector2(110,1000);play.set_meta("l10n_x",110);play.pressed.connect(func():game.start_game(game.unlocked-1,true))
+ var caption=Label.new();L.style(caption);caption.text=L.t("Continue rescuing");caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;caption.vertical_alignment=VERTICAL_ALIGNMENT_CENTER;caption.mouse_filter=Control.MOUSE_FILTER_IGNORE;caption.add_theme_font_size_override("font_size",27);play.add_child(caption);caption.size=Vector2(400,57);caption.position=Vector2(80,4);caption.set_meta("l10n_x",80)
+ layout_home();get_viewport().size_changed.connect(layout_home)
+func plate(rect:Rect2,fill:Color,border:Color,radius:int)->Panel:
+ var p=Panel.new();p.layout_direction=Control.LAYOUT_DIRECTION_LTR;p.mouse_filter=Control.MOUSE_FILTER_IGNORE;p.size=rect.size;p.add_theme_stylebox_override("panel",game.panel(fill,radius,border));content.add_child(p);p.position=rect.position;p.set_meta("l10n_x",rect.position.x);return p
+func label(text:String,rect:Rect2,font_size:int,color:Color,center:bool=true)->Label:
+ var l=Label.new();L.style(l);l.text=L.t(text);l.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER if center else (HORIZONTAL_ALIGNMENT_RIGHT if L.rtl() else HORIZONTAL_ALIGNMENT_LEFT);l.vertical_alignment=VERTICAL_ALIGNMENT_CENTER;l.mouse_filter=Control.MOUSE_FILTER_IGNORE;l.add_theme_color_override("font_color",color)
+ var font=l.get_theme_font("font")
+ while font_size>13 and (font.get_string_size(l.text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size).x>rect.size.x-8 or font.get_height(font_size)>rect.size.y):font_size-=1
+ l.add_theme_font_size_override("font_size",font_size);content.add_child(l);l.position=rect.position;l.size=rect.size;l.set_meta("l10n_x",rect.position.x);return l
+func number(value:int)->String:
+ var s=str(value);var parts:PackedStringArray=[]
+ while s.length()>3:parts.insert(0,s.right(3));s=s.left(s.length()-3)
+ parts.insert(0,s);return L.digits(("٬" if L.locale=="fa" else ",").join(parts))
+func layout_home()->void:
+ if not is_instance_valid(game):return
+ size=get_viewport_rect().size;position=-game.position
+ var safe:Rect2=game.content_rect();var factor=minf(1.0,minf((safe.size.x-36)/620.0,(safe.size.y-32)/1040.0));content.scale=Vector2.ONE*factor;content.position=safe.get_center()+game.position-Vector2(360,560)*factor
+func _process(delta:float)->void:
+ age+=delta
+ if is_instance_valid(content):L.restore_x(content)
